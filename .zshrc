@@ -63,7 +63,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+git
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -97,6 +97,28 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias gwc='gcc -Wall -Werror -Wextra'
+
+function upg()
+{
+  pathPro="./Code/projectBapt"
+  pathRen="./Code/github"
+
+  for dir in `ls $pathPro`
+  do
+    cp -r $pathPro/$dir $pathRen
+    find $pathRen/$dir -name '.git' -print -exec rm -rf {} \;
+  done
+
+  cp $HOME/.zshrc $pathRen
+  cp $HOME/.vimrc $pathRen
+  cp $HOME/.tmux.conf $pathRen
+
+  cd ~/$pathRen
+  git add .
+  git commit -m "update of project $(date +\"%Y-%m-%d_%H-%M-%S\")"
+  git push
+cd $HOME
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH=$HOME/.brew/bin:$PATH
