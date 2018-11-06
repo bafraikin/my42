@@ -6,7 +6,7 @@
 #    By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 13:19:42 by bafraiki          #+#    #+#              #
-#    Updated: 2018/11/06 18:27:57 by bafraiki         ###   ########.fr        #
+#    Updated: 2018/11/06 19:10:17 by bafraiki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ INCLUDE		=	includes/
 
 SRC			=	srcs/
 
-FILE		=	$(SRC)ft_memset.c $(SRC)ft_bzero.c $(SRC)ft_memcpy.c
+FILE		=	$(SRC)ft_memset.c $(SRC)ft_bzero.c $(SRC)ft_memcpy.c $(SRC)ft_memccpy.c
 
 FLAGS		=	-Wall -Werror -Wextra
 
