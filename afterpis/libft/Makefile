@@ -6,18 +6,15 @@
 #    By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 13:19:42 by bafraiki          #+#    #+#              #
-#    Updated: 2018/11/06 19:10:17 by bafraiki         ###   ########.fr        #
+#    Updated: 2018/11/06 20:03:28 by bafraiki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME		=	libft.a
 
-INCLUDE		=	includes/
 
-SRC			=	srcs/
-
-FILE		=	$(SRC)ft_memset.c $(SRC)ft_bzero.c $(SRC)ft_memcpy.c $(SRC)ft_memccpy.c
+FILE		=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c
 
 FLAGS		=	-Wall -Werror -Wextra
 
@@ -31,7 +28,7 @@ $(NAME): $(OBJ)
 	ar rcs $@ $^
 
 %.o: %.c
-	$(CC) -I $(INCLUDE) -o $@ -c $? $(FLAGS)
+	$(CC) -o $@ -c $? $(FLAGS)
 
 clean: $(OBJ)
 	rm $(OBJ)

@@ -104,24 +104,24 @@ alias vf='vim -O $(fzf)'
 
 function upg()
 {
-  pathPro="$HOME/Code/projectBapt"
-  pathRen="$HOME/Code/github"
+	pathPro="$HOME/Code/projectBapt"
+	pathRen="$HOME/Code/github"
 
-  for dir in `ls $pathPro`
-  do
-    cp -r $pathPro/$dir $pathRen
-    find $pathRen/$dir -name '.git' -print -exec rm -rf {} \;
-  done
+	for dir in `ls $pathPro`
+	do
+		cp -r $pathPro/$dir $pathRen
+		find $pathRen/$dir -name '.git' -print -exec rm -rf {} \;
+	done
 
-  cp $HOME/.zshrc $pathRen
-  cp $HOME/.vimrc $pathRen
-  cp $HOME/.tmux.conf $pathRen
+	cp $HOME/.zshrc $pathRen
+	cp $HOME/.vimrc $pathRen
+	cp $HOME/.tmux.conf $pathRen
 
-  cd $pathRen
-  git add .
-  git commit -m "update of project $(date +\"%Y-%m-%d_%H-%M-%S\")"
-  git push
-cd $HOME
+	cd $pathRen
+	git add .
+	git commit -m "update of project $(date +\"%Y-%m-%d_%H-%M-%S\")"
+	git push
+	ct
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
