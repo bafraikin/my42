@@ -98,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export WORK=$HOME/Code/projectBapt/afterpis/libft
 alias gwc='gcc -Wall -Werror -Wextra'
-alias cw='cd $WORK'
+alias ct='cd $WORK'
 
 
 function upg()
