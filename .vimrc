@@ -1,10 +1,6 @@
 set showcmd
 set autoread 
 set incsearch
-set shiftwidth=2
-set softtabstop=2
-set backspace=2
-set expandtab
 set autoindent
 set smartindent
 set smarttab

@@ -6,18 +6,18 @@
 #    By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 13:19:42 by bafraiki          #+#    #+#              #
-#    Updated: 2018/11/06 14:30:48 by bafraiki         ###   ########.fr        #
+#    Updated: 2018/11/06 18:27:57 by bafraiki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME		=	ft_display_file
+NAME		=	libft.a
 
 INCLUDE		=	includes/
 
 SRC			=	srcs/
 
-FILE		=	$(SRC)main.c 
+FILE		=	$(SRC)ft_memset.c $(SRC)ft_bzero.c $(SRC)ft_memcpy.c
 
 FLAGS		=	-Wall -Werror -Wextra
 
@@ -28,7 +28,7 @@ OBJ			=	$(FILE:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) -o $@ $^
+	ar rcs $@ $^
 
 %.o: %.c
 	$(CC) -I $(INCLUDE) -o $@ -c $? $(FLAGS)

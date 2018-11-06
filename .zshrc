@@ -99,12 +99,13 @@ source $ZSH/oh-my-zsh.sh
 export WORK=$HOME/Code/projectBapt/afterpis/libft
 alias gwc='gcc -Wall -Werror -Wextra'
 alias ct='cd $WORK'
+alias vf='vim -O $(fzf)'
 
 
 function upg()
 {
-  pathPro="./Code/projectBapt"
-  pathRen="./Code/github"
+  pathPro="$HOME/Code/projectBapt"
+  pathRen="$HOME/Code/github"
 
   for dir in `ls $pathPro`
   do
