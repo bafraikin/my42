@@ -117,7 +117,7 @@ function upg()
   cp $HOME/.vimrc $pathRen
   cp $HOME/.tmux.conf $pathRen
 
-  cd ~/$pathRen
+  cd $pathRen
   git add .
   git commit -m "update of project $(date +\"%Y-%m-%d_%H-%M-%S\")"
   git push
