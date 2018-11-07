@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 15:06:47 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/07 16:31:00 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/07 15:38:00 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/07 16:26:52 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int i;
+	int		i;
+	int		j;
+	size_t	val;
 
-	i = -1;
-	while (src[++i] != '\0' && len > 0)
+	val = ft_strlen(dst) + ft_strlen(src);
+	i = 0;
+	j = -1;
+	while (size-- > 0 && dst[i] != '\0')
+		i++;
+	while (size-- > 0 && src[++j] != '\0')
 	{
-		dst[i] = src[i];
-		len--;
+		dst[i] = src[j];
+		i++;
 	}
-	if (len > 0)
-		while (len-- > 0)
-			dst[i++] = '\0';
-	return (dst);
+	if (size > 0)
+		dst[i] = '\0';
+	else
+		dst[i - 1] = '\0';
+	return (val);
 }

@@ -6,13 +6,13 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:21:44 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/07 15:36:21 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/07 16:28:49 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*strcat(char *s1, const char *s2)
+char	*ft_strcat(char *s1, const char *s2)
 {
 	int i;
 	int j;

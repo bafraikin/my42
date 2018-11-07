@@ -6,11 +6,13 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:46:47 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/07 14:48:32 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/07 16:29:28 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-site_t	ft_strlen(const char *s)
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
 {
 	int i;
 

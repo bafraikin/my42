@@ -6,9 +6,11 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:28:01 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/07 15:35:30 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/07 15:37:26 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
