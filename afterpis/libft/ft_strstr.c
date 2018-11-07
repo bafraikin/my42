@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 16:51:00 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/07 17:06:32 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/07 17:07:37 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ char	*ft_strstr(const char *haystack, const char *needle)
 			{
 				tmp++;
 				j++;
-				 if (needle[j] == '\0')
-					 return (&haystack[i]);
+				if (needle[j] == '\0')
+					return (&haystack[i]);
 			}
 	return (NULL);
 }
