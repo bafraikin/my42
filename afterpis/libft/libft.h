@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:33:39 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/07 18:57:59 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/12 11:35:47 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		ft_atoi(const char *str);
 int		ft_isdigit(int c);
 void	ft_bzero(void *s, size_t n);
 int		ft_isalnum(int c);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
