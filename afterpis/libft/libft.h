@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:33:39 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/12 17:19:00 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/12 18:26:43 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 # include <string.h>
 # include <stdlib.h>
 
+char	*ft_strnew(size_t size);
 int		ft_atoi(const char *str);
 int		ft_strequ(char const *s1, char const *s2);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
 int		ft_strnequ(char const *s1, char const *s2, size_t n);
 char	*ft_strmap(char const *s, char (*f)(char));
 void	ft_strclr(char *s);
@@ -31,7 +33,6 @@ void	ft_bzero(void *s, size_t n);
 void	ft_strdel(char **ap);
 int		ft_isalnum(int c);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
-char	*ft_strnew(size_t size);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 15:09:11 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/12 18:31:10 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/12 17:55:06 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/12 18:34:12 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <string.h>
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char *new;
+	char *ab;
 
-	if (!(new = (char*)malloc(sizeof(char) * size)))
+	if (!(ab = ft_strnew(len + 1)))
 		return (NULL);
-	ft_memset(new, 0, size);
-	return (new);
+	ab = ft_strncpy(ab, s + start, len);
+	return (ab);
 }
