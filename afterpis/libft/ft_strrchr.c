@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 16:43:32 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/07 18:59:22 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/12 14:08:17 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ char	*ft_strrchr(const char *s, int c)
 			tmp = (char*)s;
 		s++;
 	}
+	if (c_c == '\0')
+		tmp = (char*)s;
 	return (tmp);
 }
