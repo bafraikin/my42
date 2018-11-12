@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:33:39 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/12 18:26:43 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/12 19:37:57 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <stdlib.h>
 
 char	*ft_strnew(size_t size);
+char	*ft_strtrim(char const *s);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	**ft_strsplit(char const *s, char c);
 int		ft_atoi(const char *str);
 int		ft_strequ(char const *s1, char const *s2);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
