@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 15:05:46 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/12 15:27:03 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/12 15:24:13 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/12 15:25:41 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_strclr(char *s)
 {
-	free(*ap);
-	*ap = NULL;
+	ft_memset(s, 0, ft_strlen(s));
 }
