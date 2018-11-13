@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 15:59:52 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/13 16:20:09 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/13 16:04:02 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/13 16:05:53 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft.h" 
 
-void	ft_putstr(char const *s)
+void ft_putendl(char const *s)
 {
-	while (*s)
-		ft_putchar(*(s++));
+	ft_putstr(s);
+	ft_putchar('\n');
 }
+

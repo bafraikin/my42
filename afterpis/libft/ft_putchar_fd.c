@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 15:59:52 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/13 16:20:09 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/13 16:06:10 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/13 16:07:17 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-void	ft_putstr(char const *s)
+void ft_putchar_fd(char c, int fd)
 {
-	while (*s)
-		ft_putchar(*(s++));
+	write(fd, &c, 1);
 }

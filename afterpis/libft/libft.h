@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:33:39 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/13 16:01:46 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 16:16:21 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void	ft_putstr(char const *s);
 char	*ft_itoa(int n);
 char	*ft_strtrim(char const *s);
 char	*ft_strjoin(char const *s1, char const *s2);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putendl_fd(char const *s, int fd);
+void	ft_putstr_fd(char const *s, int fd);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putnbr(int n);
 char	**ft_strsplit(char const *s, char c);
 int		ft_atoi(const char *str);
 int		ft_strequ(char const *s1, char const *s2);
