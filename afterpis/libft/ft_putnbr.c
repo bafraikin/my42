@@ -6,13 +6,13 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 16:05:04 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/13 16:05:22 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 16:25:17 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-ft_putnbr(int nb)
+void	ft_putnbr(int nb)
 {
 	int		range;
 	long	nb_long;

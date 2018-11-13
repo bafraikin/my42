@@ -6,15 +6,14 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 16:04:02 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/13 16:05:53 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 16:34:42 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" 
+#include "libft.h"
 
-void ft_putendl(char const *s)
+void	ft_putendl(char const *s)
 {
 	ft_putstr(s);
 	ft_putchar('\n');
 }
-
