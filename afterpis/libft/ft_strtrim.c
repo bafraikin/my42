@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 19:20:24 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/13 22:01:38 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 23:09:11 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char			*ft_strtrim(char const *s)
 		return (NULL);
 	while (ft_ischarset(*s))
 		s++;
-	new = memcpy(new, s, i);
+	new = ft_memcpy(new, s, i);
 	new[i] = '\0';
 	return (new);
 }
