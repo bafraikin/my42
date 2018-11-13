@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: inyancat <inyancat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 17:55:06 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/13 20:38:55 by bafraiki         ###   ########.fr       */
+/*   Created  2016/11/11 16:47:32 by inyancat          #+#    #+#             */
+/*   Updated  2016/11/12 20:21:42 by inyancat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
-#include "libft.h"
+#include "utils.h"
+#include <stdarg.h>
+extern int g_log_fd;
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+void error(int code, int a, const char *pattern, ...)
 {
-	char *ab;
+	va_list	va;
 
-	if (!(ab = ft_strnew(len)))
-		return (NULL);
-	ab = ft_strncpy(ab, s + start, len);
-	return (ab);
+	va_start(va, pattern);
+	(void)a;
+	vdprintf(g_log_fd, pattern, va);
+	dprintf(g_log_fd, "\n");
+	va_end(va);
+	exit(code);
 }
