@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:33:39 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/13 15:52:48 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 16:01:46 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdlib.h>
 
 char	*ft_strnew(size_t size);
+void	ft_putchar(char c);
+void	ft_putstr(char const *s);
 char	*ft_itoa(int n);
 char	*ft_strtrim(char const *s);
 char	*ft_strjoin(char const *s1, char const *s2);
