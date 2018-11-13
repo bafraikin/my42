@@ -6,12 +6,12 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 14:54:30 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/12 15:03:22 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 16:38:39 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include <unistd.h>
+#include <stdlib.h>
 #include "libft.h"
 
 void	*ft_memalloc(size_t size)

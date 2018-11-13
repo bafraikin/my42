@@ -6,11 +6,12 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:14:38 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/12 11:10:02 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 16:39:52 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

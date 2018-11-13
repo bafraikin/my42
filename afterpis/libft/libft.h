@@ -6,12 +6,14 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:33:39 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/13 16:36:05 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 16:37:45 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# include <string.h>
 
 char	*ft_strnew(size_t size);
 void	ft_putchar(char c);
