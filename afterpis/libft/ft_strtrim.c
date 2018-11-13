@@ -6,13 +6,14 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 19:20:24 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/13 15:25:11 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 21:30:37 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 static	int		ft_ischarset(char const c)
 {
@@ -59,7 +60,7 @@ static	size_t	my_strlen(char const *str)
 			while (!ft_ischarset(str[i]) && str[i] != '\0')
 				i++;
 		}
-		if (str[i])
+		if (str[i] && count > 0)
 			i++;
 	}
 	return ((size_t)i);
@@ -71,13 +72,11 @@ char			*ft_strtrim(char const *s)
 	int		i;
 
 	i = my_strlen(s);
-	if (!(new = ft_strnew(i + 1)))
+	if (!(new = ft_strnew(i)))
 		return (NULL);
 	while (ft_ischarset(*s))
 		s++;
 	new = memcpy(new, s, i);
-	if (ft_ischarset(new[i - 1]))
-		i--;
 	new[i] = '\0';
 	return (new);
 }
