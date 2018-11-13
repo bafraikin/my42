@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 18:42:02 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/06 21:16:34 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 13:55:04 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	unsigned char	*c_dst;
 	unsigned char	*c_src;
-	void			*mem;
 
-	mem = dst;
 	while (n-- > 0)
 	{
 		c_dst = (unsigned char *)dst;
