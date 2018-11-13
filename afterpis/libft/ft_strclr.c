@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 15:24:13 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/12 15:25:41 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 22:20:40 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_strclr(char *s)
 {
-	ft_memset(s, 0, ft_strlen(s));
+	if (s && *s)
+		ft_memset(s, 0, ft_strlen(s));
 }

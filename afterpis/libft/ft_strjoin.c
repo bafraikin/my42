@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 19:07:39 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/12 19:14:44 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 22:21:34 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char *new;
 
+	if (!(s1 && s2))
+		return (NULL);
 	if (!(new = (char *)malloc(sizeof(char) * (ft_strlen(s1) +
 						ft_strlen(s2) + 1))))
 		return (NULL);

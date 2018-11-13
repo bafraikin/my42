@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 19:20:24 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/13 21:30:37 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 22:01:38 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ char			*ft_strtrim(char const *s)
 	char	*new;
 	int		i;
 
+	if (!(s))
+		return (NULL);
 	i = my_strlen(s);
 	if (!(new = ft_strnew(i)))
 		return (NULL);
