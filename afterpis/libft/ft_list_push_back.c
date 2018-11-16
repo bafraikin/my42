@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_list_push_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 14:47:54 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/16 18:57:25 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/07/19 15:46:26 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/16 19:16:00 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+void	ft_list_push_back(t_list **begin_list, void *content,
+		size_t content_size)
 {
 	t_list *new;
 
-	if ((new = (t_list*)malloc(sizeof(t_list))) == NULL)
-		return (NULL);
-	if ((void*)content != NULL)
+	if (!(*begin_list))
 	{
-		new->content = (void*)content;
-		new->content_size = content_size;
-		new->next = NULL;
+		*begin_list = ft_lstnew(content, content_size);
+		return ;
 	}
-	else
-		ft_bzero(new, sizeof(t_list));
-	return (new);
+	new = *begin_list;
+	while (new->next)
+		new = new->next;
+	new->next = ft_lstnew(content, content_size);
 }

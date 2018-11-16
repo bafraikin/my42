@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:33:39 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/16 18:15:40 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/16 19:15:16 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,8 @@ void				ft_list_reverse(t_list **begin_list);
 int					ft_list_size(t_list *begin_list);
 void				ft_swapptr(void **a, void **b);
 void				ft_list_sort(t_list **begin_list, int (*cmp)());
+t_list				*ft_list_last(t_list *begin_list);
+void				ft_list_push_back(t_list **begin_list,
+		void *content, size_t content_size);
 
 #endif
