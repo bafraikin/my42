@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:38:00 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/12 13:56:48 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/16 21:34:59 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		ft_memcpy(dst + len_dst, src, len_src + 1);
 	else
 	{
-		ft_memcpy(dst + len_dst, src, size - 1);
+		ft_memcpy(dst + len_dst, src, size - len_dst);
 		dst[size - 1] = '\0';
 	}
 	return (len_src + len_dst);

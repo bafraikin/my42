@@ -376,10 +376,7 @@ static bool isCheater(void)
 	GET_STDOUT(buff, sizeof(buff));
 	while (forbidden_functions[i])
 		if (strstr(buff, forbidden_functions[i++]))
-		{
-			printf("\n\n%s %s\n \n", forbidden_functions[i], buff);
 			return true;
-		}
 	return false;
 }
 
