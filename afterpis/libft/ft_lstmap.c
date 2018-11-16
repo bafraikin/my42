@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 14:47:54 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/16 16:08:28 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/16 17:27:16 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/16 17:32:03 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+t_list *ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list *new;
 
-	if ((new = (t_list*)malloc(sizeof(t_list))) == NULL)
-		return (NULL);
-	if ((void*)content != NULL)
-	{
-		new->content = (void*)content;
-		new->content_size = content_size;
-		new->next = NULL;
-	}
-	else
-		ft_bzero(new, sizeof(t_list));
-	return (new);
+
+
 }
