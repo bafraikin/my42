@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_list_at.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 16:54:54 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/16 17:42:44 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/07/19 22:13:24 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/16 18:11:44 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+t_list	*ft_list_at(t_list *begin_list, unsigned int nbr)
 {
-	new->next = *alst;
-	*alst = new;
+	while (nbr >= 1 && begin_list != 0)
+	{
+		begin_list = begin_list->next;
+		nbr--;
+	}
+	if (nbr > 1)
+		return (0);
+	return (begin_list);
 }

@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:33:39 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/16 17:28:03 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/16 18:15:40 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_lstadd(t_list **alst, t_list *new);
+t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
@@ -81,5 +82,11 @@ char				*ft_strncat(char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *haystack, const char *needle);
+
+t_list				*ft_list_at(t_list *begin_list, unsigned int nbr);
+void				ft_list_reverse(t_list **begin_list);
+int					ft_list_size(t_list *begin_list);
+void				ft_swapptr(void **a, void **b);
+void				ft_list_sort(t_list **begin_list, int (*cmp)());
 
 #endif

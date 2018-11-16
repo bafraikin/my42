@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_swapptr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 16:54:54 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/16 17:42:44 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/16 18:10:32 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/16 18:13:33 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_lstadd(t_list **alst, t_list *new)
+void	ft_swapptr(void **a, void **b)
 {
-	new->next = *alst;
-	*alst = new;
+	void	*tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
+
