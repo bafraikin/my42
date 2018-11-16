@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 15:56:46 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/16 13:14:07 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/16 14:33:53 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*new;
 	int		i;
 
-	if (!(s && *s && f))
+	if (!(s && f))
 		return (NULL);
 	i = -1;
 	if (!(new = (char*)malloc(sizeof(char) * (ft_strlen(s) + 1))))

@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 18:49:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/13 22:00:48 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/16 14:32:39 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char				**ft_strsplit(char const *s, char c)
 	int		lenght;
 	int		j;
 
-	if (!(s && *s))
+	if (!(s))
 		return (0);
 	index = -1;
 	word_count = ft_count_word(s, c);

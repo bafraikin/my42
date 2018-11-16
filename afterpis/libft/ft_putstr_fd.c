@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 16:07:38 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/16 13:34:44 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/13 22:03:44 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char const *s, int fd)
 {
-	if (s && fd)
+	if (s)
 		while (*s)
-			write(fd, s, ft_strlen(s));
+			ft_putchar_fd(*(s++), fd);
 }
