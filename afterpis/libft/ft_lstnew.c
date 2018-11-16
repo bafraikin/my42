@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 14:47:54 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/16 18:57:25 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/16 20:32:31 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 		return (NULL);
 	if ((void*)content != NULL)
 	{
-		new->content = (void*)content;
+		new->content = ft_memalloc(content_size);
+		ft_memcpy(new->content, content, content_size);
 		new->content_size = content_size;
 		new->next = NULL;
 	}
