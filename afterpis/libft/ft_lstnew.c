@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 12:04:28 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/16 14:42:07 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/16 14:47:54 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/16 14:48:52 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+t_list	*ft_lstnew(void const *content, size_t content_size)
+{
 
-# define BUFF_SIZE 32
 
-int	get_next_line(const int fd,char **line);
-
-typedef struct		s_fdline {
-
-	int			fd;
-	char		*rest;
-	t_fdline	*next;
-
-}					t_fdline;
-
-#endif
+}
