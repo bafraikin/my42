@@ -20,6 +20,6 @@ char	*ft_strnew(size_t size)
 
 	if (!(new = (char*)malloc(sizeof(char) * (size + 1))))
 		return (NULL);
-	ft_memset(new, 0, size + 1);
+	ft_bzero(new, size + 1);
 	return (new);
 }
