@@ -14,16 +14,24 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	while (n > sizeof(long) && (n -= sizeof(long)) > 0)
-	{
-		*(long*)s = 0;
-		s = s + sizeof(long);
-	}
-	while (n > sizeof(int) && (n -= sizeof(int)) > 0)
-	{
-		*(int*)s = 0;
-		s = s + sizeof(int);
-	}
-	while (n-- > 0)
-		*(unsigned char*)(s++) = 0;
+  size_t i;
+  long *cl_s;
+  unsigned char *cc_s;
+
+  i = 0;
+  cc_s = NULL;
+  if (n % sizeof(long) != 0)
+  {
+    cc_s = s;
+    while (n % sizeof(long) != 0 && n-- > 0)
+      *(cc_s++) = 0;
+  }
+  cl_s = (cc_s == NULL) ? (long*)s : (long*)cc_s;
+  if (n > 0)
+    while(i < n / sizeof(long))
+    {
+      *cl_s = 0;
+      cl_s++;
+      i++;
+    }
 }
