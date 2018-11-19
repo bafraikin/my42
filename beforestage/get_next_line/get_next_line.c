@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/19 14:28:53 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/19 17:51:15 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,14 @@ static void *ft_gest_list(t_list **begin, const int fd, t_read *l_read)
 	new->l_line = ft_strsub(l_read->is_read, )
 	//NULL
 
-
-		/*
-		   int       ret;
-		   int       total;
-		   int       mode;
-		   char      *t_rd->ptr_line;
-		   char      *t_rd->is_read;
-		   char      *tmp;
-		   */
+/*
+	int       ret;
+	int       total;
+	int       mode;
+	char      *t_rd->ptr_line;
+	char      *t_rd->is_read;
+	char      *tmp;
+*/
 
 }
 
@@ -53,9 +52,8 @@ static t_read *ft_recup_fd(const int fd, char *line)
 		ft_memcpy(t_rd->tmp, t_rd->is_read, t_rd->total);
 		t_rd->total += t_rd->ret;
 		free(t_rd->is_read);
-		if ((t_rd->ptr_line = ft_memchr(*line, '\n', t_rd->ret)) != NULL)
-			mode = 1;
-		//PROBLEM
+		if ((t_rd->ptr_line = (int*)ft_memchr(*line, '\n', t_rd->ret)) != NULL)
+			t_rd->mode = 1;
 		if ((t_rd->is_read = (char*)malloc(sizeof(char) * t_rd->total + 1)) == NULL)
 			return (NULL);
 		ft_memcpy(t_rd->is_read, t_rd->tmp, t_rd->total - t_rd->ret);
