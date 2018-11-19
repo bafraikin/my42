@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:55:06 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/13 21:54:11 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/19 13:52:48 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 
 	if (!(s && *s))
 		return (NULL);
-	if (!(ab = ft_strnew(len)))
+	if (!(ab = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	ab = ft_strncpy(ab, s + start, len);
+	ab[len] != '\0';
+	ab = ft_memcpy(ab, s + start, len);
 	return (ab);
 }
