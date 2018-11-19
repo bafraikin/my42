@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:28 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/19 14:29:00 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/19 19:05:11 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ typedef struct		s_fdlin
 
 typedef struct		s_read
 {
-	int				ret;
-	int				total;
-	int				mode;
-	char			*ptr_l;
-	char			*is_read;
+	int				r;
+	int				tot;
+	int				mod;
+	char			*pl;
+	char			*is_r;
 	char			*tmp;
 }					t_read;
 

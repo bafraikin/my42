@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/19 17:51:15 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/19 19:45:31 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,61 @@
 static void *ft_gest_list(t_list **begin, const int fd, t_read *l_read)
 {
 	t_fdlin *new;
-	int size;
 
-	size = l_read[]; // CURRENT
-		new = (t_fdlin*)malloc(sizeof(t_fdlin));
-	//NULL
-	new->l_line = ft_strsub(l_read->is_read, )
+	new = (t_fdlin*)malloc(sizeof(t_fdlin));
 	//NULL
 
-/*
-	int       ret;
-	int       total;
-	int       mode;
-	char      *t_rd->ptr_line;
-	char      *t_rd->is_read;
-	char      *tmp;
-*/
+	ft_bzero(new, sizeof(t_fdlin));
+	new->size_line = l_read->tot - l_read->mod;
+	new->size_rest = l_read->tot - new->size_line;
+	new->l_line = ft_strsub(l_read->is_r, 0, new->size_line);
+	new->l_rest = ft_strsub(l_read->is_r, size, new->size_rest);
+	if (!(new->l_line && new->l_rest))
+		return (NULL);
+	if (t_read->mod == 0)
+		new->mode = 0;
+	else
+		new->mode = 1;
+	new->fd = fd;
+
+
+		/*
+		   int       ret;
+		   int       total;
+		   int       mode;
+		   char      *t_r->pl;
+		   char      *t_r->is_r;
+		   char      *tmp;
+		   */
 
 }
 
 static t_read *ft_recup_fd(const int fd, char *line)
 {
-	t_read  *t_rd;
+	t_read  *t_r;
 
-	if (!(line && fd > 0))
+	if ((t_r = (t_read*)malloc(sizeof(t_read))) == NULL)
 		return (NULL);
-	t_rd = (t_read*)malloc(sizeof(t_read));
-	//NULL
-	ft_bzero(t_rd, sizeof(t_read));
-	t_rd->is_read = (char*)malloc(1);
-	//NULL
-	while (t_rd->mode == 0 && (t_rd->ret = read(fd, *line, BUFF_SIZE)))
+	ft_bzero(t_r, sizeof(t_read));
+	if ((t_r->is_r = (char*)malloc(1))== NULL)
+		return (NULL);
+	while (t_r->mod == 0 && (t_r->r = read(fd, *line, BUFF_SIZE)))
 	{
-		if ((t_rd->tmp = (char*)malloc(sizeof(char) * t_rd->total)) == NULL)
+		if ((t_r->tmp = (char*)malloc(sizeof(char) * t_r->tot)) == NULL)
 			return (NULL);
-		ft_memcpy(t_rd->tmp, t_rd->is_read, t_rd->total);
-		t_rd->total += t_rd->ret;
-		free(t_rd->is_read);
-		if ((t_rd->ptr_line = (int*)ft_memchr(*line, '\n', t_rd->ret)) != NULL)
-			t_rd->mode = 1;
-		if ((t_rd->is_read = (char*)malloc(sizeof(char) * t_rd->total + 1)) == NULL)
+		ft_memcpy(t_r->tmp, t_r->is_r, t_r->tot);
+		t_r->tot += t_r->r;
+		free(t_r->is_r);
+		if ((t_r->pl = ft_memchr(*line, '\n', t_r->r)) != NULL)
+			t_r->mod = line[ret - 1] - t_r->pl;
+		if ((t_r->is_r = (char*)malloc(sizeof(char) * t_r->tot + 1)) == NULL)
 			return (NULL);
-		ft_memcpy(t_rd->is_read, t_rd->tmp, t_rd->total - t_rd->ret);
-		free(t_rd->tmp);
-		ft_memcpy(t_rd->is_read + (t_rd->total - t_rd->ret), line, t_rd->ret);
+		ft_memcpy(t_r->is_r, t_r->tmp, t_r->tot - t_r->r);
+		free(t_r->tmp);
+		ft_memcpy(t_r->is_r + (t_r->tot - t_r->r), line, t_r->r);
 	}
-	t_rd->is_read[total] = '\0';
-	return (t_rd);
+	t_r->is_r[total] = '\0';
+	return (t_r);
 }
 
 int	get_next_line(const int fd,char **line)
@@ -69,8 +77,7 @@ int	get_next_line(const int fd,char **line)
 	static t_list *begin = NULL;
 	t_read  *l_read;  
 
-	l_read = NULLi;
-
+	l_read = NULL;
 	if (line && *line && fd > 0)
 		l_read = ft_recup_fd(fd, *line);
 	if (!(line && *line && fd > 0 && l_read))
