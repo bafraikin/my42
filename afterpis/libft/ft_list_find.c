@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_list_find.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 16:08:57 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/20 15:07:50 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/07/23 10:37:29 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/20 15:07:23 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
+t_list	*ft_list_find(t_list *begin_list, void *data_ref, int (*cmp)())
 {
-	if (alst && *alst && del)
+	t_list *tmp;
+
+	tmp = begin_list;
+	if (begin_list)
 	{
-		(*del)((*alst)->content, (*alst)->content_size);
-		free(*alst);
-		*alst = NULL;
+		while (tmp)
+		{
+			if ((*cmp)(tmp->content, data_ref) == 0)
+				return (tmp);
+			tmp = tmp->next;
+		}
 	}
+	return (NULL);
 }

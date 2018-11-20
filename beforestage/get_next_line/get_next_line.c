@@ -6,42 +6,44 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/19 19:45:31 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/20 14:23:34 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void *ft_gest_list(t_list **begin, const int fd, t_read *l_read)
+
+
+
+
+
+
+
+static int ft_gest_list(t_list **begin, const int fd, t_read *l_read, int mode)
 {
 	t_fdlin *new;
+	
+	if (mode)
+	{
+		if ((new = (t_fdlin*)malloc(sizeof(t_fdlin))) == NULL)
+			return (0);
+		ft_bzero(new, sizeof(t_fdlin));
+		new->size_line = l_read->tot - l_read->mod;
+		new->size_rest = l_read->tot - new->size_line;
+		new->l_line = ft_strsub(l_read->is_r, 0, new->size_line);
+		new->l_rest = ft_strsub(l_read->is_r, size, new->size_rest);
+		if (!(new->l_line && new->l_rest))
+			return (0);
+		if (t_read->mod == 0)
+			new->mode = 0;
+		else
+			new->mode = 1;
+		new->fd = fd;
+		ft_list_push_back(begin, new, fd);
+	}
+	else if (mode == 0)
 
-	new = (t_fdlin*)malloc(sizeof(t_fdlin));
-	//NULL
-
-	ft_bzero(new, sizeof(t_fdlin));
-	new->size_line = l_read->tot - l_read->mod;
-	new->size_rest = l_read->tot - new->size_line;
-	new->l_line = ft_strsub(l_read->is_r, 0, new->size_line);
-	new->l_rest = ft_strsub(l_read->is_r, size, new->size_rest);
-	if (!(new->l_line && new->l_rest))
-		return (NULL);
-	if (t_read->mod == 0)
-		new->mode = 0;
-	else
-		new->mode = 1;
-	new->fd = fd;
-
-
-		/*
-		   int       ret;
-		   int       total;
-		   int       mode;
-		   char      *t_r->pl;
-		   char      *t_r->is_r;
-		   char      *tmp;
-		   */
-
+		return (1);
 }
 
 static t_read *ft_recup_fd(const int fd, char *line)
