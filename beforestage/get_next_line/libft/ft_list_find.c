@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_list_find.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:07:39 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/20 16:25:07 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/07/23 10:37:29 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/20 15:07:23 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+t_list	*ft_list_find(t_list *begin_list, void *data_ref, int (*cmp)())
 {
-	char *new;
+	t_list *tmp;
 
-	if (!(s1 && s2))
-		return (NULL);
-	if (!(new = (char *)malloc(sizeof(char) * (ft_strlen(s1) +
-						ft_strlen(s2) + 1))))
-		return (NULL);
-	ft_strcpy(new, s1);
-	ft_strcpy(new + ft_strlen(s1), s2);
-	return (new);
+	tmp = begin_list;
+	if (begin_list)
+	{
+		while (tmp)
+		{
+			if ((*cmp)(tmp->content, data_ref) == 0)
+				return (tmp);
+			tmp = tmp->next;
+		}
+	}
+	return (NULL);
 }

@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:07:39 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/20 16:25:07 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/07 15:28:01 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/12 12:25:32 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	char *new;
+	int i;
+	int j;
 
-	if (!(s1 && s2))
-		return (NULL);
-	if (!(new = (char *)malloc(sizeof(char) * (ft_strlen(s1) +
-						ft_strlen(s2) + 1))))
-		return (NULL);
-	ft_strcpy(new, s1);
-	ft_strcpy(new + ft_strlen(s1), s2);
-	return (new);
+	i = -1;
+	j = 0;
+	while (s1[++i] != '\0')
+		;
+	while (n-- > 0 && s2[j] != '\0')
+	{
+		s1[i] = s2[j];
+		j++;
+		i++;
+	}
+	s1[i] = '\0';
+	return (s1);
 }

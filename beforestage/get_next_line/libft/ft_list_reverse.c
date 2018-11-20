@@ -1,28 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_list_reverse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:07:39 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/20 16:25:07 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/07/20 12:44:48 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/16 18:44:57 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_list_reverse(t_list **begin_list)
 {
-	char *new;
+	int		nb;
+	t_list	*tmp;
+	t_list	*buffer;
+	t_list	*last;
 
-	if (!(s1 && s2))
-		return (NULL);
-	if (!(new = (char *)malloc(sizeof(char) * (ft_strlen(s1) +
-						ft_strlen(s2) + 1))))
-		return (NULL);
-	ft_strcpy(new, s1);
-	ft_strcpy(new + ft_strlen(s1), s2);
-	return (new);
+	tmp = *begin_list;
+	nb = 0;
+	if (tmp && tmp->next)
+	{
+		while (tmp->next)
+		{
+			tmp = tmp->next;
+			nb++;
+		}
+		last = tmp;
+		while (nb > 0)
+		{
+			buffer = ft_list_at(*begin_list, nb--);
+			tmp->next = buffer;
+			tmp = ft_list_at(*begin_list, nb--);
+			buffer->next = tmp;
+		}
+		tmp->next = NULL;
+		*begin_list = last;
+	}
 }

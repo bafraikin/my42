@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:07:39 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/20 16:25:07 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/07 15:38:00 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/16 21:34:59 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	char *new;
+	size_t len_src;
+	size_t len_dst;
 
-	if (!(s1 && s2))
-		return (NULL);
-	if (!(new = (char *)malloc(sizeof(char) * (ft_strlen(s1) +
-						ft_strlen(s2) + 1))))
-		return (NULL);
-	ft_strcpy(new, s1);
-	ft_strcpy(new + ft_strlen(s1), s2);
-	return (new);
+	len_src = ft_strlen(src);
+	len_dst = ft_strlen(dst);
+	if (len_dst >= size)
+		return (size + len_src);
+	if (size - len_dst > len_src)
+		ft_memcpy(dst + len_dst, src, len_src + 1);
+	else
+	{
+		ft_memcpy(dst + len_dst, src, size - len_dst);
+		dst[size - 1] = '\0';
+	}
+	return (len_src + len_dst);
 }
