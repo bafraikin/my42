@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 14:54:30 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/16 19:25:02 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/23 18:30:49 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	*ft_memalloc(size_t size)
 
 	if (!(new = malloc(sizeof(void) * size)))
 		return (NULL);
-	ft_memset(new, 0, size);
+	ft_bzero(new, size);
 	return (new);
 }

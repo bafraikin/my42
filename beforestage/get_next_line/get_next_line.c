@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/23 17:53:54 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/23 18:29:19 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int	ft_cmplist(void *t_content, void *data_fd)
 
 	fd = *(int*)data_fd;
 	content = (t_fdlin*)t_content;
+	printf("%d %p\n", content->fd, content);
 	if (content->fd == fd)
 		return (0);
 	return (1);
@@ -39,7 +40,7 @@ static int ft_gest_list(t_list **begin, const int fd, t_read *l_read, char **lin
 		return (-1);
 	*line = new->l_line;
 	new->fd = fd;
-	ft_list_push_back(begin, new, fd);
+	ft_list_push_back(begin, new, sizeof(new));
 	free(l_read->is_r);
 	if (l_read->mod == 0)
 		return (0);
