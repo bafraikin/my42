@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/23 17:48:59 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/23 17:53:54 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	ft_cmplist(void *t_content, void *data_fd)
 
 	fd = *(int*)data_fd;
 	content = (t_fdlin*)t_content;
-	printf("%d%d ", fd, content->fd);
 	if (content->fd == fd)
 		return (0);
 	return (1);
@@ -83,7 +82,6 @@ int	get_next_line(const int fd,char **line)
 	(l_read) ? l_read->buff = (char*)malloc(sizeof(char) * BUFF_SIZE) : 0;
 	if (line && fd > 0 && l_read)
 	{
-		printf("\n%d\n", fd);
 		if ((l_read->old = ft_list_find(begin, (void*)&fd, ft_cmplist)) == NULL)
 			l_read = ft_recup_fd(fd, l_read, 0);
 		else if ((l_read->old = ((t_list*)(l_read->old))->content) != NULL)
