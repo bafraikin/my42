@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/20 18:07:50 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/23 13:45:31 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,10 @@ static int ft_gest_list(t_list **begin, const int fd, t_read *l_read)
 
 static t_read *ft_recup_fd(const int fd, t_read *t_r, int mode)
 {
-	t_r->is_r = (mode) ? t_r->old->l_rest : NULL;
 	t_r->tot = (mode) ? t_r->old->size_rest : 0;
-	t_r->pl = (mode) ? t_r->old->l_rest : NULL;
-	t_r->buff = (char*)malloc((char) * BUFF_SIZE);
-	if ((t_r->is_r = (char*)malloc(1)) == NULL || t_r->buff == NULL)
+	t_r->pl = (mode) ? t_r->old->l_rest : NULL;	//
+	t_r->is_r = (mode) ? (char*)malloc(1) : t_r->old->l_rest; //
+	if (t_r->is_r == NULL || t_r->buff == NULL)     //
 		return (NULL);
 	while (t_r->pl || (t_r->mod == 0 &&
 				(t_r->r = read(fd, t_r->buff, BUFF_SIZE))))
@@ -63,8 +62,8 @@ static t_read *ft_recup_fd(const int fd, t_read *t_r, int mode)
 		ft_memcpy(t_r->tmp, t_r->is_r, t_r->tot);
 		t_r->tot += t_r->r;
 		free(t_r->is_r);
-		if ((t_r->pl = ft_memchr(t_r->buff, '\n', t_r->r)) != NULL)
-			t_r->mod = &t_r->buff[t_r->r - 1] - t_r->pl;
+		if ((t_r->pl = ft_memchr(t_r->buff, '\n', t_r->r)) != NULL)		//
+			t_r->mod = &t_r->buff[t_r->r - 1] - t_r->pl;				//
 		if ((t_r->is_r = (char*)malloc(sizeof(char) * t_r->tot + 1)) == NULL)
 			return (NULL);
 		ft_memcpy(t_r->is_r, t_r->tmp, t_r->tot - t_r->r);
@@ -82,11 +81,14 @@ int	get_next_line(const int fd,char **line)
 
 	l_read = (t_read*)malloc(sizeof(t_read));
 	(l_read) ? ft_bzero(l_read, sizeof(t_read)) : 0;
+	(l_read) ? t_r->buff = (char*)malloc(sizeof(char) * BUFF_SIZE) : 0;
 	if (line && *line && fd > 0 && l_read)
-		if ((l_read->old = ft_list_find(begin, fd, ft_cmplist)) == NULL)
+	{
+		if ((l_read->old = ft_list_find(begin, &fd, ft_cmplist)) == NULL)
 			l_read = ft_recup_fd(fd, l_read, 0);
 		else
 			l_read = ft_recup_fd(fd, l_read, 1);
+	}
 	if (!(line && *line && fd > 0 && l_read))
 		return (-1);
 	ft_gest_list(&begin, fd, l_read);
