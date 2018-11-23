@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 10:45:48 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/20 16:24:35 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/23 14:49:19 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	free_first(t_list **begin, void *data_ref, int (*cmp)(),
 		}
 }
 
-void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(),
+void		ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(),
 		void (*del)())
 {
 	t_list *tmp;

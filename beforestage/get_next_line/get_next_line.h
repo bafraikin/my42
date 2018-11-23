@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:28 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/23 12:35:21 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/23 16:51:37 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct		s_read
 	char			*buff;
 	char			*is_r;
 	char			*tmp;
-	t_list			*old;
+	void			*old;
 }					t_read;
 
 #endif
