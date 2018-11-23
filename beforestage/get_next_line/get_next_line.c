@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/23 19:10:32 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/23 19:16:18 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int	get_next_line(const int fd,char **line)
 	if (!(line && fd > 0 && l_read))
 		return (-1);
 	return (ft_gest_list(&begin, fd, l_read, line));
+	//free l_read
 }
 
 int main(int argc, char *argv[])
