@@ -19,11 +19,11 @@ void	ft_list_push_back(t_list **begin_list, void *content,
 
 	if (!(*begin_list))
 	{
-		*begin_list = ft_lstnew(content, content_size);
+		*begin_list = ft_list_new(content, content_size);
 		return ;
 	}
 	new = *begin_list;
 	while (new->next)
 		new = new->next;
-	new->next = ft_lstnew(content, content_size);
+	new->next = ft_list_new(content, content_size);
 }

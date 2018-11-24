@@ -28,6 +28,7 @@ t_list				*ft_list_find(t_list *begin_list,
 void				ft_list_remove_if(t_list **begin_list, void *data_ref,
 		int (*cmp)(), void (*del)());
 t_list				*ft_lstnew(void const *content, size_t content_size);
+t_list                          *ft_list_new(void  *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
