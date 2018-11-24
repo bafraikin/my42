@@ -6,14 +6,14 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:28 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/23 16:51:37 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/24 15:57:42 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFF_SIZE 32
+# define BUFF_SIZE 1
 
 # include <stdlib.h>
 
@@ -31,7 +31,7 @@ typedef struct		s_fdlin
 	int				size_rest;
 	int				mode;
 	int				fd;
-}					t_fdlin;
+}					t_fd;
 
 typedef struct		s_read
 {
