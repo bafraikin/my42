@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/24 19:45:53 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/24 20:10:47 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static int ft_gest_list(t_list **begin, const int fd, t_read *l_read, char **lin
 	new->fd = fd;
 	(l_read->old) ? 0 : ft_list_push_back(begin, new, sizeof(t_fd));
 	(l_read->old) ? 0 : free(new);
-	if (new->size_rest == 0 && l_read->mod == 0)
+
+	if (l_read->mod == 0)
 	{
 		*line = ft_strsub(l_read->is_r, 0, new->size_line);
 		ft_list_remove_if(begin, (void*)&fd, ft_cmplist, ft_dellist);
@@ -115,4 +116,17 @@ int	get_next_line(const int fd,char **line)
 	tmp = ft_gest_list(&begin, fd, l_read, line);
 	free(l_read);
 	return (tmp);
+}
+
+int main(void)
+{
+int fd	= open("coucou", O_RDONLY);
+int ret = 0;
+char *c;
+
+while((ret = get_next_line(fd, &c)) != 0)
+printf("(%d) %s\n", ret, c);
+printf("(%d) %s\n", ret, c);
+printf("(%d) %s\n", ret, c);
+	return 0;
 }
