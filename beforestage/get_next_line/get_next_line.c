@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/24 16:28:15 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/24 19:15:29 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ static int	ft_cmplist(void *t_content, void *data_fd)
 	return (1);
 }
 
-static int	ft_dellist(void *t_content, size_t size)
+static void	ft_dellist(void *t_content, size_t size)
 {
 	t_fd *to_f;
 
 	to_f = (t_fd*)t_content;
 	if (to_f->l_line)
-	free(to_f->l_line);
+		free(to_f->l_line);
 	if (to_f->l_rest)
-	free(to_f->l_rest);
+		free(to_f->l_rest);
 	free(to_f);
 }
 
@@ -49,18 +49,21 @@ static int ft_gest_list(t_list **begin, const int fd, t_read *l_read, char **lin
 	(l_read->mod) ? new->size_rest-- : 0;
 	new->l_line = ft_strsub(l_read->is_r, 0, new->size_line);
 	new->l_rest = ft_strsub(l_read->is_r, new->size_line + 1, new->size_rest);
-	if (!(new->l_line))
-	{
-
-		return (-1);
-	}
 	*line = new->l_line;
 	new->fd = fd;
 	(l_read->old) ? 0 : ft_list_push_back(begin, new, sizeof(t_fd));
 	(l_read->old) ? 0 : free(new);
-	free(l_read->is_r);
-	if (l_read->mod == 0)
+	if (new->size_rest == 0 && l_read->mod == 0)
+	{
+		*line = ft_strsub(l_read->is_r, 0, new->size_line);
+		ft_list_remove_if(begin, (void*)&fd, ft_cmplist, ft_dellist);
 		return (0);
+	}
+	else if (new->size_line == 0)
+		return (0);
+	else if (!(new->l_line))
+		return (-1);
+	free(l_read->is_r);
 	return (1);
 }
 
