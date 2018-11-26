@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/26 14:05:29 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/26 15:04:04 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int		ft_gest_list(t_list **begin, const int fd, t_read *l_read,
 	{
 		*line = ft_strsub(l_read->is_r, 0, new->size_line);
 		ft_list_remove_if(begin, (void*)&fd, ft_cmplist, ft_dellist);
-	}
+	} 
 	free(l_read->is_r);
 	return (1);
 }
@@ -71,7 +71,7 @@ static int		ft_gest_list(t_list **begin, const int fd, t_read *l_read,
 static t_read	*ft_recup_fd(const int fd, t_read *t_r, int mode)
 {
 	t_r->tot = (mode) ? ((t_fd*)(t_r->old))->size_rest : 0;
-	t_r->is_r = (mode) ? ((t_fd*)(t_r->old))->l_rest : (char*)malloc(1);
+	t_r->is_r = (mode) ? ((t_fd*)(t_r->old))->l_rest : (char *)malloc(1);
 	if (t_r->is_r == NULL || t_r->buff == NULL)
 		return (NULL);
 	if ((t_r->pl = ft_memchr(t_r->is_r, '\n', t_r->tot)) != NULL)
@@ -121,6 +121,7 @@ int				get_next_line(const int fd, char **line)
 		ft_list_remove_if(&begin, (void*)&fd, ft_cmplist, ft_dellist);
 	return (tmp);
 }
+/*
 int		main(void)
 {
 	int fd = open("coucou", O_RDONLY);
@@ -133,3 +134,4 @@ int		main(void)
 	printf("(%d) %s\n", ret, c);
 	return 0;
 }
+*/
