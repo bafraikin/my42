@@ -1,33 +1,307 @@
-Failed test with Bad file descriptors
-1c1
-< fd 42 (-1) '(null)'
----
-> fd 42 (0) END-OF-FILE
-Failed test with Bad file descriptors
-1c1
-< fd 7777777 (-1) '(null)'
----
-> fd 7777777 (0) END-OF-FILE
-Failed test with Bad file descriptors
-1,2c1,2
-< fd 3 (-1) '(null)'
-< fd 2147483647 (-1) '(null)'
----
-> fd 3 (0) END-OF-FILE
-> fd 2147483647 (0) END-OF-FILE
-7c7
-< fd 44 (-1) '(null)'
----
-> fd 44 (0) END-OF-FILE
-20c20
-< fd 1000 (-1) '(null)'
----
-> fd 1000 (0) END-OF-FILE
-Failed test with Multiple file descriptors
-33,34c33
-< fd 8 (0) END-OF-FILE
-< fd 9 (0) END-OF-FILE
----
-> fd 8 (-1) '(null)'
-35a35
-> fd 9 (-1) '(null)'
+Failed test with testfiles/1l4c.txt
+0a1,2
+> tests_tiny(99009,0x7fffb2a0e3c0) malloc: *** error for object 0x7fbf3e4026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l4c.txt
+0a1,2
+> tests_small(99013,0x7fffb2a0e3c0) malloc: *** error for object 0x7ff772c026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l4c.txt
+0a1,2
+> tests_big(99017,0x7fffb2a0e3c0) malloc: *** error for object 0x7fcf384026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l4c.txt
+0a1,2
+> tests_tiny(99022,0x7fffb2a0e3c0) malloc: *** error for object 0x7fdd9ac026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l4c.txt
+0a1,2
+> tests_small(99027,0x7fffb2a0e3c0) malloc: *** error for object 0x7fd22fc026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l4c.txt
+0a1,2
+> tests_big(99032,0x7fffb2a0e3c0) malloc: *** error for object 0x7ffe67c026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l8c.txt
+0a1,2
+> tests_tiny(99055,0x7fffb2a0e3c0) malloc: *** error for object 0x7ff8c8c026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l8c.txt
+0a1,2
+> tests_small(99059,0x7fffb2a0e3c0) malloc: *** error for object 0x7fb5384026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l8c.txt
+0a1,2
+> tests_big(99063,0x7fffb2a0e3c0) malloc: *** error for object 0x7fea01c026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l8c.txt
+0a1,2
+> tests_tiny(99068,0x7fffb2a0e3c0) malloc: *** error for object 0x7fb922d000d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l8c.txt
+0a1,2
+> tests_small(99073,0x7fffb2a0e3c0) malloc: *** error for object 0x7faffd4026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l8c.txt
+0a1,2
+> tests_big(99078,0x7fffb2a0e3c0) malloc: *** error for object 0x7fac89c026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l8c_nonl.txt
+0a1,2
+> tests_tiny(99084,0x7fffb2a0e3c0) malloc: *** error for object 0x7fcdb5c026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< YUIOIUYY
+Failed test with testfiles/1l8c_nonl.txt
+0a1,2
+> tests_small(99088,0x7fffb2a0e3c0) malloc: *** error for object 0x7ffb80c026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< YUIOIUYY
+Failed test with testfiles/1l8c_nonl.txt
+0a1,2
+> tests_big(99093,0x7fffb2a0e3c0) malloc: *** error for object 0x7f8b874026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< YUIOIUYY
+Failed test with testfiles/1l8c_nonl.txt
+0a1,2
+> tests_tiny(99098,0x7fffb2a0e3c0) malloc: *** error for object 0x7fbc934026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< YUIOIUYY
+Failed test with testfiles/1l8c_nonl.txt
+0a1,2
+> tests_small(99103,0x7fffb2a0e3c0) malloc: *** error for object 0x7fd295c026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< YUIOIUYY
+Failed test with testfiles/1l8c_nonl.txt
+0a1,2
+> tests_big(99108,0x7fffb2a0e3c0) malloc: *** error for object 0x7fbcd4d026b0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< YUIOIUYY
+Failed test with testfiles/1l16c.txt
+0a1,2
+> tests_tiny(99114,0x7fffb2a0e3c0) malloc: *** error for object 0x7fc2b64026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l16c.txt
+0a1,2
+> tests_small(99118,0x7fffb2a0e3c0) malloc: *** error for object 0x7fb00ec026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l16c.txt
+0a1,2
+> tests_big(99122,0x7fffb2a0e3c0) malloc: *** error for object 0x7fc33c4026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l16c.txt
+0a1,2
+> tests_tiny(99127,0x7fffb2a0e3c0) malloc: *** error for object 0x7f8629c026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l16c.txt
+0a1,2
+> tests_small(99132,0x7fffb2a0e3c0) malloc: *** error for object 0x7ffbe9c026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/1l16c.txt
+0a1,2
+> tests_big(99137,0x7fffb2a0e3c0) malloc: *** error for object 0x7ffeefd007f0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+Failed test with testfiles/2l4c.txt
+0a1,2
+> tests_tiny(99160,0x7fffb2a0e3c0) malloc: *** error for object 0x7fd35a4026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< RTY
+Failed test with testfiles/2l4c.txt
+0a1,2
+> tests_small(99164,0x7fffb2a0e3c0) malloc: *** error for object 0x7f815a5021a0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< RTY
+Failed test with testfiles/2l4c.txt
+0a1,2
+> tests_big(99168,0x7fffb2a0e3c0) malloc: *** error for object 0x7f8b83c026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< RTY
+Failed test with testfiles/2l4c.txt
+0a1,2
+> tests_tiny(99173,0x7fffb2a0e3c0) malloc: *** error for object 0x7fc34bc026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< RTY
+Failed test with testfiles/2l4c.txt
+0a1,2
+> tests_small(99178,0x7fffb2a0e3c0) malloc: *** error for object 0x7ff8804026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< RTY
+Failed test with testfiles/2l4c.txt
+0a1,2
+> tests_big(99183,0x7fffb2a0e3c0) malloc: *** error for object 0x7fa0ea502590: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< RTY
+Failed test with testfiles/2l4c_nonl.txt
+0a1,2
+> tests_tiny(99189,0x7fffb2a0e3c0) malloc: *** error for object 0x7fd1e14026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< DEFG
+Failed test with testfiles/2l4c_nonl.txt
+0a1,2
+> tests_small(99193,0x7fffb2a0e3c0) malloc: *** error for object 0x7fff344026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< DEFG
+Failed test with testfiles/2l4c_nonl.txt
+0a1,2
+> tests_big(99197,0x7fffb2a0e3c0) malloc: *** error for object 0x7ffdd6c026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< DEFG
+Failed test with testfiles/2l4c_nonl.txt
+0a1,2
+> tests_tiny(99202,0x7fffb2a0e3c0) malloc: *** error for object 0x7f991bc026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< DEFG
+Failed test with testfiles/2l4c_nonl.txt
+0a1,2
+> tests_small(99207,0x7fffb2a0e3c0) malloc: *** error for object 0x7fd2d24026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< DEFG
+Failed test with testfiles/2l4c_nonl.txt
+0a1,2
+> tests_big(99212,0x7fffb2a0e3c0) malloc: *** error for object 0x7f860a4026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< DEFG
+Failed test with testfiles/2l8c.txt
+0a1,2
+> tests_tiny(99218,0x7fffb2a0e3c0) malloc: *** error for object 0x7fbd0c4026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< HIJKLMN
+Failed test with testfiles/2l8c.txt
+0a1,2
+> tests_small(99222,0x7fffb2a0e3c0) malloc: *** error for object 0x7fa7654026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< HIJKLMN
+Failed test with testfiles/2l8c.txt
+0a1,2
+> tests_big(99226,0x7fffb2a0e3c0) malloc: *** error for object 0x7fbb0d4026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< HIJKLMN
+Failed test with testfiles/2l8c.txt
+0a1,2
+> tests_tiny(99231,0x7fffb2a0e3c0) malloc: *** error for object 0x7fd54d4026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< HIJKLMN
+Failed test with testfiles/2l8c.txt
+0a1,2
+> tests_small(99236,0x7fffb2a0e3c0) malloc: *** error for object 0x7f9a164026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< HIJKLMN
+Failed test with testfiles/2l8c.txt
+0a1,2
+> tests_big(99241,0x7fffb2a0e3c0) malloc: *** error for object 0x7fce1dc026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< HIJKLMN
+Failed test with testfiles/2l8c_nonl.txt
+0a1,2
+> tests_tiny(99247,0x7fffb2a0e3c0) malloc: *** error for object 0x7fe6d9c026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< tyuiGHIJ
+Failed test with testfiles/2l8c_nonl.txt
+0a1,2
+> tests_small(99251,0x7fffb2a0e3c0) malloc: *** error for object 0x7ff81b4026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< tyuiGHIJ
+Failed test with testfiles/2l8c_nonl.txt
+0a1,2
+> tests_big(99255,0x7fffb2a0e3c0) malloc: *** error for object 0x7fcf5c4026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< tyuiGHIJ
+Failed test with testfiles/2l8c_nonl.txt
+0a1,2
+> tests_tiny(99260,0x7fffb2a0e3c0) malloc: *** error for object 0x7f9037c026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< tyuiGHIJ
+Failed test with testfiles/2l8c_nonl.txt
+0a1,2
+> tests_small(99265,0x7fffb2a0e3c0) malloc: *** error for object 0x7f80774026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< tyuiGHIJ
+Failed test with testfiles/2l8c_nonl.txt
+0a1,2
+> tests_big(99270,0x7fffb2a0e3c0) malloc: *** error for object 0x7febe94026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< tyuiGHIJ
+Failed test with testfiles/2l16c.txt
+0a1,2
+> tests_tiny(99276,0x7fffb2a0e3c0) malloc: *** error for object 0x7fe69f4026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< 98789087tyuiGHI
+Failed test with testfiles/2l16c.txt
+0a1,2
+> tests_small(99280,0x7fffb2a0e3c0) malloc: *** error for object 0x7fdb734026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< 98789087tyuiGHI
+Failed test with testfiles/2l16c.txt
+0a1,2
+> tests_big(99284,0x7fffb2a0e3c0) malloc: *** error for object 0x7f9b77500050: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< 98789087tyuiGHI
+Failed test with testfiles/2l16c.txt
+0a1,2
+> tests_tiny(99289,0x7fffb2a0e3c0) malloc: *** error for object 0x7fcd524026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< 98789087tyuiGHI
+Failed test with testfiles/2l16c.txt
+0a1,2
+> tests_small(99294,0x7fffb2a0e3c0) malloc: *** error for object 0x7f8fc7c026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< 98789087tyuiGHI
+Failed test with testfiles/2l16c.txt
+0a1,2
+> tests_big(99299,0x7fffb2a0e3c0) malloc: *** error for object 0x7faeb8d02570: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< 98789087tyuiGHI
+Failed test with testfiles/2l16c_nonl.txt
+0a1,2
+> tests_tiny(99305,0x7fffb2a0e3c0) malloc: *** error for object 0x7fa14dc026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< 98789087tyuiGHIJ
+Failed test with testfiles/2l16c_nonl.txt
+0a1,2
+> tests_small(99309,0x7fffb2a0e3c0) malloc: *** error for object 0x7ff9bec026c0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< 98789087tyuiGHIJ
+Failed test with testfiles/2l16c_nonl.txt
+0a1,2
+> tests_big(99313,0x7fffb2a0e3c0) malloc: *** error for object 0x7fdaae4026d0: pointer being freed was not allocated
+> *** set a breakpoint in malloc_error_break to debug
+2d3
+< 98789087tyuiGHIJ
+Failed test with testfiles/2l16c_nonl.txt
