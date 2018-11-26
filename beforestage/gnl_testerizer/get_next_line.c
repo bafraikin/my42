@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/24 19:42:40 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/26 12:00:29 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,17 @@ static int ft_gest_list(t_list **begin, const int fd, t_read *l_read, char **lin
 	new->l_rest = ft_strsub(l_read->is_r, new->size_line + 1, new->size_rest);
 	new->fd = fd;
 	(l_read->old) ? 0 : ft_list_push_back(begin, new, sizeof(t_fd));
-	(l_read->old) ? 0 : free(new);
-	if (new->size_rest == 0 && l_read->mod == 0)
+	*line = new->l_line;
+	if (new->size_line == 0 && !l_read->pl)
+		return (0);
+	else if (!new->l_line)
+		return (-1);
+	else if (l_read->mod == 0)
 	{
 		*line = ft_strsub(l_read->is_r, 0, new->size_line);
 		ft_list_remove_if(begin, (void*)&fd, ft_cmplist, ft_dellist);
 		free(l_read->is_r);
-		return (0);
 	}
-	else if (new->size_line == 0)
-		return (0);
-	else if (!(new->l_line))
-		return (-1);
-	*line = new->l_line;
 	return (1);
 }
 
@@ -75,7 +73,7 @@ static t_read *ft_recup_fd(const int fd, t_read *t_r, int mode)
 		return (NULL);
 	if ((t_r->pl = ft_memchr(t_r->is_r, '\n', t_r->tot)) != NULL)
 		t_r->mod = &t_r->is_r[t_r->tot - 1] - t_r->pl + 1;
-	while (t_r->mod == 0 && (t_r->r = read(fd, t_r->buff, BUFF_SIZE)))
+	while (t_r->mod == 0 && ((t_r->r = read(fd, t_r->buff, BUFF_SIZE)) > 0))
 	{
 		if ((t_r->tmp = (char*)malloc(sizeof(char) * t_r->tot)) == NULL)
 			return (NULL);
@@ -116,3 +114,17 @@ int	get_next_line(const int fd,char **line)
 	free(l_read);
 	return (tmp);
 }
+/*
+int main(void)
+{
+	int fd = open("coucou", O_RDONLY);
+	int ret = 0;
+	char *c;
+
+	while((ret = get_next_line(4, &c)))
+		printf("(%d) %s\n", ret, c);
+	printf("(%d) %s\n", ret, c);
+	printf("(%d) %s\n", ret, c);
+	return 0;
+}
+*/

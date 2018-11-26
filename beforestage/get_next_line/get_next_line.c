@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/26 11:41:47 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/26 12:00:29 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	get_next_line(const int fd,char **line)
 	free(l_read);
 	return (tmp);
 }
-
+/*
 int main(void)
 {
 	int fd = open("coucou", O_RDONLY);
@@ -127,3 +127,4 @@ int main(void)
 	printf("(%d) %s\n", ret, c);
 	return 0;
 }
+*/
