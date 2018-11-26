@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/24 20:10:47 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/26 11:21:11 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,14 @@ static int ft_gest_list(t_list **begin, const int fd, t_read *l_read, char **lin
   *line = new->l_line;
   if (new->size_line == 0 && !l_read->pl)
     return (0);
+  else if (!new->l_line)
+    return (-1);
   else if (l_read->mod == 0)
   {
     *line = ft_strsub(l_read->is_r, 0, new->size_line);
     ft_list_remove_if(begin, (void*)&fd, ft_cmplist, ft_dellist);
     free(l_read->is_r);
-    return (1);
   }
-  else if (!new->l_line)
-    return (-1);
   return (1);
 }
 
@@ -115,6 +114,7 @@ int	get_next_line(const int fd,char **line)
   free(l_read);
   return (tmp);
 }
+
 /*
 int main(void)
 {
