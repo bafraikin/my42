@@ -1,8 +1,0 @@
-Failed test with Multiple file descriptors
-33,34c33
-< fd 8 (0) END-OF-FILE
-< fd 9 (0) END-OF-FILE
----
-> fd 8 (-1) '(null)'
-35a35
-> fd 9 (-1) '(null)'

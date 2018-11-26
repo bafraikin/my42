@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/26 18:19:25 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/26 20:58:27 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ static	t_read	*ft_recup_fd(const int fd, t_read *t_r, int mode)
 {
 	t_r->tot = (mode) ? ((t_fd*)(t_r->old))->size_rest : 0;
 	t_r->is_r = (mode) ? ((t_fd*)(t_r->old))->l_rest : (char*)malloc(1);
-	if (t_r->is_r == NULL || t_r->buff == NULL)
-		return (NULL);
+	if (t_r->is_r == NULL)
+	t_r->is_r = (char*)malloc(1);
 	if ((t_r->pl = ft_memchr(t_r->is_r, '\n', t_r->tot)) != NULL)
 		t_r->mod = &t_r->is_r[t_r->tot - 1] - t_r->pl + 1;
 	while (t_r->mod == 0 && ((t_r->r = read(fd, t_r->buff, BUFF_SIZE)) > 0))
@@ -98,42 +98,25 @@ static	t_read	*ft_recup_fd(const int fd, t_read *t_r, int mode)
 int				get_next_line(const int fd, char **line)
 {
 	static t_list	*begin = NULL;
-	t_read			*l_read;
+	t_read			l_read;
+	t_read			*ptr;
 	int				tmp;
 
-	l_read = (t_read*)malloc(sizeof(t_read));
-	(l_read) ? ft_bzero(l_read, sizeof(t_read)) : 0;
-	(l_read) ? l_read->buff = (char*)malloc(sizeof(char) * BUFF_SIZE) : 0;
-	if (line && fd >= 0 && l_read)
+	ptr = &l_read;
+	ft_bzero(&l_read, sizeof(t_read));
+	l_read.buff = (char*)malloc(sizeof(char) * BUFF_SIZE);
+	if (line && fd >= 0)
 	{
-		if ((l_read->old = ft_list_find(begin, (void*)&fd, ft_cmplist)) == NULL)
-			l_read = ft_recup_fd(fd, l_read, 0);
-		else if ((l_read->old = ((t_list*)(l_read->old))->content) != NULL)
-			l_read = ft_recup_fd(fd, l_read, 1);
+		if ((l_read.old = ft_list_find(begin, (void*)&fd, ft_cmplist)) == NULL)
+			ptr = ft_recup_fd(fd, &l_read, 0);
+		else if ((l_read.old = ((t_list*)(l_read.old))->content) != NULL)
+			ptr = ft_recup_fd(fd, &l_read, 1);
 	}
-	if (!(line && fd >= 0 && l_read) || l_read->r == -1)
+	if (!(line && fd >= 0 && ptr) || l_read.r == -1)
 		return (-1);
-	tmp = ft_gest_list(&begin, fd, l_read, line);
+	tmp = ft_gest_list(&begin, fd, ptr, line);
 	if (!line)
 		if (tmp == 0 || tmp == -1)
 			ft_list_remove_if(&begin, (void*)&fd, ft_cmplist, ft_dellist);
 	return (tmp);
 }
-/*
-int		main(void)
-{
-	int fd = open("coucou", O_RDONLY);
-	int fb = open("baba", O_RDONLY);
-	int ret = 0;
-	char *c;
-
-	while((ret = get_next_line(fd, &c)) > 0)
-		printf("(%d) %s\n", ret, c);
-	printf("(%d) %s\n", ret, c);
-	printf("(%d) %s\n", ret, c);
-	while((ret = get_next_line(fb, &c)) > 0)
-		printf("(%d) %s\n", ret, c);
-	printf("(%d) %s\n", ret, c);
-	printf("(%d) %s\n", ret, c);
-	return 0;
-}*/
