@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:28 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/26 15:03:57 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/27 14:01:14 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@
 
 int					get_next_line(const int fd, char **line);
 
-typedef struct		s_fdlin
+typedef struct		s_fd
 {
 	char			*l_line; //not_sure
 	char			*l_rest; //not_sure
+	char			*old_line;
+	char			*old_rest;
 	int				size_line;
 	int				size_rest;
 	int				mode;

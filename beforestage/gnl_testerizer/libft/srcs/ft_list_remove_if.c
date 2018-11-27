@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 10:45:48 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/26 20:50:02 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/27 11:56:20 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ void		ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(),
 	{
 		tmp = *begin_list;
 		before = *begin_list;
-		while (tmp && tmp->next)
+		while (before->next && before->next->next)
 		{
 			tmp = tmp->next;
 			if ((*cmp)(tmp->content, data_ref) == 0)
 			{
-				if (!(tmp->next && (before->next = tmp->next) != NULL))
+				if (tmp->next) 
+							before->next = tmp->next;
+				else
 					before->next = NULL;
 				ft_lstdelone(&tmp, del);
 			}

@@ -6,11 +6,12 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/11/26 20:58:27 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/11/27 14:06:36 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 static int		ft_cmplist(void *t_content, void *data_fd)
 {
@@ -51,6 +52,11 @@ static int		ft_gest_list(t_list **begin, const int fd, t_read *l_read,
 	(l_read->mod) ? new->size_rest-- : 0;
 	new->l_line = ft_strsub(l_read->is_r, 0, new->size_line);
 	new->l_rest = ft_strsub(l_read->is_r, new->size_line + 1, new->size_rest);
+	(l_read->old && new->old_rest) ? free(new->old_rest) : 0;
+	(l_read->old && new->old_line) ? free(new->old_line) : 0;
+	printf("ici\n");
+	new->old_rest = new->l_rest;
+	new->old_line = new->l_line; 
 	new->fd = fd;
 	(l_read->old) ? 0 : ft_list_push_back(begin, new, sizeof(t_fd));
 	*line = new->l_line;
@@ -59,11 +65,7 @@ static int		ft_gest_list(t_list **begin, const int fd, t_read *l_read,
 	else if (!new->l_line)
 		return (-1);
 	if (l_read->mod == 0)
-	{
 		*line = ft_strsub(l_read->is_r, 0, new->size_line);
-		ft_list_remove_if(begin, (void*)&fd, ft_cmplist, ft_dellist);
-	}
-	free(l_read->is_r);
 	return (1);
 }
 
@@ -71,8 +73,8 @@ static	t_read	*ft_recup_fd(const int fd, t_read *t_r, int mode)
 {
 	t_r->tot = (mode) ? ((t_fd*)(t_r->old))->size_rest : 0;
 	t_r->is_r = (mode) ? ((t_fd*)(t_r->old))->l_rest : (char*)malloc(1);
-	if (t_r->is_r == NULL)
-	t_r->is_r = (char*)malloc(1);
+	if (t_r->is_r == NULL && ((t_r->is_r = (char*)malloc(1)) == NULL))
+		return (NULL);
 	if ((t_r->pl = ft_memchr(t_r->is_r, '\n', t_r->tot)) != NULL)
 		t_r->mod = &t_r->is_r[t_r->tot - 1] - t_r->pl + 1;
 	while (t_r->mod == 0 && ((t_r->r = read(fd, t_r->buff, BUFF_SIZE)) > 0))
@@ -115,8 +117,8 @@ int				get_next_line(const int fd, char **line)
 	if (!(line && fd >= 0 && ptr) || l_read.r == -1)
 		return (-1);
 	tmp = ft_gest_list(&begin, fd, ptr, line);
-	if (!line)
-		if (tmp == 0 || tmp == -1)
-			ft_list_remove_if(&begin, (void*)&fd, ft_cmplist, ft_dellist);
+	free(l_read.is_r);
+	if (!line && (tmp == 0 || tmp == -1))
+		ft_list_remove_if(&begin, (void*)&fd, ft_cmplist, ft_dellist);
 	return (tmp);
 }
