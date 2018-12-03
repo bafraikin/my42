@@ -6,12 +6,12 @@
 #    By: bleplat <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 09:05:04 by bleplat           #+#    #+#              #
-#    Updated: 2018/11/27 19:12:56 by bafraiki         ###   ########.fr        #
+#    Updated: 2018/12/03 14:10:50 by bafraiki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Change the above path to the path of your project, without an ending '/':
-TESTED_DIR = ../get_next_line
+TESTED_DIR = ~/bafraiki
 
 
 NAME = tests
