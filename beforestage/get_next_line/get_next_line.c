@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/03 13:44:36 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/12/03 17:31:33 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ static	t_read	*ft_recup_fd(const int fd, t_read *t_r, int mode)
 	t_r->is_r = (mode) ? ((t_fd*)(t_r->old))->l_rest : (char*)malloc(1);
 	if (t_r->is_r == NULL)
 		t_r->is_r = (char*)malloc(1);
+	if(!(t_r->is_r && t_r->buff))
+		return (NULL);
 	if ((t_r->pl = ft_memchr(t_r->is_r, '\n', t_r->tot)) != NULL)
 		t_r->mod = &t_r->is_r[t_r->tot - 1] - t_r->pl + 1;
 	while (t_r->mod == 0 && ((t_r->r = read(fd, t_r->buff, BUFF_SIZE)) > 0))
@@ -101,14 +103,14 @@ int				get_next_line(const int fd, char **line)
 
 	ptr = &l_read;
 	ft_bzero(&l_read, sizeof(t_read));
-	l_read.buff = (char*)malloc(sizeof(char) * BUFF_SIZE);
+	l_read.buff = (char*)malloc(sizeof(char) * (BUFF_SIZE));
 	if (line && fd >= 0)
 	{
 		if ((l_read.old = ft_list_find(begin, (void*)&fd, ft_cmplist)) == NULL)
 			ptr = ft_recup_fd(fd, &l_read, 0);
 		else if ((l_read.old = ((t_list*)(l_read.old))->content) != NULL)
 			ptr = ft_recup_fd(fd, &l_read, 1);
-		free(l_read.buff);
+		(ptr) ? free(l_read.buff) : 0;
 	}
 	if (!(line && fd >= 0 && ptr) || l_read.r == -1)
 		if ((line && (*line = NULL) == NULL) || 1)
