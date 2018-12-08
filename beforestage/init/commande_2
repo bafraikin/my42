@@ -1,0 +1,1 @@
+sh commande_1 | grep "en" | awk 'NR == 1' | xargs ifconfig | grep "broadcast" | cut -d' ' -f 6
