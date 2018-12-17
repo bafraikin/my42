@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/17 16:25:42 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/12 15:30:41 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/16 14:32:17 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "get_next_line.h"
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	char *save;
 
-int ft_grid_validity(int fd);
-
-#endif
+	if (s && *s && f)
+	{
+		save = s;
+		while (*s)
+		{
+			(*f)(s - save, s);
+			s++;
+		}
+	}
+}

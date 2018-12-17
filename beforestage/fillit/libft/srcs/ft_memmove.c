@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/17 16:25:42 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/06 19:14:38 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/13 23:08:50 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "get_next_line.h"
+#include "libft.h"
 
-int ft_grid_validity(int fd);
-
-#endif
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	if (src > dst)
+		ft_memcpy(dst, src, len);
+	else
+		while (len-- > 0)
+			((unsigned char*)dst)[len] = ((unsigned char*)src)[len];
+	return (dst);
+}

@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/17 16:25:42 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/12 17:55:06 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/19 19:08:19 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "get_next_line.h"
+#include <stdlib.h>
+#include <string.h>
+#include "libft.h"
 
-int ft_grid_validity(int fd);
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	char *ab;
 
-#endif
+	if (!(s && *s))
+		return (NULL);
+	if (!(ab = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	ab[len] = '\0';
+	ab = ft_memcpy(ab, s + start, len);
+	return (ab);
+}

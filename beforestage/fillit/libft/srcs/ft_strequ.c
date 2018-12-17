@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/17 16:25:42 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/12 16:53:57 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/13 21:53:06 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "get_next_line.h"
-
-int ft_grid_validity(int fd);
-
-#endif
+int	ft_strequ(char const *s1, char const *s2)
+{
+	if (!(s1 && s2))
+		return (0);
+	while (*s1 == *s2 && *s1 != '\0')
+	{
+		s1++;
+		s2++;
+	}
+	if (*s1 == '\0' && *s2 == '\0')
+		return (1);
+	return (0);
+}

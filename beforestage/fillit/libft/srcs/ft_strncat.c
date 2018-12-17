@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/17 16:25:42 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/07 15:28:01 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/12 12:25:32 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "get_next_line.h"
+#include "libft.h"
 
-int ft_grid_validity(int fd);
+char	*ft_strncat(char *s1, const char *s2, size_t n)
+{
+	int i;
+	int j;
 
-#endif
+	i = -1;
+	j = 0;
+	while (s1[++i] != '\0')
+		;
+	while (n-- > 0 && s2[j] != '\0')
+	{
+		s1[i] = s2[j];
+		j++;
+		i++;
+	}
+	s1[i] = '\0';
+	return (s1);
+}

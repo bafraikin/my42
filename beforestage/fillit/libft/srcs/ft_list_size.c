@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_list_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/17 16:25:42 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/07/19 19:17:21 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/16 18:12:46 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "get_next_line.h"
+#include "libft.h"
 
-int ft_grid_validity(int fd);
+int	ft_list_size(t_list *begin_list)
+{
+	int		index;
+	t_list	*list;
 
-#endif
+	index = (begin_list) ? 1 : 0;
+	list = begin_list;
+	if (index)
+		while (list->next)
+		{
+			index++;
+			list = list->next;
+		}
+	return (index);
+}

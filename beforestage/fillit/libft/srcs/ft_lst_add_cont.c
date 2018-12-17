@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_lst_add_content.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/17 16:25:42 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/12/03 11:35:32 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/12/03 11:36:04 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "get_next_line.h"
+#include "libft.h"
 
-int ft_grid_validity(int fd);
+t_list	*ft_lst_add_cont(void *content, size_t content_size)
+{
+	t_list *new;
 
-#endif
+	if ((new = (t_list*)malloc(sizeof(t_list))) == NULL)
+		return (NULL);
+	new->content = content;
+	new->content_size = content_size;
+	new->next = NULL;
+	return (new);
+}

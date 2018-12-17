@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/17 16:25:42 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/12 19:07:39 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/20 16:25:07 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "get_next_line.h"
+#include <stdlib.h>
+#include "libft.h"
 
-int ft_grid_validity(int fd);
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char *new;
 
-#endif
+	if (!(s1 && s2))
+		return (NULL);
+	if (!(new = (char *)malloc(sizeof(char) * (ft_strlen(s1) +
+						ft_strlen(s2) + 1))))
+		return (NULL);
+	ft_strcpy(new, s1);
+	ft_strcpy(new + ft_strlen(s1), s2);
+	return (new);
+}

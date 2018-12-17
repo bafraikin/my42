@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/17 16:25:42 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/11/07 14:49:40 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/16 20:56:49 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "get_next_line.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int ft_grid_validity(int fd);
+char	*ft_strdup(const char *s1)
+{
+	char *dup;
 
-#endif
+	dup = (char*)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (dup == NULL)
+		return (NULL);
+	return (ft_strcpy(dup, s1));
+}

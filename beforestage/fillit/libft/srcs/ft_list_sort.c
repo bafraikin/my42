@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_list_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/17 16:25:42 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/07/26 13:08:54 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/11/16 18:15:15 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "get_next_line.h"
+#include "libft.h"
 
-int ft_grid_validity(int fd);
+void	ft_list_sort(t_list **begin_list, int (*cmp)())
+{
+	t_list	*tmp;
+	int		boolean;
 
-#endif
+	boolean = 1;
+	while (boolean && (tmp = *begin_list) != NULL)
+	{
+		boolean = 0;
+		while (tmp->next)
+		{
+			if ((*cmp)(tmp->content, tmp->next->content) > 0)
+			{
+				ft_swapptr(&(tmp->content), &(tmp->next->content));
+				boolean = 1;
+			}
+			tmp = tmp->next;
+		}
+	}
+}
