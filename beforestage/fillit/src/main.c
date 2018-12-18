@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:16:56 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/17 16:26:19 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/12/18 18:11:29 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 int main(int argc, char **argv)
 {
-	int fd;
+	int		fd;
+	t_shape pcs[26];
 
 	if (argc != 2)
 	{
-		write(1, "usage: ./fillit name_of_file\n", 50000);
+		write(1, "usage: ./fillit name_of_file\n", 50);
 		return (1);
 	}
 	if (!((fd = open(argv[1], O_RDONLY)) > 0))
