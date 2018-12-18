@@ -1,0 +1,14 @@
+on malloc de la taille du plus grand carre possible
+> on additionne les largeurs et les hauteurs de toutes les pieces
+> on gare la plus grande valeur des deux
+> TADAAA
+
+a l'interieur de ce plus grand carre, on va se placer en haut a gauche et creer une zone de la taille du plus petit carre possible
+> comment on le determine :
+- on va prendre la hauteur  et largeur maximale de chaque piece
+- si dans un carre de cette hauteur ? largeur, le nombre de pieces (#) rentre, c'est notre plus petit carre
+- sinon, on augmente la taille du carre a la puissance 2 superieure... etc
+
+au sein de ce carre, on backtrack 
+- si les pieces ne rentrent pas, on augmente la taille du carre a la puissance 2 superieure
+
