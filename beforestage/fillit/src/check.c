@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:16:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/19 19:21:08 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/12/20 11:19:03 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_strlen_strchr(char *str, int *count)
 	return (i);
 }
 
-int		follow_piece(char form[4][2], int i)
+int		follow_pcs(char form[4][2], int i)
 {
 	int j;
 	int tmp[4];
@@ -50,7 +50,7 @@ int		follow_piece(char form[4][2], int i)
 	return (1);
 }
 
-int		adjacent_piece(char tab[4][2])
+int		adjacent_pcs(char tab[4][2])
 {
 	int i;
 	int j;
@@ -134,7 +134,7 @@ int	ft_grid_validity(int fd)
 				|| (grid[i] && ((!grid[i + 1]) || (*grid[i] != '\0'))))
 			exit(EXIT_FAILURE);
 		ft_check_fill(&grid[i - 4], form);
-		if (!((follow_piece(form, 0) && follow_piece(form, 1) && adjacent_piece(form))))
+		if (!((follow_pcs(form, 0) && follow_pcs(form, 1) && adjacent_pcs(form))))
 			exit(EXIT_FAILURE);
 		if ((nb_hash = 0) == 0 && grid[i])
 			i++;
