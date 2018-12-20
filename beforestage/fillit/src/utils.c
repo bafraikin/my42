@@ -6,9 +6,19 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 16:32:22 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/19 19:14:55 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/12/20 14:34:30 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int		ft_power_2(int nb)
+{
+	int i;
+
+	i = 0;
+	while ((i * i) < nb)
+		i++;
+	return (i);
+}
 
 void	ft_add_value(char form[4][2], int i, int j, int k)
 {
@@ -32,5 +42,3 @@ void	ft_swap(int *a, int *b)
 	*a = *b;
 	*b = c;
 }
-
-

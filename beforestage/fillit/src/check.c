@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:16:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/20 11:19:03 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/12/20 14:54:29 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_strlen_strchr(char *str, int *count)
 	return (i);
 }
 
-int		follow_pcs(char form[4][2], int i)
+int		follow_pcs(char form[4][2], int i, int *min, int *max)
 {
 	int j;
 	int tmp[4];
@@ -43,6 +43,8 @@ int		follow_pcs(char form[4][2], int i)
 			ft_swap(&tmp[j], &tmp[j + 1]);
 			j = -1;
 		}
+	*min = tmp[0];
+	*max = tmp[3];
 	j = -1;
 	while (++j < 3)
 		if (tmp[j + 1] - tmp[j] > 1)
@@ -57,7 +59,6 @@ int		adjacent_pcs(char tab[4][2])
 	int min;
 	int t;
 
-//	printf("%d %d\n%d %d\n%d %d\n%d %d\n\n", tab[0][0], tab[0][1], tab[1][0], tab[1][1], tab[2][0], tab[2][1], tab[3][0], tab[3][1]);
 	i = 0;
 	while (i < 4)
 	{
@@ -115,30 +116,28 @@ void	ft_store_grid(int fd ,char **grid)
 		exit(EXIT_FAILURE);
 }
 
-int	ft_grid_validity(int fd)
+void	ft_grid_validity(int fd, t_shape **begin)
 {
-	char *grid[130];
-	int i;
-	int nb_line;
-	int nb_hash;
-	char form[4][2];
+	char		*grid[130];
+	t_grid		nb;
+	char		form[4][2];
 
-	i = 0;
+	nb.i = 0;
 	ft_store_grid(fd, grid);
-	while (grid[i] && (nb_line = 0) == 0)
+	while (grid[nb.i] && (nb.line = 0) == 0)
 	{
-		while (grid[i] && *grid[i] != '\0' && nb_line++ < 4)
-			if (ft_strlen_strchr(grid[i++], &nb_hash) != 4)
+		nb.hash = 0;
+		while (grid[nb.i] && *grid[nb.i] != '\0' && nb.line++ < 4)
+			if (ft_strlen_strchr(grid[nb.i++], &(nb.hash)) != 4)
 				exit (EXIT_FAILURE);
-		if (nb_hash != 4 || nb_line != 4
-				|| (grid[i] && ((!grid[i + 1]) || (*grid[i] != '\0'))))
+		if (nb.hash != 4 || nb.line != 4
+				|| (grid[nb.i] && ((!grid[nb.i + 1]) || (*grid[nb.i] != '\0'))))
 			exit(EXIT_FAILURE);
-		ft_check_fill(&grid[i - 4], form);
-		if (!((follow_pcs(form, 0) && follow_pcs(form, 1) && adjacent_pcs(form))))
+		ft_check_fill(&grid[nb.i - 4], form);
+		if (!((follow_pcs(form, 0, &(nb.min_y), &(nb.max_y)) && follow_pcs(form, 1, &(nb.min_x), &(nb.max_x)) && adjacent_pcs(form))))
 			exit(EXIT_FAILURE);
-		if ((nb_hash = 0) == 0 && grid[i])
-			i++;
+		ft_add_end(begin, ft_new(form, &nb));
+		if ((nb.hash = 0) == 0 && grid[nb.i])
+			nb.i++;
 	}
-	exit(EXIT_SUCCESS);
-	return (0);
 }

@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_back.c                                :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/19 15:46:26 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/20 12:04:09 by bafraiki         ###   ########.fr       */
+/*   Created: 2018/12/20 14:25:15 by bafraiki          #+#    #+#             */
+/*   Updated: 2018/12/20 14:53:55 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# include "fillit.h"
 
-void	ft_list_push_back(t_list **begin_list, void *content,
-		size_t content_size)
+int		size_square(t_shape **lst, int boolean)
 {
-	t_list *new;
+	int		height;
+	int		width;
+	t_shape	*elem;
 
-	if (!(*begin_list))
+	if (boolean)	// min
+		return (ft_power_2(ft_lst_size(lst) * 4));
+	else			// max
 	{
-		*begin_list = ft_lstnew(content, content_size);
-		return ;
+		elem = *lst;
+		height = 0;
+		width = 0;
+		while (elem)
+		{
+			height += elem->height;
+			width += elem->width;
+			elem = elem->next;
+		}
+		if (height > width)
+			return (height);
+		return (width);
 	}
-	new = *begin_list;
-	while (new->next)
-		new = new->next;
-	new->next = ft_lstnew(content, content_size);
 }
