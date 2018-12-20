@@ -2,7 +2,7 @@ on malloc de la taille du plus grand carre possible
 > on additionne les largeurs et les hauteurs de toutes les pieces
 > on gare la plus grande valeur des deux
 > TADAAA
-
+i
 a l'interieur de ce plus grand carre, on va se placer en haut a gauche et creer une zone de la taille du plus petit carre possible
 > comment on le determine :
 - on va prendre la hauteur  et largeur maximale de chaque piece
@@ -10,5 +10,12 @@ a l'interieur de ce plus grand carre, on va se placer en haut a gauche et creer 
 - sinon, on augmente la taille du carre a la puissance 2 superieure... etc
 
 au sein de ce carre, on backtrack 
-- si les pieces ne rentrent pas, on augmente la taille du carre a la puissance 2 superieure
+- on ecrit dans un tableau de la taille du nombre de pieces, l'ordre des pieces que l'on suit
+> si on arrive a placer la dernire lettre dans le tableau : on a notre solution
+> sinon :
+	- on incremente la derniere lettre du tableau
+		- une fois arrives au bout ds lettres, on remonte d'une case dans le tableau et on incremente la piece precedetne (ATTENTION, jamais surune valeur deja presente)  + on supprime du tableau et du carre de jeu toutes les lettres qui apparaissent apres dans le tableau
+	- si les pieces ne rentrent pas (LETTRES totalement inversees), on augmente la taille du carre a la puissance 2 superieur+e
+
+
 

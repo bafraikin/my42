@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:25:15 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/20 14:53:55 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/12/20 15:04:14 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,5 @@ int		size_square(t_shape **lst, int boolean)
 		return (width);
 	}
 }
+
+
