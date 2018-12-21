@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/21 15:27:57 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/12/21 18:33:17 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ void				ft_print_list(t_shape **lst);
 int					ft_lst_size(t_shape **lst);
 int					ft_power_2(int nb);
 int					size_square(t_shape **lst, int boolean);
+t_letter			*ft_new_letter(char c);
+void				add_new_letter(t_letter **begin, char c);
+char				remove_letter(t_letter **begin, char c);
 
 #endif

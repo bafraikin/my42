@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 15:10:31 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/21 16:07:32 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/12/21 20:20:25 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	add_new_letter(t_letter **begin, char c)
 		elem->next = ft_new_letter(c);
 }
 
-void	remove_letter(t_letter **begin, char c)
+char	remove_letter(t_letter **begin, char c)
 {
 	t_letter *elem;
 	t_letter *tmp;
@@ -57,7 +57,7 @@ void	remove_letter(t_letter **begin, char c)
 	if (elem->letter == c && elem->next && (*begin = elem->next) != NULL)
 	{
 		free(elem);
-		return ;
+		return (c);
 	}
 	while (elem->next && elem->next->letter != c)
 		elem = elem->next;
@@ -73,4 +73,5 @@ void	remove_letter(t_letter **begin, char c)
 		free(elem->next);
 		elem->next = NULL;
 	}
+	return (c);
 }
