@@ -61,19 +61,12 @@ char	give_me_a_letter(int index, char *tab, t_letter **begin, char rejet)
     }
     else if (index > 0 && (letter = tab[index]) != 0)
     {
-
-      /* Doit supprimer la case, rajouter sa valeur au tableau à la liste et revenir en arriere */
       add_new_letter(begin, tab[index - 1]);
       tab[index] = '.';
       return (give_me_a_letter(index - 1, tab, begin, letter));
     }
-    else
-    {
-      ft_print(*begin);
-        exit(EXIT_FAILURE);  // il faut aggrandir le carre
-    }
-
   }
+  tab[index] = '.';
   return (0);
 }
 
