@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/20 14:54:51 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/12/21 15:27:57 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ typedef struct 		s_grid {
 	int				min_x;
 	int				max_x;
 } 					t_grid;
+
+typedef struct		s_letter {
+	char			letter;
+	struct s_letter	*next;
+}					t_letter;
 
 typedef struct		s_shape {
 

@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 11:20:57 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/20 14:14:05 by bafraiki         ###   ########.fr       */
+/*   Updated: 2018/12/21 15:11:42 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,6 @@ int		ft_lst_size(t_shape **lst)
 		elem = elem->next;
 	}
 	return (size);
-}
-
-void	ft_print_list(t_shape **lst)
-{
-	t_shape *elem;
-
-	elem = *lst;
-	while (elem)
-	{
-		printf("%d %d\n%d %d\n%d %d\n%d %d\n", elem->form[0][0], elem->form[0][1], elem->form[1][0], elem->form[1][1], elem->form[2][0], elem->form[2][1], elem->form[3][0], elem->form[3][1]);
-		printf("elem->letter : %c\n", elem->letter);
-		printf("elem->height : %d\n", elem->height);
-		printf("elem->width : %d\n\n", elem->width);
-		elem = elem->next;
-	}
 }
 
 t_shape *ft_new(char shape[4][2],  t_grid *nb)
@@ -83,5 +68,20 @@ void	ft_add_end(t_shape **lst, t_shape *new)
 		}
 		elem->next = new;
 		new->letter = i + 'A';
+	}
+}
+
+void	ft_print_list(t_shape **lst)
+{
+	t_shape *elem;
+
+	elem = *lst;
+	while (elem)
+	{
+		printf("%d %d\n%d %d\n%d %d\n%d %d\n", elem->form[0][0], elem->form[0][1], elem->form[1][0], elem->form[1][1], elem->form[2][0], elem->form[2][1], elem->form[3][0], elem->form[3][1]);
+		printf("elem->letter : %c\n", elem->letter);
+		printf("elem->height : %d\n", elem->height);
+		printf("elem->width : %d\n\n", elem->width);
+		elem = elem->next;
 	}
 }
