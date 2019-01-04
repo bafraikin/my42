@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/21 19:48:27 by salquier         ###   ########.fr       */
+/*   Updated: 2019/01/04 16:00:59 by salquier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int					ft_lst_size(t_shape **lst);
 int					ft_power_2(int nb);
 int					size_square(t_shape **lst, int boolean);
 char				**generate_big_grid(t_shape **begin);
-int					place_piece(char **grid, t_shape **lst, int size);
+int					place_piece(char **grid, t_shape *elem, int size);
 t_letter			*ft_new_letter(char c);
 void				add_new_letter(t_letter **begin, char c);
 char				remove_letter(t_letter **begin, char c);

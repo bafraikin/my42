@@ -1,14 +1,60 @@
-on malloc de la taille du plus grand carre possible
-> on additionne les largeurs et les hauteurs de toutes les pieces
-> on gare la plus grande valeur des deux
-> TADAAA
-i
-a l'interieur de ce plus grand carre, on va se placer en haut a gauche et creer une zone de la taille du plus petit carre possible
-> comment on le determine :
-- on va prendre la hauteur  et largeur maximale de chaque piece
-- si dans un carre de cette hauteur ? largeur, le nombre de pieces (#) rentre, c'est notre plus petit carre
-- sinon, on augmente la taille du carre a la puissance 2 superieure... etc
+Chere Segoline et BapTou Solide de 2019
 
+J'espere que tout va bien pour vous, nous ici on a bien a mange.
+Le chat vient de passer, sego est ravie.
+Le code par contre n'est pas au mieux de sa forme et aurait besoin de vous.
+
+Votre Mission si vous l'accepte est la suivante.
+
+Il faut rouler sur la fonction de baptou qui a besoin d'etre un peu retouche.
+voir le gros pave en bas.
+
+il nous faut creer une fonction qui coagule tout notre bordel :
+- merge sego & increment ( bon courage <3 )
+-> ajouter la regle des 6 de dimensions pour contrer le 'test ultime de jallel'
+-> ajouter les pieces dans le petit carre, une par une
+-> elle demande les pieces a la fonction give_me_a_letter de babtou (celle dont on ne doit pas prononcer le nom)
+-> elle specifie a cette fonction si elle a reussi ou non
+- remplacer la fonction erase par une fonction qui n'efface qu'une seule lettre (et pas toutes)
+
+Des Gros bisous.
+Vive le vent, vous etes les plus beaux et les plus forts.
+
+Si si.
+Et bon chance.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sinon, on augmente la taille du carre a la puissance 2 superieure... etc
+
+
+
+//GROS PAVE
 au sein de ce carre, on backtrack 
 - on ecrit dans un tableau de la taille du nombre de pieces, l'ordre des pieces que l'on suit
 > si on arrive a placer la dernire lettre dans le tableau : on a notre solution

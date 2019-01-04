@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:25:15 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/21 21:35:42 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/04 17:22:21 by salquier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		size_square(t_shape **lst, int boolean)
 	int		width;
 	t_shape	*elem;
 	int result;
-	
+
 	elem = *lst;
 	if (!boolean)			// max
 	{
@@ -45,16 +45,24 @@ int		size_square(t_shape **lst, int boolean)
 	}
 }
 
-int		ft_increment(int size, int mode, char *tab)
+void	fillit_baby(char **big_grid, t_shape *begin, int size)
 {
-	int i;
+	int index;
+	char *tab;
+	t_letter *head;
 
-	i = 0;
-	if (mode == 1)
-		while (tab[++i] != '.' && tab[i] != '\0')
-	else if (mode == 2)
+	head = NULL;
+	if (!(tab = (char *)malloc(sizeof(char) * (size + 1))))
+		return ;
+	printf("size : %d\n", size);
+	ft_build_utils(tab, &head, size);
+	printf("coucou\n");
+	index = 0;
+	while (index < size)
+	{
+		index = give_me_a_letter(index, tab, &head, 0);
+		place_piece(big_grid, find_elem(begin, tab[index]), size_square(&begin, 1));
+		index++;
+	}
+	ft_print_grid(big_grid, &begin);
 }
-
-
-/* si madame a reussi a placer elle m'envoit 1 je lui envoit la prochaine lettre
- * sinon elle me dit d'incrementer

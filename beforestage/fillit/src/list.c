@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 11:20:57 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/21 21:34:52 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/04 17:04:02 by salquier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,14 @@ t_shape	*ft_find_elem(t_shape **lst, char c)
 		elem = elem->next;
 	}
 	return (NULL);
+}
+
+t_shape	*find_elem(t_shape *begin, int nb)
+{
+	nb = (nb - 'A') + 1;
+	while (nb-- > 1)
+		begin = begin->next;
+	return (begin);
 }
 
 void	ft_print_list(t_shape **lst)

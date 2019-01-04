@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 15:10:31 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/21 20:20:25 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/04 17:40:41 by salquier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,3 +75,5 @@ char	remove_letter(t_letter **begin, char c)
 	}
 	return (c);
 }
+
+
