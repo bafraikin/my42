@@ -38,7 +38,7 @@ void	add_new_letter(t_letter **begin, char c)
       return ;
     else
       elem = elem->next;
-  if (elem->next && elem->letter < c)
+  if (elem->letter < c)  // if elem->next is null is this problematic ? 
   {
     tmp = elem->next;
     elem->next = ft_new_letter(c);
@@ -49,8 +49,6 @@ void	add_new_letter(t_letter **begin, char c)
     *begin = ft_new_letter(c);
     (*begin)->next = elem;
   }
-  else
-    elem->next = ft_new_letter(c);
 }
 
 char	remove_letter(t_letter **begin, char c)
