@@ -14,66 +14,69 @@
 
 t_letter	*ft_new_letter(char c)
 {
-	t_letter *new;
-	if ((new = (t_letter*)malloc(sizeof(t_letter))) == NULL)
-		exit(EXIT_FAILURE);
-	new->letter = c;
-	new->next = NULL;
-	return (new);
+  t_letter *new;
+  if ((new = (t_letter*)malloc(sizeof(t_letter))) == NULL)
+    exit(EXIT_FAILURE);
+  new->letter = c;
+  new->next = NULL;
+  return (new);
 }
 
 void	add_new_letter(t_letter **begin, char c)
 {
-	t_letter *elem;
-	t_letter *tmp;
+  t_letter *elem;
+  t_letter *tmp;
 
-	if (!*begin)
-	{
-		*begin = ft_new_letter(c);
-		return ;
-	}
-	elem = *begin;
-	while (elem->next && elem->letter <= c)
-		if (elem->letter == c || elem->next->letter == c) //not especially necessary but for dev we must be prudent
-			return ;
-		else
-			elem = elem->next;
-	if (elem->next)
-	{
-		tmp = elem->next;
-		elem->next = ft_new_letter(c);
-		elem->next->next = tmp;
-	}
-	else
-		elem->next = ft_new_letter(c);
+  if (!*begin)
+  {
+    *begin = ft_new_letter(c);
+    return ;
+  }
+  elem = *begin;
+  while (elem->next && elem->next->letter <= c)
+    if (elem->letter == c || elem->next->letter == c) //not especially necessary but for dev we must be prudent
+      return ;
+    else
+      elem = elem->next;
+  if (elem->next && elem->letter < c)
+  {
+    tmp = elem->next;
+    elem->next = ft_new_letter(c);
+    elem->next->next = tmp;
+  }
+  else if ((*begin)->letter > c)
+  {
+    *begin = ft_new_letter(c);
+    (*begin)->next = elem;
+  }
+  else
+    elem->next = ft_new_letter(c);
 }
 
 char	remove_letter(t_letter **begin, char c)
 {
-	t_letter *elem;
-	t_letter *tmp;
+  t_letter *elem;
+  t_letter *tmp;
 
-	elem = *begin;
-	if (elem->letter == c && elem->next && (*begin = elem->next) != NULL)
-	{
-		free(elem);
-		return (c);
-	}
-	while (elem->next && elem->next->letter != c)
-		elem = elem->next;
-	if (elem->next && elem->next->letter == c && (tmp = elem->next) != NULL)
-	{
-		elem->next = elem->next->next;
-		free(tmp);
-	}
-	else if (elem->letter == c && (*begin = NULL) == NULL)
-		free(elem);
-	else if (elem->next->letter == c)
-	{
-		free(elem->next);
-		elem->next = NULL;
-	}
-	return (c);
+  elem = *begin;
+  if (elem->letter == c && elem->next && (*begin = elem->next) != NULL)
+  {
+    free(elem);
+    return (c);
+  }
+  while (elem->next && elem->next->letter != c)
+    elem = elem->next;
+  if (elem->next && elem->next->letter == c && (tmp = elem->next) != NULL)
+  {
+    elem->next = elem->next->next;
+    free(tmp);
+  }
+  else if (elem->letter == c && (*begin = NULL) == NULL)
+    free(elem);
+  else if (elem->next->letter == c)
+  {
+    free(elem->next);
+    elem->next = NULL;
+  }
+  return (c);
 }
-
-
