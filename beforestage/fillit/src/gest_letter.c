@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 16:17:16 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/04 17:27:25 by salquier         ###   ########.fr       */
+/*   Updated: 2019/01/07 10:56:20 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,9 @@ void	ft_build_utils(char *tab, t_letter **begin, int size)
 	tab[size] = 0;
 	while(size-- > 0)
 	{
-		printf("A + size : %c\n", 'A' + size);
 		add_new_letter(begin, 'A' + size);
-		printf("size2 : %d\n", size);
 		tab[size] = '.';
 	}
-	ft_print(*begin);
 }
 
 int		there_is_highest(t_letter *begin, char c)
@@ -54,9 +51,7 @@ char	give_me_a_letter(int index, char *tab, t_letter **begin, char rejet)
 {
 	char letter;
 
-	if (*begin == NULL)
-		return (-2);
-	else if (!rejet && (tab[index] = (*begin)->letter) != 0)
+	if (!rejet && (tab[index] = (*begin)->letter) != 0)
 	{
 		remove_letter(begin, tab[index]);
 		return (index);
@@ -77,31 +72,37 @@ char	give_me_a_letter(int index, char *tab, t_letter **begin, char rejet)
 	tab[index] = '.';
 	return (-1);
 }
-
-
-/*int main(int argc, char *argv[])
+/*
+int main(int argc, char *argv[])
 {
 	t_letter *begin;
-	char tab[] = {'A', 'B', '.'};
-	remove_letter(&begin, 'A');
-	remove_letter(&begin, 'B');
+	char *tab;
+
+	tab = (char*)malloc(3);
+	ft_build_utils(tab, &begin, 3);
+	ft_print(begin);
+	printf("%c %c %c\n", *tab, *(tab + 1), *(tab + 2));
+	printf("\n");
+	give_me_a_letter(0, tab, &begin, 0);
+	give_me_a_letter(0, tab, &begin, 'A');
+	ft_print(begin);
+	printf("\n");
+	
+	printf("%c %c %c\n", *tab, *(tab + 1), *(tab + 2));
+	give_me_a_letter(1, tab, &begin, 0);
+	printf("%c %c %c\n", *tab, *(tab + 1), *(tab + 2));
+	give_me_a_letter(1, tab, &begin, 'A');
+	give_me_a_letter(1, tab, &begin, 'C');
+	give_me_a_letter(1, tab, &begin, 0);
+	give_me_a_letter(2, tab, &begin, 0);
+	give_me_a_letter(2, tab, &begin, 'B');
+	give_me_a_letter(2, tab, &begin, 0);
+	int a = give_me_a_letter(2, tab, &begin, 'A');
+	printf("%c %c %c\n", *tab, *(tab + 1), *(tab + 2));
+	printf("%d\n",a);
 	ft_print(begin);
 	printf("\n");
 
-	give_me_a_letter(1, tab, &begin, 'B');
-	give_me_a_letter(1, tab, &begin, 'C');
-	printf("%c %c %c\n", *tab, *(tab + 1), *(tab + 2));
-	give_me_a_letter(1, tab, &begin, 0);
-	give_me_a_letter(2, tab, &begin, 0);
-	give_me_a_letter(2, tab, &begin, 'C');
-	give_me_a_letter(1, tab, &begin, 'C');
-	printf("%c %c %c\n", *tab, *(tab + 1), *(tab + 2));
-	give_me_a_letter(1, tab, &begin, 0);
-	give_me_a_letter(1, tab, &begin, 'A');
-	give_me_a_letter(2, tab, &begin, 0);
-	printf("%c\n", give_me_a_letter(2, tab, &begin, 'A'));
-	printf("ici %c %c %c\n", *tab, *(tab + 1), *(tab + 2));
-	ft_print(begin);
-	printf("\nprintlist\n");
 	return 0;
-}*/
+}
+*/
