@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:17:09 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/07 14:40:47 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/07 16:09:37 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		erase(int undex, int deudex, t_grid *bgrid, int nb_piece)
 	system("clear");
 	printf("%d %d\n",undex, deudex);
 	ft_print_grid(bgrid->grid, bgrid->size);
-	usleep(1000000);
+	usleep(100000);
 	undex -= x;
 	deudex -= y;
 	while (i < nb_piece)
@@ -49,7 +49,7 @@ void		erase(int undex, int deudex, t_grid *bgrid, int nb_piece)
 		system("clear");
 		printf("%d %d\n",undex, deudex);
 		ft_print_grid(bgrid->grid, bgrid->size);
-		usleep(1000000);
+		usleep(100000);
 		i++;
 	}
 }
@@ -83,7 +83,7 @@ int		place_piece(t_grid *bgrid, t_shape *elem)
 						system("clear");
 						printf("\n");
 						ft_print_grid(bgrid->grid, bgrid->size);
-						usleep(500000);
+						usleep(100000);
 
 					}
 					else

@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 16:17:16 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/07 14:27:22 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/07 16:08:56 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,21 @@ int		there_is_highest(t_letter *begin, char c)
 	return (0);
 }
 
+void		find_erase(t_grid *bgrid)
+{
+	int i;
+	int j;
+	t_shape *rejet;
+
+	i = bgrid->size;
+	j = bgrid->size;
+	printf("%d %d\n", i,j);
+	while (i-- > 0 && (j = bgrid->size - 1) > 0)
+		while (j-- > 0)
+			if (bgrid->grid[i][j] == bgrid->rejet->letter)
+				erase(i, j, bgrid, 4);
+}
+
 char	give_me_a_letter(int index, char *tab, t_letter **head, t_grid *bgrid)
 {
 	char letter;
@@ -56,6 +71,7 @@ char	give_me_a_letter(int index, char *tab, t_letter **head, t_grid *bgrid)
 	{
 		tab[index] = '.';
 		bgrid->rejet = find_elem(bgrid->begin, tab[index - 1]);
+		find_erase(bgrid);
 		return (give_me_a_letter(index - 1, tab, head, bgrid));
 	}
 	tab[index] = '.';
