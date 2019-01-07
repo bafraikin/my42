@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:17:09 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/07 16:09:37 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/07 20:30:00 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_print_grid(char **grid, int size)
 		printf("grid[%d] : %s\n", i, grid[i]);
 		i++;
 	}
-	printf("grid[%d] : %s\n", i, grid[i]);
 
 }
 
@@ -33,23 +32,19 @@ void		erase(int undex, int deudex, t_grid *bgrid, int nb_piece)
 	int i;
 
 	i = 0;
-	x = bgrid->rejet->form[nb_piece - 1][0];
-	y = bgrid->rejet->form[nb_piece - 1][1];
-	system("clear");
-	printf("%d %d\n",undex, deudex);
-	ft_print_grid(bgrid->grid, bgrid->size);
-	usleep(100000);
-	undex -= x;
-	deudex -= y;
+/*	system("clear");
+	printf("erase %d %d %d\n",undex, deudex, nb_piece);*/
+//	ft_print_grid(bgrid->grid, bgrid->size);
+//	usleep(200000);
 	while (i < nb_piece)
 	{
-	x = bgrid->rejet->form[i][0];
-	y = bgrid->rejet->form[i][1];
+		x = bgrid->rejet->form[i][0];
+		y = bgrid->rejet->form[i][1];
 		bgrid->grid[undex + x][deudex + y] = '.';
-		system("clear");
-		printf("%d %d\n",undex, deudex);
-		ft_print_grid(bgrid->grid, bgrid->size);
-		usleep(100000);
+//	system("clear");
+//		printf("%d %d\n",undex, deudex);
+//		ft_print_grid(bgrid->grid, bgrid->size);
+//		usleep(200000);
 		i++;
 	}
 }
@@ -62,12 +57,37 @@ int		place_piece(t_grid *bgrid, t_shape *elem)
 	int x;
 	int y;
 
-	i = 0;
-	nb_piece = 0;
-	printf("size: %d\n", bgrid->size);
-	bgrid->rejet = elem;
-	while(nb_piece != 4 && i < bgrid->size && (j = 0) == 0)
+	if (elem->xgrid == -1)
 	{
+		elem->xgrid = 0;
+		elem->ygrid = 0;
+		j = 0;
+		i = 0;
+	}
+	else
+	{
+		erase(elem->xgrid, elem->ygrid, bgrid, 4);
+		i = elem->xgrid;
+		j = elem->ygrid + 1;
+		if (j >= bgrid->size)
+		{
+			j = 0;
+			i = elem->xgrid + 1;
+			if (elem->xgrid >= bgrid->size)
+			{
+				elem->xgrid = -1;
+				elem->ygrid = -1;
+				return (0);
+			}
+		}
+	}
+	printf("i : %d\n",i);
+//	sleep(1);
+	nb_piece = 0;
+	bgrid->rejet = elem;
+	while(nb_piece != 4 && i < bgrid->size)
+	{
+		j = (i > elem->xgrid) ? 0 : j;
 		while (nb_piece != 4 && j < bgrid->size && (nb_piece = 0) == 0)
 		{
 			if (bgrid->grid[i][j] == '.')
@@ -80,11 +100,10 @@ int		place_piece(t_grid *bgrid, t_shape *elem)
 						printf("%d %d\n", i + x, j + y);
 						bgrid->grid[i + x][j + y] = elem->letter;
 						nb_piece++;
-						system("clear");
-						printf("\n");
-						ft_print_grid(bgrid->grid, bgrid->size);
-						usleep(100000);
-
+//					system("clear");
+//						printf("\n");
+//						ft_print_grid(bgrid->grid, bgrid->size);
+//						usleep(200000);
 					}
 					else
 					{
@@ -93,8 +112,13 @@ int		place_piece(t_grid *bgrid, t_shape *elem)
 							x = elem->form[nb_piece - 1][0];
 							y = elem->form[nb_piece - 1][1];
 						}
-						erase(i + x, j + y, bgrid, nb_piece);
+						erase(i, j, bgrid, nb_piece);
 						nb_piece = 5;
+					}
+					if (nb_piece == 4)
+					{
+						elem->xgrid = i;
+						elem->ygrid = j;
 					}
 				}
 			j++;
@@ -106,6 +130,8 @@ int		place_piece(t_grid *bgrid, t_shape *elem)
 		bgrid->rejet = NULL;
 		return (1);
 	}
+	elem->xgrid = -1;
+	elem->ygrid = -1;
 	return (0);
 }
 

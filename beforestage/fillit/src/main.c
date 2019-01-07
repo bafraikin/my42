@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:16:56 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/07 16:06:41 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/07 20:30:39 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int main(int argc, char **argv)
 	ft_grid_validity(fd, &(bgrid.begin));   //maybe begin should be a **
 	//printf("%d\n", size_square(&begin, 0));
 	//printf("%d\n", size_square(&begin, 1));
-	//ft_print_list(&begin);
 	bgrid.grid = generate_big_grid(&(bgrid.begin));
 	bgrid.size = size_square(&(bgrid.begin), 1);
 	fillit_baby(&bgrid, bgrid.begin, ft_lst_size(&(bgrid.begin)));
 	//printf("%d\n", place_piece(generate_big_grid(&begin), begin, size_square(&begin, 1)));
+	ft_print_grid(bgrid.grid, bgrid.size);
 	return (0);
 }
