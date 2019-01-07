@@ -6,23 +6,12 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 16:17:16 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/07 10:56:20 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/07 11:31:48 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_print(t_letter *begin)
-{
-	t_letter *elem;
-
-	elem = begin;
-	while (elem)
-	{
-		printf("%c ", elem->letter);
-		elem = elem->next;
-	}
-}
 
 void	ft_build_utils(char *tab, t_letter **begin, int size)
 {
