@@ -6,20 +6,18 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:17:09 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/07 11:18:57 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/07 14:40:47 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "fillit.h"
 
-void	ft_print_grid(char **grid, t_shape **lst)
+void	ft_print_grid(char **grid, int size)
 {
 	int i;
-	t_shape *elem;
 
-	elem = *lst;
 	i = 0;
-	while (i < size_square(&elem, 1))
+	while (i < size)
 	{
 		printf("grid[%d] : %s\n", i, grid[i]);
 		i++;
@@ -28,27 +26,35 @@ void	ft_print_grid(char **grid, t_shape **lst)
 
 }
 
-void		erase(int undex, int deudex, char **grid, t_shape *lst, int nb_piece)
+void		erase(int undex, int deudex, t_grid *bgrid, int nb_piece)
 {
 	int x;
 	int y;
 	int i;
 
 	i = 0;
-	x = lst->form[nb_piece - 1][0];
-	y = lst->form[nb_piece - 1][1];
+	x = bgrid->rejet->form[nb_piece - 1][0];
+	y = bgrid->rejet->form[nb_piece - 1][1];
+	system("clear");
+	printf("%d %d\n",undex, deudex);
+	ft_print_grid(bgrid->grid, bgrid->size);
+	usleep(1000000);
 	undex -= x;
 	deudex -= y;
 	while (i < nb_piece)
 	{
-		x = lst->form[i][0];
-		y = lst->form[i][1];
-		grid[undex + x][deudex + y] = '.';
+	x = bgrid->rejet->form[i][0];
+	y = bgrid->rejet->form[i][1];
+		bgrid->grid[undex + x][deudex + y] = '.';
+		system("clear");
+		printf("%d %d\n",undex, deudex);
+		ft_print_grid(bgrid->grid, bgrid->size);
+		usleep(1000000);
 		i++;
 	}
 }
 
-int		place_piece(char **grid, t_shape *elem, int size)
+int		place_piece(t_grid *bgrid, t_shape *elem)
 {
 	int nb_piece;
 	int i;
@@ -58,23 +64,36 @@ int		place_piece(char **grid, t_shape *elem, int size)
 
 	i = 0;
 	nb_piece = 0;
-	while(nb_piece != 4 && i <= size && (j = 0) == 0)
+	printf("size: %d\n", bgrid->size);
+	bgrid->rejet = elem;
+	while(nb_piece != 4 && i < bgrid->size && (j = 0) == 0)
 	{
-		while (nb_piece != 4 && j < size && (nb_piece = 0)== 0)
+		while (nb_piece != 4 && j < bgrid->size && (nb_piece = 0) == 0)
 		{
-			if (grid[i][j] == '.')
+			if (bgrid->grid[i][j] == '.')
 				while (nb_piece < 4)
 				{
 					x = elem->form[nb_piece][0];
 					y = elem->form[nb_piece][1];
-					if (grid[i + x][j + y] == '.' && i + x >= 0 && i + x < size && j + y >= 0 && j + y < size)
+					if (bgrid->grid[i + x][j + y] == '.' && i + x >= 0 && i + x < bgrid->size && j + y >= 0 && j + y < bgrid->size)
 					{
-						grid[i + x][j + y] = elem->letter;
+						printf("%d %d\n", i + x, j + y);
+						bgrid->grid[i + x][j + y] = elem->letter;
 						nb_piece++;
+						system("clear");
+						printf("\n");
+						ft_print_grid(bgrid->grid, bgrid->size);
+						usleep(500000);
+
 					}
 					else
 					{
-						erase(i, j, grid, elem, nb_piece);
+						if (nb_piece >= 0)
+						{
+							x = elem->form[nb_piece - 1][0];
+							y = elem->form[nb_piece - 1][1];
+						}
+						erase(i + x, j + y, bgrid, nb_piece);
 						nb_piece = 5;
 					}
 				}
@@ -82,48 +101,14 @@ int		place_piece(char **grid, t_shape *elem, int size)
 		}
 		i++;
 	}
-	ft_print_grid(grid, &elem);
 	if (nb_piece == 4)
+	{
+		bgrid->rejet = NULL;
 		return (1);
+	}
 	return (0);
 }
 
-/*
-   int		place_piece(char **grid, t_shape **lst, int size)
-   {
-   int		i;
-   int		j;
-   int		x;
-   int		y;
-   t_shape *elem;
-
-   i = 0;		// index des coordonnees de mon tableau
-   j = 0;		// 
-   x = 0;		// ligne de la grille
-   y = 0;		// colonne de la grille
-   elem = *lst;
-   while (i < 4 && x <= size && (y + j) <= size)
-   {
-   x = elem->form[i][0];
-   y = elem->form[i][1];
-   if (grid[x][y + j] == '.' && x >= 0 && (y + j >= 0))
-   {
-   grid[x][y + j] = elem->letter;
-   i++;
-   }
-   else
-   {
-   i = erase(grid, &elem);
-   j++;
-   }
-   if (x == (size - 1) && (y + j) == (size - 1))
-   return (0);
-   }
-   printf("------- ////////// ----------\n");
-   ft_print_grid(grid, &elem);
-   return (1);
-   }
-   */
 char	**generate_big_grid(t_shape **begin)
 {
 	int		i;

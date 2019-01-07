@@ -23,15 +23,14 @@ Vive le vent, vous etes les plus beaux et les plus forts.
 Si si.
 Et bon chance.
 
+---------------------------
 
+TO DO
 
-
-
-
-
-
-
-
+- fix add_letter
+- il faut qu'on augmnte la taille du petit carre quand onne peut pas placer les pieces
+- fonction qui remove les pieces qu'on ne veut plus
+- pas encore utilise la regle des 6 dimensions
 
 
 

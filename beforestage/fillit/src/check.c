@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:16:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/20 14:54:29 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/07 14:01:59 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	ft_store_grid(int fd ,char **grid)
 void	ft_grid_validity(int fd, t_shape **begin)
 {
 	char		*grid[130];
-	t_grid		nb;
+	t_check		nb;
 	char		form[4][2];
 
 	nb.i = 0;

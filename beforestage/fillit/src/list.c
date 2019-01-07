@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 11:20:57 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/04 17:04:02 by salquier         ###   ########.fr       */
+/*   Updated: 2019/01/07 14:02:19 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ft_lst_size(t_shape **lst)
 	return (size);
 }
 
-t_shape *ft_new(char shape[4][2],  t_grid *nb)
+t_shape *ft_new(char shape[4][2],  t_check *nb)
 {
 	t_shape *new;
 	int i;

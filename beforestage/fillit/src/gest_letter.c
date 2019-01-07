@@ -6,12 +6,11 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 16:17:16 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/07 11:31:48 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/07 14:27:22 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
 
 void	ft_build_utils(char *tab, t_letter **begin, int size)
 {
@@ -36,27 +35,28 @@ int		there_is_highest(t_letter *begin, char c)
 	return (0);
 }
 
-char	give_me_a_letter(int index, char *tab, t_letter **begin, char rejet)
+char	give_me_a_letter(int index, char *tab, t_letter **head, t_grid *bgrid)
 {
 	char letter;
 
-	if (!rejet && (tab[index] = (*begin)->letter) != 0)
+	if (!(bgrid->rejet) && (tab[index] = (*head)->letter) != 0)
 	{
-		remove_letter(begin, tab[index]);
+		remove_letter(head, tab[index]);
 		return (index);
 	}
-	add_new_letter(begin, rejet);
-	letter = there_is_highest(*begin, tab[index]);
+	add_new_letter(head, bgrid->rejet->letter);
+	letter = there_is_highest(*head, tab[index]);
 	if (tab[index] < letter)
 	{
-		remove_letter(begin, letter);
+		remove_letter(head, letter);
 		tab[index] = letter;
 		return (index);
 	}
 	else if (index > 0)
 	{
 		tab[index] = '.';
-		return (give_me_a_letter(index - 1, tab, begin, tab[index - 1]));
+		bgrid->rejet = find_elem(bgrid->begin, tab[index - 1]);
+		return (give_me_a_letter(index - 1, tab, head, bgrid));
 	}
 	tab[index] = '.';
 	return (-1);

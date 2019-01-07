@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:25:15 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/07 11:37:51 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/07 14:45:19 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_print(t_letter *begin)
 	}
 }
 
-void	fillit_baby(char **big_grid, t_shape *begin, int size)
+void	fillit_baby(t_grid *bgrid, t_shape *begin, int size_l)
 {
 	int index;
 	int ret;
@@ -65,27 +65,27 @@ void	fillit_baby(char **big_grid, t_shape *begin, int size)
 	t_letter *head;
 
 	head = NULL;
-	if (!(tab = (char *)malloc(sizeof(char) * (size + 1))))
+	if (!(tab = (char *)malloc(sizeof(char) * (size_l + 1))))
 		return ;
-	ft_build_utils(tab, &head, size);
+	ft_build_utils(tab, &head, size_l);
 	index = -1;
 	ret = 1;
-	while (index < size)
+	while (index <= size_l - 1 || ret == 0)
 	{
-		//when index == -1 size_sqre++
 		if (ret)
 		{
-		index++;
-		index = give_me_a_letter(index, tab, &head, 0);
-		ret = place_piece(big_grid, find_elem(begin, tab[index]), size_square(&begin, 1));
+			index++;
+			if (index <= size_l - 1)
+			{
+				index = give_me_a_letter(index, tab, &head, bgrid);
+				ret = place_piece(bgrid, find_elem(begin, tab[index]));
+			}
 		}
 		else
 		{
-		index = give_me_a_letter(index, tab, &head, tab[index]);
-		ret = place_piece(big_grid, find_elem(begin, tab[index]), size_square(&begin, 1));
+			index = give_me_a_letter(index, tab, &head, bgrid);
+			ret = place_piece(bgrid, find_elem(begin, tab[index]));
 		}
-	printf("%d\n", index);
 		sleep(1);
 	}
-	ft_print_grid(big_grid, &begin);
 }
