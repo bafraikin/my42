@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:16:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 14:27:27 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 17:44:10 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_strlen_strchr(char *str, int *count)
 	while (str[i])
 	{
 		if (str[i] != '#' && str[i] != '.')
-			exit(EXIT_FAILURE);
+			error();
 		if (str[i] == '#')
 			(*count)++;
 		i++;
@@ -48,7 +48,7 @@ int		follow_pcs(char form[4][2], int i, int *min, int *max)
 	j = -1;
 	while (++j < 3)
 		if (tmp[j + 1] - tmp[j] > 1)
-			exit(EXIT_FAILURE);
+			error();
 	return (1);
 }
 
@@ -72,7 +72,7 @@ int		adjacent_pcs(char tab[4][2])
 					min = t;
 			}
 		if (min > 1)
-			exit(EXIT_FAILURE);
+			error();
 		i++;
 	}
 	return (1);
@@ -113,5 +113,5 @@ void	ft_store_grid(int fd, char **grid)
 		grid[i] = 0;
 	}
 	else
-		exit(EXIT_FAILURE);
+		error();
 }

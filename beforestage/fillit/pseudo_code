@@ -17,13 +17,13 @@ il nous faut creer une fonction qui coagule tout notre bordel :
 -> elle specifie a cette fonction si elle a reussi ou non
 - remplacer la fonction erase par une fonction qui n'efface qu'une seule lettre (et pas toutes)
 
- makefile && compilation officielle
+V makefile && compilation officielle
  protection malloc
- test de jalel
- gestion erreur
+V test de jalel
+V gestion erreur
  opti
- norminette
- affichage
+V norminette
+V affichage
  leaks
 
 Des Gros bisous.
@@ -31,45 +31,3 @@ Vive le vent, vous etes les plus beaux et les plus forts.
 
 Si si.
 Et bon chance.
-
----------------------------
-
-TO DO
-
-- fix add_letter
-- il faut qu'on augmnte la taille du petit carre quand onne peut pas placer les pieces
-- fonction qui remove les pieces qu'on ne veut plus
-- pas encore utilise la regle des 6 dimensions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-sinon, on augmente la taille du carre a la puissance 2 superieure... etc
-
-
-
-//GROS PAVE
-au sein de ce carre, on backtrack 
-- on ecrit dans un tableau de la taille du nombre de pieces, l'ordre des pieces que l'on suit
-> si on arrive a placer la dernire lettre dans le tableau : on a notre solution
-> sinon :
-	- on incremente la derniere lettre du tableau
-		- une fois arrives au bout ds lettres, on remonte d'une case dans le tableau et on incremente la piece precedetne (ATTENTION, jamais surune valeur deja presente)  + on supprime du tableau et du carre de jeu toutes les lettres qui apparaissent apres dans le tableau
-	- si les pieces ne rentrent pas (LETTRES totalement inversees), on augmente la taille du carre a la puissance 2 superieur+e
-
-
-

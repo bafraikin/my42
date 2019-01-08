@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:16:56 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 17:30:36 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 17:57:42 by salquier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,6 @@ void	ft_grid_validity(int fd, t_shape **begin)
 	}
 }
 
-void	ft_print_grid(char **grid, int size)
-{
-	int i;
-
-	i = 0;
-	while (i < size)
-	{
-		printf("grid[%d] : %s\n", i, grid[i]);
-		i++;
-	}
-}
-
 char	**generate_big_grid(t_shape **begin)
 {
 	int		i;
@@ -78,7 +66,7 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		write(1, "usage: ./fillit <file>\n", 23);
+		ft_putstr("usage: ./fillit one_argument\n");
 		return (1);
 	}
 	if (!((fd = open(argv[1], O_RDONLY)) > 0))

@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 11:20:57 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 17:26:40 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 17:46:11 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_shape	*ft_new(char shape[4][2], t_check *nb)
 
 	i = 0;
 	if ((new = (t_shape*)malloc(sizeof(t_shape))) == NULL)
-		exit(EXIT_FAILURE);
+		error();
 	while (i < 4)
 	{
 		ft_add_value(new->form, shape[i][0], shape[i][1], i);
@@ -44,6 +44,8 @@ t_shape	*ft_new(char shape[4][2], t_check *nb)
 	}
 	new->height = nb->max_y - nb->min_y + 1;
 	new->width = nb->max_x - nb->min_x + 1;
+	if (new->height + new->width > 5)
+		error();
 	new->xgrid = -1;
 	new->ygrid = -1;
 	new->next = NULL;
@@ -56,7 +58,7 @@ void	ft_add_end(t_shape **lst, t_shape *new)
 	int		i;
 
 	if (new == NULL)
-		exit(EXIT_FAILURE);
+		error();
 	if (!(*lst) && (*lst = new) != NULL)
 		new->letter = 'A';
 	else

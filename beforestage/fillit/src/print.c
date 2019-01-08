@@ -1,46 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: salquier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/19 16:32:22 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 17:47:13 by bafraiki         ###   ########.fr       */
+/*   Created: 2019/01/08 15:17:25 by salquier          #+#    #+#             */
+/*   Updated: 2019/01/08 16:51:21 by salquier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fillit.h"
 
-int		ft_power_2(int nb)
+void	ft_putnstr(char *str, int size)
 {
 	int i;
 
 	i = 0;
-	while ((i * i) < nb)
+	while (i < size)
+	{
+		ft_putchar(str[i]);
 		i++;
-	return (i);
+	}
 }
 
-void	ft_add_value(char form[4][2], int i, int j, int k)
+void	ft_print_grid(char **grid, int size)
 {
-	form[k][0] = i;
-	form[k][1] = j;
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		ft_putnstr(grid[i], size);
+		ft_putchar('\n');
+		i++;
+	}
 }
 
-int		ft_cmp(int a, int b)
+void	error(void)
 {
-	if (b < a)
-		return (a - b);
-	else
-		return (b - a);
-}
-
-void	ft_swap(int *a, int *b)
-{
-	int c;
-
-	c = *a;
-	*a = *b;
-	*b = c;
+	ft_putstr("error\n");
+	exit(EXIT_FAILURE);
 }

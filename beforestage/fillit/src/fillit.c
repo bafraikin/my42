@@ -6,13 +6,13 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:17:09 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 17:29:47 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 17:45:37 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	erase(int undex, int deudex, t_grid *bgrid, int nb_piece)
+void		erase(int undex, int deudex, t_grid *bgrid, int nb_piece)
 {
 	int x;
 	int y;
