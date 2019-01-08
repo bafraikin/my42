@@ -6,24 +6,11 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:17:09 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 14:00:32 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 15:36:55 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fillit.h"
-
-void	ft_print_grid(char **grid, int size)
-{
-	int i;
-
-	i = 0;
-	while (i < size)
-	{
-		printf("grid[%d] : %s\n", i, grid[i]);
-		i++;
-	}
-
-}
+#include "fillit.h"
 
 void		erase(int undex, int deudex, t_grid *bgrid, int nb_piece)
 {
@@ -41,6 +28,34 @@ void		erase(int undex, int deudex, t_grid *bgrid, int nb_piece)
 	}
 }
 
+int		ft_init_pl_p(int *i, int *j, t_shape *elem, t_grid *bgrid)
+{
+	if (elem->xgrid == -1)
+	{
+		elem->xgrid = 0;
+		elem->ygrid = 0;
+		*j = 0;
+		*i = 0;
+	}
+	else
+	{
+		erase(elem->xgrid, elem->ygrid, bgrid, 4);
+		*i = elem->xgrid;
+		*j = elem->ygrid + 1;
+		if (*j >= bgrid->size && (*j = 0) == 0)
+		{
+			*i = elem->xgrid + 1;
+			if (elem->xgrid >= bgrid->size && (elem->xgrid = -1) < 0)
+			{
+				elem->ygrid = -1;
+				return (0);
+			}
+		}
+	}
+	bgrid->rejet = elem;
+	return (1);
+}
+
 int		place_piece(t_grid *bgrid, t_shape *elem)
 {
 	int nb_piece;
@@ -49,38 +64,15 @@ int		place_piece(t_grid *bgrid, t_shape *elem)
 	int x;
 	int y;
 
-	if (elem->xgrid == -1)
-	{
-		elem->xgrid = 0;
-		elem->ygrid = 0;
-		j = 0;
-		i = 0;
-	}
-	else
-	{
-		erase(elem->xgrid, elem->ygrid, bgrid, 4);
-		i = elem->xgrid;
-		j = elem->ygrid + 1;
-		if (j >= bgrid->size)
-		{
-			j = 0;
-			i = elem->xgrid + 1;
-			if (elem->xgrid >= bgrid->size)
-			{
-				elem->xgrid = -1;
-				elem->ygrid = -1;
-				return (0);
-			}
-		}
-	}
+	if (ft_init_pl_p(&i, &j, elem, bgrid) == 0)
+		return (0);
 	nb_piece = 0;
-	bgrid->rejet = elem;
-	while(nb_piece != 4 && i < bgrid->size)
+	while (nb_piece != 4 && i < bgrid->size)
 	{
 		j = (i > elem->xgrid) ? 0 : j;
 		while (nb_piece != 4 && j < bgrid->size && (nb_piece = 0) == 0)
 		{
-			if (bgrid->grid[i][j] == '.')
+			if (bgrid->grid[i][j] == '.') // opti
 				while (nb_piece < 4)
 				{
 					x = elem->form[nb_piece][0];
@@ -120,22 +112,3 @@ int		place_piece(t_grid *bgrid, t_shape *elem)
 	return (0);
 }
 
-char	**generate_big_grid(t_shape **begin)
-{
-	int		i;
-	char	**grid;
-	t_shape *elem;
-
-	i = 0;
-	elem = *begin;
-	grid = (char **)malloc(sizeof(char *) * size_square(&elem, 0));
-	while (i < size_square(&elem, 0))
-	{
-		grid[i] = (char *)malloc(sizeof(char) * size_square(&elem, 0));
-		ft_memset(grid[i], '.', size_square(&elem, 0));
-		printf("grid[%d] : %s\n", i, grid[i]);
-		i++;
-	}
-	printf("===============\n");
-	return (grid);
-}

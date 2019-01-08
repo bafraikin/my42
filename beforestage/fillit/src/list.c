@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 11:20:57 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 14:01:26 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 14:26:59 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int		ft_lst_size(t_shape **lst)
 {
-	int size;
-	t_shape *elem;
+	int		size;
+	t_shape	*elem;
 
 	size = 0;
 	elem = *lst;
 	if (!(lst))
-		size  = 0;
+		size = 0;
 	while (elem)
 	{
 		size++;
@@ -29,10 +29,10 @@ int		ft_lst_size(t_shape **lst)
 	return (size);
 }
 
-t_shape *ft_new(char shape[4][2],  t_check *nb)
+t_shape	*ft_new(char shape[4][2], t_check *nb)
 {
 	t_shape *new;
-	int i;
+	int		i;
 
 	i = 0;
 	if ((new = (t_shape*)malloc(sizeof(t_shape))) == NULL)

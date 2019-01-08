@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 15:10:31 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/07 19:05:03 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 15:02:09 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_letter	*ft_new_letter(char c)
 {
 	t_letter *new;
+
 	if ((new = (t_letter*)malloc(sizeof(t_letter))) == NULL)
 		exit(EXIT_FAILURE);
 	new->letter = c;
@@ -22,7 +23,7 @@ t_letter	*ft_new_letter(char c)
 	return (new);
 }
 
-void	add_new_letter(t_letter **begin, char c)
+void		add_new_letter(t_letter **begin, char c)
 {
 	t_letter *elem;
 	t_letter *tmp;
@@ -34,11 +35,11 @@ void	add_new_letter(t_letter **begin, char c)
 	}
 	elem = *begin;
 	while (elem->next && elem->next->letter <= c)
-		if (elem->letter == c || elem->next->letter == c) //not especially necessary but for dev we must be prudent
+		if (elem->letter == c || elem->next->letter == c)
 			return ;
 		else
 			elem = elem->next;
-	if (elem->letter < c)  // if elem->next is null is this problematic ? 
+	if (elem->letter < c)
 	{
 		tmp = elem->next;
 		elem->next = ft_new_letter(c);
@@ -51,7 +52,7 @@ void	add_new_letter(t_letter **begin, char c)
 	}
 }
 
-char	remove_letter(t_letter **begin, char c)
+char		remove_letter(t_letter **begin, char c)
 {
 	t_letter *elem;
 	t_letter *tmp;

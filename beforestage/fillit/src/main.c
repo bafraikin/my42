@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:16:56 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 14:16:03 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 15:31:51 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,35 @@ void	ft_grid_validity(int fd, t_shape **begin)
 		if ((nb.hash = 0) == 0 && grid[nb.i])
 			nb.i++;
 	}
+}
+void	ft_print_grid(char **grid, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		printf("grid[%d] : %s\n", i, grid[i]);
+		i++;
+	}
+}
+
+char	**generate_big_grid(t_shape **begin)
+{
+	int		i;
+	char	**grid;
+	t_shape *elem;
+
+	i = 0;
+	elem = *begin;
+	grid = (char **)malloc(sizeof(char *) * size_square(&elem, 0));
+	while (i < size_square(&elem, 0))
+	{
+		grid[i] = (char *)malloc(sizeof(char) * size_square(&elem, 0));
+		ft_memset(grid[i], '.', size_square(&elem, 0));
+		i++;
+	}
+	return (grid);
 }
 
 int		main(int argc, char **argv)
