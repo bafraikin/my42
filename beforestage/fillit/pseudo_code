@@ -17,6 +17,15 @@ il nous faut creer une fonction qui coagule tout notre bordel :
 -> elle specifie a cette fonction si elle a reussi ou non
 - remplacer la fonction erase par une fonction qui n'efface qu'une seule lettre (et pas toutes)
 
+ makefile && compilation officielle
+ protection malloc
+ test de jalel
+ gestion erreur
+ opti
+ norminette
+ affichage
+ leaks
+
 Des Gros bisous.
 Vive le vent, vous etes les plus beaux et les plus forts.
 

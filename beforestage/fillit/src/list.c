@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 11:20:57 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/07 19:05:15 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 14:01:26 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,20 +71,6 @@ void	ft_add_end(t_shape **lst, t_shape *new)
 		elem->next = new;
 		new->letter = i + 'A';
 	}
-}
-
-t_shape	*ft_find_elem(t_shape **lst, char c)
-{
-	t_shape *elem;
-
-	elem = *lst;
-	while (elem)
-	{
-		if (elem->letter == c)
-			return (elem);
-		elem = elem->next;
-	}
-	return (NULL);
 }
 
 t_shape	*find_elem(t_shape *begin, int nb)
