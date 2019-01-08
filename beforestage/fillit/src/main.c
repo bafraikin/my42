@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:16:56 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 15:31:51 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 17:30:36 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_grid_validity(int fd, t_shape **begin)
 			nb.i++;
 	}
 }
+
 void	ft_print_grid(char **grid, int size)
 {
 	int i;

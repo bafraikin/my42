@@ -6,13 +6,13 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:17:09 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 15:36:55 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 17:29:47 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void		erase(int undex, int deudex, t_grid *bgrid, int nb_piece)
+void	erase(int undex, int deudex, t_grid *bgrid, int nb_piece)
 {
 	int x;
 	int y;
@@ -56,13 +56,34 @@ int		ft_init_pl_p(int *i, int *j, t_shape *elem, t_grid *bgrid)
 	return (1);
 }
 
+int		try_piece(t_grid *bgrid, int i, int j, int nb_piece)
+{
+	int y;
+	int x;
+
+	x = bgrid->rejet->form[nb_piece][0] + i;
+	y = bgrid->rejet->form[nb_piece][1] + j;
+	if (bgrid->grid[x][y] == '.' && x >= 0 && x < bgrid->size
+			&& y >= 0 && y < bgrid->size)
+	{
+		bgrid->grid[x][y] = bgrid->rejet->letter;
+		nb_piece++;
+	}
+	else
+	{
+		erase(i, j, bgrid, nb_piece);
+		return (5);
+	}
+	if (nb_piece == 4)
+		bgrid->rejet = NULL;
+	return (nb_piece);
+}
+
 int		place_piece(t_grid *bgrid, t_shape *elem)
 {
 	int nb_piece;
 	int i;
 	int j;
-	int x;
-	int y;
 
 	if (ft_init_pl_p(&i, &j, elem, bgrid) == 0)
 		return (0);
@@ -72,43 +93,16 @@ int		place_piece(t_grid *bgrid, t_shape *elem)
 		j = (i > elem->xgrid) ? 0 : j;
 		while (nb_piece != 4 && j < bgrid->size && (nb_piece = 0) == 0)
 		{
-			if (bgrid->grid[i][j] == '.') // opti
+			if (bgrid->grid[i][j] == '.')
 				while (nb_piece < 4)
-				{
-					x = elem->form[nb_piece][0];
-					y = elem->form[nb_piece][1];
-					if (bgrid->grid[i + x][j + y] == '.' && i + x >= 0 && i + x < bgrid->size && j + y >= 0 && j + y < bgrid->size)
-					{
-						bgrid->grid[i + x][j + y] = elem->letter;
-						nb_piece++;
-					}
-					else
-					{
-						if (nb_piece >= 0)
-						{
-							x = elem->form[nb_piece - 1][0];
-							y = elem->form[nb_piece - 1][1];
-						}
-						erase(i, j, bgrid, nb_piece);
-						nb_piece = 5;
-					}
-					if (nb_piece == 4)
-					{
-						elem->xgrid = i;
-						elem->ygrid = j;
-					}
-				}
+					nb_piece = try_piece(bgrid, i, j, nb_piece);
 			j++;
 		}
 		i++;
 	}
+	elem->xgrid = (nb_piece == 4) ? i - 1 : -1;
+	elem->ygrid = (nb_piece == 4) ? j - 1 : -1;
 	if (nb_piece == 4)
-	{
-		bgrid->rejet = NULL;
 		return (1);
-	}
-	elem->xgrid = -1;
-	elem->ygrid = -1;
 	return (0);
 }
-

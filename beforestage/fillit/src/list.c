@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 11:20:57 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 14:26:59 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 17:26:40 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,4 @@ t_shape	*find_elem(t_shape *begin, int nb)
 	while (nb-- > 1)
 		begin = begin->next;
 	return (begin);
-}
-
-void	ft_print_list(t_shape **lst)
-{
-	t_shape *elem;
-
-	elem = *lst;
-	while (elem)
-	{
-		printf("%d %d\n%d %d\n%d %d\n%d %d\n", elem->form[0][0], elem->form[0][1], elem->form[1][0], elem->form[1][1], elem->form[2][0], elem->form[2][1], elem->form[3][0], elem->form[3][1]);
-		printf("elem->letter : %c\n", elem->letter);
-		printf("elem->height : %d\n", elem->height);
-		printf("elem->width : %d\n\n", elem->width);
-		elem = elem->next;
-	}
 }

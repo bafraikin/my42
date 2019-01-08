@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 15:33:00 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 17:38:39 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include "get_next_line.h"
 
-typedef struct 		s_check {
+typedef struct		s_check {
 	int				i;
 	int				line;
 	int				hash;
@@ -25,7 +25,7 @@ typedef struct 		s_check {
 	int				max_y;
 	int				min_x;
 	int				max_x;
-} 					t_check;
+}					t_check;
 
 typedef struct		s_letter {
 	char			letter;
@@ -46,7 +46,7 @@ typedef struct		s_shape {
 typedef struct		s_grid {
 	char			**grid;
 	t_shape			*begin;
-	int 			size;
+	int				size;
 	int				ret;
 	t_shape			*rejet;
 }					t_grid;
@@ -59,7 +59,8 @@ void				ft_store_grid(int fd, char **grid);
 void				ft_print(t_letter *begin);
 int					place_piece(t_grid *bgrid, t_shape *elem);
 void				erase(int undex, int deudex, t_grid *bgrid, int nb_piece);
-char				give_me_a_letter(int index, char *tab, t_letter **head, t_grid *bgrid);
+char				give_me_a_letter(int index, char *tab, t_letter **head,
+		t_grid *bgrid);
 void				fillit_baby(t_grid *bgrid, t_shape *begin, int size_l);
 void				ft_grid_validity(int fd, t_shape **begin);
 void				ft_add_value(char form[4][2], int i, int j, int k);
