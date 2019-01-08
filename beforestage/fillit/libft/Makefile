@@ -6,7 +6,7 @@
 #    By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 13:19:42 by bafraiki          #+#    #+#              #
-#    Updated: 2018/12/03 11:41:31 by bafraiki         ###   ########.fr        #
+#    Updated: 2019/01/08 18:48:42 by bafraiki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ FILE		= $(SRC)ft_atoi.c $(SRC)ft_bzero.c $(SRC)ft_isalnum.c $(SRC)ft_isalpha.c $
 
 FLAGS		=	-Wall -Werror -Wextra
 
-CC			= clang
+CC			= gcc
 
 OBJ			=	$(FILE:.c=.o)
 

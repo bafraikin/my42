@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:16:56 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 17:57:42 by salquier         ###   ########.fr       */
+/*   Updated: 2019/01/08 19:03:18 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ void	ft_grid_validity(int fd, t_shape **begin)
 		nb.hash = 0;
 		while (grid[nb.i] && *grid[nb.i] != '\0' && nb.line++ < 4)
 			if (ft_strlen_strchr(grid[nb.i++], &(nb.hash)) != 4)
-				exit(EXIT_FAILURE);
+				error();
 		if (nb.hash != 4 || nb.line != 4
-				|| (grid[nb.i] && ((!grid[nb.i + 1]) || (*grid[nb.i] != '\0'))))
-			exit(EXIT_FAILURE);
+		|| (grid[nb.i] && ((!grid[nb.i + 1]) || (*grid[nb.i] != '\0'))))
+			error();
 		ft_check_fill(&grid[nb.i - 4], form);
 		if (!((follow_pcs(form, 0, &(nb.min_y), &(nb.max_y))
-						&& follow_pcs(form, 1, &(nb.min_x), &(nb.max_x))
-						&& adjacent_pcs(form))))
-			exit(EXIT_FAILURE);
+		&& follow_pcs(form, 1, &(nb.min_x), &(nb.max_x))
+		&& adjacent_pcs(form))))
+			error();
 		ft_add_end(begin, ft_new(form, &nb));
 		if ((nb.hash = 0) == 0 && grid[nb.i])
 			nb.i++;
@@ -48,10 +48,12 @@ char	**generate_big_grid(t_shape **begin)
 
 	i = 0;
 	elem = *begin;
-	grid = (char **)malloc(sizeof(char *) * size_square(&elem, 0));
+	if (!(grid = (char **)malloc(sizeof(char *) * size_square(&elem, 0))))
+		error();
 	while (i < size_square(&elem, 0))
 	{
-		grid[i] = (char *)malloc(sizeof(char) * size_square(&elem, 0));
+		if (!(grid[i] = (char *)malloc(sizeof(char) * size_square(&elem, 0))))
+			error();
 		ft_memset(grid[i], '.', size_square(&elem, 0));
 		i++;
 	}
@@ -61,12 +63,11 @@ char	**generate_big_grid(t_shape **begin)
 int		main(int argc, char **argv)
 {
 	int		fd;
-	t_shape	*begin;
 	t_grid	bgrid;
 
 	if (argc != 2)
 	{
-		ft_putstr("usage: ./fillit one_argument\n");
+		write(1, "usage: ./fillit <FILE>\n", 23);
 		return (1);
 	}
 	if (!((fd = open(argv[1], O_RDONLY)) > 0))

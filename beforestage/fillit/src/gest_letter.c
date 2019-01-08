@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 16:17:16 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 17:45:56 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 18:03:28 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	find_erase(t_grid *bgrid)
 {
 	int		i;
 	int		j;
-	t_shape	*rejet;
 
 	i = bgrid->size;
 	j = bgrid->size;
@@ -47,18 +46,6 @@ void	find_erase(t_grid *bgrid)
 		while (j-- > 0)
 			if (bgrid->grid[i][j] == bgrid->rejet->letter)
 				erase(i, j, bgrid, 4);
-}
-
-void	ft_print(t_letter *begin)
-{
-	t_letter *elem;
-
-	elem = begin;
-	while (elem)
-	{
-		printf("%c", elem->letter);
-		elem = elem->next;
-	}
 }
 
 char	give_me_a_letter(int index, char *tab, t_letter **head, t_grid *bgrid)

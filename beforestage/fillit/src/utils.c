@@ -6,11 +6,11 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 16:32:22 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 17:47:13 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 18:47:25 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fillit.h"
+#include "fillit.h"
 
 int		ft_power_2(int nb)
 {

@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:17:09 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 17:45:37 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 19:30:15 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int		place_piece(t_grid *bgrid, t_shape *elem)
 		j = (i > elem->xgrid) ? 0 : j;
 		while (nb_piece != 4 && j < bgrid->size && (nb_piece = 0) == 0)
 		{
-			if (bgrid->grid[i][j] == '.')
+			if (bgrid->grid[i][j] == '.' && (j + elem->xmax) <= bgrid->size && (i + elem->ymax) <= bgrid->size)
 				while (nb_piece < 4)
 					nb_piece = try_piece(bgrid, i, j, nb_piece);
 			j++;

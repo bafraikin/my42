@@ -6,11 +6,11 @@
 /*   By: salquier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:17:25 by salquier          #+#    #+#             */
-/*   Updated: 2019/01/08 16:51:21 by salquier         ###   ########.fr       */
+/*   Updated: 2019/01/08 18:47:06 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fillit.h"
+#include "fillit.h"
 
 void	ft_putnstr(char *str, int size)
 {

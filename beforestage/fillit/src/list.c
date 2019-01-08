@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 11:20:57 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 17:46:11 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/08 19:24:29 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ t_shape	*ft_new(char shape[4][2], t_check *nb)
 	}
 	new->height = nb->max_y - nb->min_y + 1;
 	new->width = nb->max_x - nb->min_x + 1;
+	new->xmax = nb->max_x;
+	new->ymax = nb->max_y;
 	if (new->height + new->width > 5)
 		error();
 	new->xgrid = -1;

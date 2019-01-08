@@ -18,7 +18,7 @@ il nous faut creer une fonction qui coagule tout notre bordel :
 - remplacer la fonction erase par une fonction qui n'efface qu'une seule lettre (et pas toutes)
 
 V makefile && compilation officielle
- protection malloc
+V protection malloc
 V test de jalel
 V gestion erreur
  opti
