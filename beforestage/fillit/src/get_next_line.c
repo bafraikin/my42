@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:12 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/03 17:31:33 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/09 15:55:38 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static	t_read	*ft_recup_fd(const int fd, t_read *t_r, int mode)
 	t_r->is_r = (mode) ? ((t_fd*)(t_r->old))->l_rest : (char*)malloc(1);
 	if (t_r->is_r == NULL)
 		t_r->is_r = (char*)malloc(1);
-	if(!(t_r->is_r && t_r->buff))
+	if (!(t_r->is_r && t_r->buff))
 		return (NULL);
 	if ((t_r->pl = ft_memchr(t_r->is_r, '\n', t_r->tot)) != NULL)
 		t_r->mod = &t_r->is_r[t_r->tot - 1] - t_r->pl + 1;

@@ -6,14 +6,14 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:28 by bafraiki          #+#    #+#             */
-/*   Updated: 2018/12/03 12:03:59 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/09 18:42:50 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFF_SIZE 1
+# define BUFF_SIZE 32
 
 # include <stdlib.h>
 # include <unistd.h>

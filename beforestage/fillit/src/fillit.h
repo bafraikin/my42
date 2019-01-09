@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:14:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 19:23:40 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/09 17:53:11 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ char				remove_letter(t_letter **begin, char c);
 void				ft_build_utils(char *tab, t_letter **begin, int size);
 t_shape				*find_elem(t_shape *begin, int nb);
 void				ft_print_grid(char **grid, int size);
+void				ft_free_gnl(char **grid);
 
 #endif
