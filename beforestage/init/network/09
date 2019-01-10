@@ -1,0 +1,11 @@
+Server:		192.168.1.1
+Address:	192.168.1.1#53
+
+Non-authoritative answer:
+Name:	42.fr
+Address: 163.172.250.12
+Name:	42.fr
+Address: 163.172.250.13
+Name:	42.fr
+Address: 163.172.250.11
+

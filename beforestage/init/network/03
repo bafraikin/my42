@@ -1,0 +1,1 @@
+networksetup -listallhardwareports | grep 'en1' -C 1 | grep -i 'ether' | awk '{print $3}'
