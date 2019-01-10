@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:28 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 18:22:55 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/10 14:49:42 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "../libft/includes/libft.h"
+# include "../libft/libft.h"
 
 int					get_next_line(const int fd, char **line);
 
