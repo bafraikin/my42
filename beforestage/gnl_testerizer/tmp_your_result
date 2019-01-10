@@ -1,3 +1,0 @@
-tests_tiny(99318,0x7fffb2a0e3c0) malloc: *** error for object 0x7fb9834026c0: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
-12345678wertABC

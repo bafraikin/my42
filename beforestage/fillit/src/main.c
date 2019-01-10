@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:16:56 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 19:03:18 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/09 17:54:04 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,18 @@ void	ft_grid_validity(int fd, t_shape **begin)
 			if (ft_strlen_strchr(grid[nb.i++], &(nb.hash)) != 4)
 				error();
 		if (nb.hash != 4 || nb.line != 4
-		|| (grid[nb.i] && ((!grid[nb.i + 1]) || (*grid[nb.i] != '\0'))))
+				|| (grid[nb.i] && ((!grid[nb.i + 1]) || (*grid[nb.i] != '\0'))))
 			error();
 		ft_check_fill(&grid[nb.i - 4], form);
 		if (!((follow_pcs(form, 0, &(nb.min_y), &(nb.max_y))
-		&& follow_pcs(form, 1, &(nb.min_x), &(nb.max_x))
-		&& adjacent_pcs(form))))
+						&& follow_pcs(form, 1, &(nb.min_x), &(nb.max_x))
+						&& adjacent_pcs(form))))
 			error();
 		ft_add_end(begin, ft_new(form, &nb));
 		if ((nb.hash = 0) == 0 && grid[nb.i])
 			nb.i++;
 	}
+	ft_free_gnl(grid);
 }
 
 char	**generate_big_grid(t_shape **begin)
@@ -60,9 +61,23 @@ char	**generate_big_grid(t_shape **begin)
 	return (grid);
 }
 
+void	ft_free_shape(t_shape **head)
+{
+	t_shape *tmp;
+
+	while (*head)
+	{
+		tmp = *head;
+		*head = (*head)->next;
+		free(tmp);
+	}
+	free(*head);
+}
+
 int		main(int argc, char **argv)
 {
 	int		fd;
+	int		index;
 	t_grid	bgrid;
 
 	if (argc != 2)
@@ -78,5 +93,11 @@ int		main(int argc, char **argv)
 	bgrid.size = size_square(&(bgrid.begin), 1);
 	fillit_baby(&bgrid, bgrid.begin, ft_lst_size(&(bgrid.begin)));
 	ft_print_grid(bgrid.grid, bgrid.size);
+	index = -1;
+	bgrid.size = size_square(&(bgrid.begin), 0);
+	while (++index < bgrid.size)
+		free(bgrid.grid[index]);
+	free(bgrid.grid);
+	ft_free_shape(&bgrid.begin);
 	return (0);
 }

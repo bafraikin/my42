@@ -6,13 +6,13 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:17:09 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 19:30:15 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/09 15:55:19 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void		erase(int undex, int deudex, t_grid *bgrid, int nb_piece)
+void	erase(int undex, int deudex, t_grid *bgrid, int nb_piece)
 {
 	int x;
 	int y;
@@ -69,14 +69,29 @@ int		try_piece(t_grid *bgrid, int i, int j, int nb_piece)
 		bgrid->grid[x][y] = bgrid->rejet->letter;
 		nb_piece++;
 	}
-	else
-	{
-		erase(i, j, bgrid, nb_piece);
-		return (5);
-	}
 	if (nb_piece == 4)
 		bgrid->rejet = NULL;
 	return (nb_piece);
+}
+
+int		piece_fits(t_grid *bgrid, int i, int j)
+{
+	int y;
+	int x;
+	int nb_piece;
+
+	nb_piece = 0;
+	while (nb_piece < 4)
+	{
+		x = bgrid->rejet->form[nb_piece][0] + i;
+		y = bgrid->rejet->form[nb_piece][1] + j;
+		if (bgrid->grid[x][y] == '.' && x >= 0 && x < bgrid->size
+				&& y >= 0 && y < bgrid->size)
+			nb_piece++;
+		else
+			return (0);
+	}
+	return (1);
 }
 
 int		place_piece(t_grid *bgrid, t_shape *elem)
@@ -93,7 +108,7 @@ int		place_piece(t_grid *bgrid, t_shape *elem)
 		j = (i > elem->xgrid) ? 0 : j;
 		while (nb_piece != 4 && j < bgrid->size && (nb_piece = 0) == 0)
 		{
-			if (bgrid->grid[i][j] == '.' && (j + elem->xmax) <= bgrid->size && (i + elem->ymax) <= bgrid->size)
+			if (bgrid->grid[i][j] == '.' && piece_fits(bgrid, i, j))
 				while (nb_piece < 4)
 					nb_piece = try_piece(bgrid, i, j, nb_piece);
 			j++;

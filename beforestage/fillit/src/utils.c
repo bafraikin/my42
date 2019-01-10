@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 16:32:22 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/08 18:47:25 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/09 17:54:32 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,13 @@ void	ft_swap(int *a, int *b)
 	c = *a;
 	*a = *b;
 	*b = c;
+}
+
+void	ft_free_gnl(char **grid)
+{
+	int i;
+
+	i = -1;
+	while (grid[++i])
+		free(grid[i]);
 }
