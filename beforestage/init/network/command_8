@@ -1,0 +1,2 @@
+amazon.com
+nslookup -querytype=soa slash16.org
