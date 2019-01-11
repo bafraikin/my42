@@ -101,6 +101,8 @@ alias gwc='gcc -Wall -Werror -Wextra'
 alias ct='cd $WORK'
 alias vf='vim -O $(fzf)'
 
+export VAGRANT_HOME=/Volumes/Storage/goinfre/bafraiki/vagrant
+
 
 function upg()
 {
