@@ -1,2 +1,2 @@
 ls /etc/init.d/ 
-startup application
+service
