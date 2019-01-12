@@ -6,7 +6,7 @@
 #    By: salquier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/08 17:00:28 by salquier          #+#    #+#              #
-#    Updated: 2019/01/10 15:11:57 by bafraiki         ###   ########.fr        #
+#    Updated: 2019/01/12 13:43:30 by bafraiki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ LIBFCLEAN:
 	make fclean -C libft/
 
 $(NAME): $(OBJECTS) ./libft/libft.a
-	gcc -o $@ $(OBJECTS) -L libft/ -lft
+	gcc -o $@ $(OBJECTS) -L libft/ -lft $(CFLAGS)
 
 clean: $(OBJECTS) LIBFCLEAN
 	rm $(OBJECTS)

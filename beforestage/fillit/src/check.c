@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:16:36 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/09 17:09:03 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/12 13:30:39 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	ft_store_grid(int fd, char **grid)
 	{
 		free(grid[i]);
 		grid[i] = 0;
+		close(fd);
 	}
 	else
 		error();

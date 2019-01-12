@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:16:56 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/09 17:54:04 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/12 13:34:58 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int		main(int argc, char **argv)
 		return (1);
 	}
 	if (!((fd = open(argv[1], O_RDONLY)) > 0))
-		return (1);
+		error();
 	ft_bzero(&bgrid, sizeof(bgrid));
 	ft_grid_validity(fd, &(bgrid.begin));
 	bgrid.grid = generate_big_grid(&(bgrid.begin));
