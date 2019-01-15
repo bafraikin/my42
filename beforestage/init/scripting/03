@@ -1,0 +1,22 @@
+#!/bin/bash
+
+archived="$HOME/.trash"
+copy="$(which cp) -R"
+real="$(which rm)"
+
+if [ $# -eq 0 ] 
+then
+	exec $real
+fi
+
+flags=""
+
+while getopts "diddfFFFddefrgh" opt
+do
+	case $opt in
+		f ) exec $real "$@" ;;
+		* ) flags="$flags -$opt" ;; 
+	esac
+done
+
+echo $OPTIND
