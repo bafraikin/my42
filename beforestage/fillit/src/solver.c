@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:25:15 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/01/19 13:47:42 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/19 14:42:55 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,6 @@ void	fillit_baby(t_grid *bgrid, t_shape *begin, int size_l)
 		else if ((index = give_me_a_letter(index, tab, &head, bgrid)) > -2)
 			if (bgrid->ret == 0)
 				bgrid->ret = place_piece(bgrid, find_elem(begin, tab[index]));
-		system("clear");
-		ft_print_grid(bgrid->grid, bgrid->size);
-		usleep(100000);
 	}
 	free(tab);
 }
