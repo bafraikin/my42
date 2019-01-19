@@ -1,2 +1,2 @@
- echo $(sh 01 | grep "en" | awk 'NR == 1' | xargs ifconfig | grep "broadcast" | cut -d' ' -f 6)) 
- ping 10.11.255.255 | arp -a
+ reseau=$(sh 01 | grep "en" | awk 'NR == 1' | xargs ifconfig | grep "broadcast" | cut -d' ' -f 6) 
+ ping $reseau | arp -a
