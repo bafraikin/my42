@@ -5,7 +5,4 @@ PORT=$(vagrant ssh-config | grep Port | grep -o '[0-9]\+')  && ssh -q \
 		-i ~/vagrant/.vagrant/machines/default/virtualbox/private_key \
 		vagrant@localhost \
 		-p $PORT \
-		"$@"
-
-
-ssh -p 3022 coucou@localhost
+		"$@" || ssh -p 3022 coucou@localhost
