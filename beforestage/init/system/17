@@ -6,3 +6,6 @@ PORT=$(vagrant ssh-config | grep Port | grep -o '[0-9]\+')  && ssh -q \
 		vagrant@localhost \
 		-p $PORT \
 		"$@"
+
+
+ssh -p 3022 coucou@localhost

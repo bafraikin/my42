@@ -1,6 +1,6 @@
 #!/bin/bash
 
-archived="$HOME/.trash"
+archived="$HOME/.rm_trash"
 copy="$(which cp) -R"
 real="$(which rm)"
 
@@ -11,7 +11,7 @@ fi
 
 flags=""
 
-while getopts "diddfFFFddefrgh" opt
+while getopts "adw" opt
 do
 	case $opt in
 		f ) exec $real "$@" ;;
@@ -19,4 +19,23 @@ do
 	esac
 done
 
-echo $OPTIND
+shift $(( $OPTIND - 1))
+
+if [ ! -d $archived ]
+then
+	 mkdir $archived
+	 chmod 700 $archived
+fi
+
+for arg in $@
+do
+	name="$archived/$(date "+%H:%M:%S|%d.%m")!$(basename $arg)"
+	if [ -f "$arg" -o -d "$arg" ]
+	then
+		$copy "$arg" "$name"
+	else
+		echo "file $arg doesn't exist"
+	fi
+done
+
+exec $real $flags $@
