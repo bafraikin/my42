@@ -96,7 +96,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export WORK=$HOME/Code/projectBapt/beforestage/init
+export WORK=$HOME/Code/projectBapt/beforestage/roger-skyline1
 alias gwc='gcc -Wall -Werror -Wextra'
 alias ct='cd $WORK'
 alias vf='vim -O $(fzf)'
