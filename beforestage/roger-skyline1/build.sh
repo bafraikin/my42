@@ -41,4 +41,4 @@ uuid=$(VBoxManage unattended install $name \
 	--user=$name --full-user-name=$name --password $name \
 	--install-additions --time-zone=CET)
 
-echo $uuid
+uuid=$(echo $uuid | grep "Using" | cut -d "(" -f 2 | cut -d ")" -f 1)
