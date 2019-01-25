@@ -109,7 +109,7 @@ function upg()
 	pathPro="$HOME/Code/projectBapt"
 	pathRen="$HOME/Code/github"
 
-	rm -rf $pathRen/beforetage
+	rm -rf $pathRen/beforestage
 	rm -rf $pathRen/afterpis
 	rm -rf $pathRen/testzone
 
