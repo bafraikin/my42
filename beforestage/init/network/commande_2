@@ -1,2 +1,0 @@
-sh commande_1 | grep "en" | awk 'NR == 1' | xargs ifconfig | grep "broadcast" | cut -d' ' -f 6
-netstat -I en0 | awk 'END {print}' | cut -d$' ' -f

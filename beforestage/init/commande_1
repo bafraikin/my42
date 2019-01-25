@@ -1,1 +1,0 @@
-ifconfig | grep "UP" | cut -d: -f1
