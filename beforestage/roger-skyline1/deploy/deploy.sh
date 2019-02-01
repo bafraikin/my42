@@ -1,12 +1,16 @@
 #!/bin/bash
 
 #connect to root
-apt-get install -y sudo apache2 ufw fail2ban portsentry
+apt-get install -y sudo apache2 ufw fail2ban portsentry mailutils
 
 if [ $# = 0 ]
 then
 	echo "you're a little piece of shit"
 fi
+
+
+hom = /home/$1
+
 
 #user with sudo
 adduser $1 sudo
@@ -19,7 +23,7 @@ ip addr del $(ip addr)
 
 #ssh
 mkdir /home/$1/.ssh
-mv /home/$1/authorized_keys /home/$1/.ssh
+mv $hom/authorized_keys /home/$1/.ssh
 sed -i 's/#Port 22/Port 3022/' /etc/ssh/sshd_config
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
 /etc/init.d/ssh restart
@@ -34,9 +38,20 @@ ufw deny 80/tcp
 ufw enable
 
 #fail2ban
+mv $hom/custom.conf /etc/fail2ban/jail.d
+mv $hom/jail.local /etc/fail2ban
+mv $hom/http-ddos.conf /etc/fail2ban/filter.d
+/etc/init.d/fail2ban restart
 
-fail2ban enable
-jail.local
+#portsentry
+mv $hom/portsentry.conf /etc/portsentry
+mv $hom/portsentry /etc/default
+/etc/init.d/portsentry restart
+
+mv $hom/crontab /etc
+
+
+sed -i 's/inet_interfaces.*$/inet_interfaces = loopback_only\n/'   /etc/postfix/main.cf
 
 #reboot
 
