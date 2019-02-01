@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #connect to root
-apt-get install -y sudo apache2 ufw fail2ban portsentry mailutils
+apt-get install -y sudo apache2 ufw fail2ban portsentry mailutils postfix
 
 if [ $# = 0 ]
 then
@@ -48,8 +48,9 @@ mv $hom/portsentry.conf /etc/portsentry
 mv $hom/portsentry /etc/default
 /etc/init.d/portsentry restart
 
+mv $hom/crontab_dif.sh /root
+cp $hom/crontab /root/past_cron
 mv $hom/crontab /etc
-
 
 sed -i 's/inet_interfaces.*$/inet_interfaces = loopback_only\n/'   /etc/postfix/main.cf
 service postfix restart
