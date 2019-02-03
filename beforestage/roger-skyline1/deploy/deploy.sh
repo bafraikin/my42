@@ -52,9 +52,8 @@ mv $hom/crontab_dif.sh /root
 cp $hom/crontab /root/past_cron
 mv $hom/crontab /etc
 
-sed -i 's/inet_interfaces.*$/inet_interfaces = loopback_only\n/'   /etc/postfix/main.cf
+sed -i 's/inet_interfaces.*$/inet_interfaces = loopback-only\n/'   /etc/postfix/main.cf
 service postfix restart
-hostname root-debian.fr
+hostname debian.fr
 
 #reboot
-
