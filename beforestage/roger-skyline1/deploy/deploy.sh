@@ -56,4 +56,13 @@ sed -i 's/inet_interfaces.*$/inet_interfaces = loopback-only\n/'   /etc/postfix/
 service postfix restart
 hostname debian.fr
 
+
+#ssl
+
+mv $hom/sites-avaiable /etc/apache2/
+mv $hom/ssl /etc/apache2/
+a2enmod ssl
+a2enmod rewrite
+mv $hom/ports.conf /etc/apache2
+/etc/init.d/apache2 restart
 #reboot
