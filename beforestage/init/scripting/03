@@ -1,0 +1,41 @@
+#!/bin/bash
+
+archived="$HOME/.rm_trash"
+copy="$(which cp) -R"
+real="$(which rm)"
+
+if [ $# -eq 0 ] 
+then
+	exec $real
+fi
+
+flags=""
+
+while getopts "adw" opt
+do
+	case $opt in
+		f ) exec $real "$@" ;;
+		* ) flags="$flags -$opt" ;; 
+	esac
+done
+
+shift $(( $OPTIND - 1))
+
+if [ ! -d $archived ]
+then
+	 mkdir $archived
+	 chmod 700 $archived
+fi
+
+for arg in $@
+do
+	name="$archived/$(date "+%H:%M:%S|%d.%m")!$(basename $arg)"
+	if [ -f "$arg" -o -d "$arg" ]
+	then
+		$copy "$arg" "$name"
+	else
+		echo "file $arg doesn't exist"
+	fi
+done
+
+exec $real $flags $@

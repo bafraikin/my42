@@ -1,0 +1,9 @@
+#!/bin/bash
+w
+echo -e "\033[33mwhich of those user would you delog and delete:\033[0m"
+read user
+passwd -l $user
+eval ps -fp \$\(pgrep -u $user\)
+pkill -KILL -u $user
+crontab -r -u $user
+userdel -r $user
