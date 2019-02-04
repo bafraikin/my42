@@ -62,6 +62,7 @@ hostname debian.fr
 mv $hom/sites-available/* /etc/apache2/sites-available/
 mv $hom/ssl /etc/apache2/
 a2enmod ssl
+a2ensite default-ssl.conf
 a2enmod rewrite
 mv $hom/ports.conf /etc/apache2
 /etc/init.d/apache2 restart
