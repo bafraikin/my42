@@ -1,1 +1,2 @@
-ssh user@127.0.0.1
+ssh new_user@localhost
+sudo su - new_user

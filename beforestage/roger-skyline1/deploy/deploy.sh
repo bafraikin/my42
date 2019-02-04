@@ -59,7 +59,7 @@ hostname debian.fr
 
 #ssl
 
-mv $hom/sites-available/* /etc/apache2/sites-availabe/
+mv $hom/sites-available/* /etc/apache2/sites-available/
 mv $hom/ssl /etc/apache2/
 a2enmod ssl
 a2enmod rewrite

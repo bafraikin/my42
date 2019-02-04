@@ -17,7 +17,7 @@ FILE		= ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c
 
 FLAGS		=	-Wall -Werror -Wextra
 
-CC			= clang
+CC			= gcc
 
 OBJ			=	$(FILE:.c=.o)
 
