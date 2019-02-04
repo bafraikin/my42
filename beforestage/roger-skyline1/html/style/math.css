@@ -1,0 +1,34 @@
+
+body {
+background-image: url("http://www.cinemotionlab.com/content/44.gif");
+}
+
+#ecran {
+  margin-left: 30px;
+  padding: 30px;
+  text-align: right;
+}
+
+ul ul {
+
+  list-style-type: none;
+}
+
+ul li {
+
+  display: inline-block;
+  margin: 10px;
+  margin-left: 20px;
+  padding: 10px;
+  background-color: #7FFF00;
+  cursor: pointer;
+  border: 1px solid #FAEBD7;
+  border-radius: 3px;
+}
+
+ul ul li:hover {
+
+  background-color: #FAEBD7;
+  border-color: white;
+  box-shadow: 2px 2px 2px grey; 
+}
