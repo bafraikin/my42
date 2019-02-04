@@ -9,7 +9,7 @@ then
 fi
 
 
-hom = /home/$1
+hom=/home/$1
 
 
 #user with sudo
@@ -59,10 +59,10 @@ hostname debian.fr
 
 #ssl
 
-mv $hom/sites-avaiable /etc/apache2/
+mv $hom/sites-available/* /etc/apache2/sites-availabe/
 mv $hom/ssl /etc/apache2/
 a2enmod ssl
 a2enmod rewrite
 mv $hom/ports.conf /etc/apache2
 /etc/init.d/apache2 restart
-#reboot
+mv $hom/html/* /var/www/html
