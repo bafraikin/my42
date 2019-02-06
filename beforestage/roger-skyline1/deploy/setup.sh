@@ -17,6 +17,5 @@ fi
 
 cp $HOME/.ssh/id_rsa.pub authorized_keys
 scp -r . $1@$ip:/home/$1
-scp deploy.sh $1@$ip:/home/$1
 ssh $1@$ip
 

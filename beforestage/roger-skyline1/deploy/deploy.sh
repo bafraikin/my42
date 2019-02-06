@@ -32,9 +32,9 @@ sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_
 ufw default deny incoming
 ufw default allow outgoing
 ufw allow in 3022/tcp
-ufw allow 443/tcp
+ufw allow in 443/tcp
 ufw deny in ssh
-ufw deny 80/tcp
+ufw allow in 80/tcp
 ufw enable
 
 #fail2ban
