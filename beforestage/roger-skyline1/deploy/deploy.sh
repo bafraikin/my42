@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #connect to root
+sed  -i 's/^.*cdrom.*$//' /etc/apt/sources.list
 apt-get install -y sudo apache2 fail2ban portsentry mailutils postfix
 
 if [ $# = 0 ]
@@ -24,12 +25,12 @@ ip addr del $(ip addr)
 #ssh
 mkdir /home/$1/.ssh
 mv $hom/authorized_keys /home/$1/.ssh
-sed -i 's/#Port 22/Port 3022/' /etc/ssh/sshd_config
+sed -i 's/#Port 22/Port 42/' /etc/ssh/sshd_config
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
 /etc/init.d/ssh restart
 
 #firewall
-mv $hom/iptables /etc/iptables.up.rules
+mv $hom/iptables.up.rules /etc
 mv $hom/iptables /etc/network/if-pre-ud.d
 /sbin/iptables-restore < /etc/iptables.up.rules
 
