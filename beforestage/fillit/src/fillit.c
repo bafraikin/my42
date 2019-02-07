@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:17:09 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/02/07 15:35:37 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/01/09 15:55:19 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	erase(int undex, int deudex, t_grid *bgrid, int nb_piece)
 {
-
 	int x;
 	int y;
 	int i;
