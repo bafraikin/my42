@@ -231,9 +231,9 @@ banaction = route
 
 [sshd]
 
-port    = 3022
+port    = 42
 logpath = %(sshd_log)s
-banaction = ufw
+banaction = route
 backend = %(sshd_backend)s
 
 
