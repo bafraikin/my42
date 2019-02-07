@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #connect to root
-apt-get install -y sudo apache2 ufw fail2ban portsentry mailutils postfix
+apt-get install -y sudo apache2 fail2ban portsentry mailutils postfix
 
 if [ $# = 0 ]
 then
@@ -29,18 +29,16 @@ sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_
 /etc/init.d/ssh restart
 
 #firewall
-ufw default deny incoming
-ufw default allow outgoing
-ufw allow in 3022/tcp
-ufw allow in 443/tcp
-ufw deny in ssh
-ufw allow in 80/tcp
-ufw enable
+mv $hom/iptables /etc/iptables.up.rules
+mv $hom/iptables /etc/network/if-pre-ud.d
+/sbin/iptables-restore < /etc/iptables.up.rules
+
 
 #fail2ban
 mv $hom/custom.conf /etc/fail2ban/jail.d
 mv $hom/jail.local /etc/fail2ban
 mv $hom/http-ddos.conf /etc/fail2ban/filter.d
+mv $hom/route.conf /etc/fail2ban/action.d
 /etc/init.d/fail2ban restart
 
 #portsentry

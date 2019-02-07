@@ -1,12 +1,5 @@
 #!/bin/bash
 
-_DEBUG='on'
-
-function DEBUG()
-{
-	 [ "$_DEBUG" == "on" ] &&  $@
-}
-
 name=""
 if [ $# = 0 ]
 then
@@ -17,23 +10,14 @@ else
 fi
 
 whoami=$(whoami)
-vbox=/sgoinfre/goinfre/Perso/$whoami/
+vbox=/Users/bafraiki/VirtualBox\ VMs
 vbox_name=$vbox/$name
-wrong_dir="/Users/$whoami/VirtualBox Vms"
 iso=/sgoinfre/goinfre/ISO/Debian/debian-9.6.0-i386-DVD-1.iso
-iso2=/sgoinfre/goinfre/ISO/Debian/debian-9.6.0-i386-DVD-2.iso
-iso3=/sgoinfre/goinfre/ISO/Debian/debian-9.6.0-i386-DVD-3.iso
-
 VBoxManage createvm --name "$name" --ostype Debian_64 --register
 VBoxManage modifyvm "$name" --memory 1024 --acpi on --nic1 bridged --nictype1 82540EM --bridgeadapter1 en0 --vram 160
-
-mv "$wrong_dir/$name" $vbox
-ln -s $vbox_name "$wrong_dir"/$dir
-
 VBoxManage createhd --filename $vbox_name/$name.vdi --size 8000
 VBoxManage storagectl $name --name "SATA Controller" --add sata --controller IntelAHCI
 VBoxManage storageattach $name --storagectl "SATA Controller" --port 0 --device 0 \
 	--type hdd --medium $vbox_name/$name.vdi
 VBoxManage storagectl "$name" --name "IDE Controller" --add ide --controller PIIX4
 VBoxManage storageattach "$name" --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium $iso
-#VBoxManage starvm $(echo $uuid | grep "Using" | cut -d "(" -f 2 | cut -d ")" -f 1)

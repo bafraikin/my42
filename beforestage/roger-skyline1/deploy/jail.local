@@ -226,7 +226,7 @@ logpath = /var/log/apache2/access.log
 findtime = 600
 maxretry = 240
 filter = http-ddos
-banaction = ufw
+banaction = route
 
 
 [sshd]
