@@ -10,7 +10,7 @@ else
 fi
 
 whoami=$(whoami)
-vbox=/Users/bafraiki/VirtualBox\ VMs
+vbox=/Users/$whoami/VirtualBox\ VMs
 vbox_name=$vbox/$name
 iso=/sgoinfre/goinfre/ISO/Debian/debian-9.6.0-i386-DVD-1.iso
 VBoxManage createvm --name "$name" --ostype Debian_64 --register

@@ -230,7 +230,6 @@ banaction = route
 
 
 [sshd]
-
 port    = 42
 logpath = %(sshd_log)s
 banaction = route
