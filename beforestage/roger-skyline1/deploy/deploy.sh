@@ -31,8 +31,8 @@ sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_
 
 #firewall
 mv $hom/iptables.up.rules /etc
-mv $hom/iptables /etc/network/if-pre-ud.d
-/sbin/iptables-restore < /etc/iptables.up.rules
+mv $hom/iptables /etc/network/if-pre-up.d
+/sbin/iptables-restore  /etc/iptables.up.rules
 
 
 #fail2ban

@@ -21,3 +21,4 @@ VBoxManage storageattach $name --storagectl "SATA Controller" --port 0 --device 
 	--type hdd --medium "$vbox_name/$name.vdi"
 VBoxManage storagectl "$name" --name "IDE Controller" --add ide --controller PIIX4
 VBoxManage storageattach "$name" --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium $iso
+VBoxManage startvm "$name"
