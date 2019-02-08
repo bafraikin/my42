@@ -20,9 +20,12 @@ COMMIT
 :INPUT ACCEPT [34965:2255688]
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [169999:25035610]
+-P INPUT -j DROP
+-P FORWARD -j DROP
 -A INPUT -i lo -j ACCEPT
 -A INPUT -d 127.0.0.0/8 ! -i lo -j REJECT --reject-with icmp-port-unreachable
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp -m multiport --dports 80,443 -j ACCEPT
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 42 -j ACCEPT
 -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
 COMMIT
