@@ -34,7 +34,6 @@ mv $hom/iptables.up.rules /etc
 mv $hom/iptables /etc/network/if-pre-up.d
 /sbin/iptables-restore  /etc/iptables.up.rules
 
-
 #fail2ban
 mv $hom/custom.conf /etc/fail2ban/jail.d
 mv $hom/jail.local /etc/fail2ban
@@ -48,6 +47,8 @@ mv $hom/portsentry /etc/default
 /etc/init.d/portsentry restart
 
 mv $hom/crontab_dif.sh /root
+chown root $hom/crontab
+chgrp root $hom/crontab
 cp $hom/crontab /root/past_cron
 mv $hom/crontab /etc
 
