@@ -7,6 +7,7 @@ elif [ $# = 2 ]
 then
 	rm -rf /var/www/html
 	cp -r html /var/www/html
+	exit 0
 fi
 
 #connect to root
@@ -73,3 +74,6 @@ mv $hom/ports.conf /etc/apache2
 /etc/init.d/apache2 restart
 rm -rf $hom/html
 cp -r $hom/html /var/www/html
+
+
+rm -rf setup.sh sites-available
