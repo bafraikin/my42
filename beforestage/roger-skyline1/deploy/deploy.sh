@@ -1,13 +1,18 @@
 #!/bin/bash
 
+if [ $# = 0 ]
+then
+	echo "you're a little piece of shit"
+elif [ $# = 2 ]
+then
+	rm -rf /var/www/html
+	cp -r html /var/www/html
+fi
+
 #connect to root
 sed  -i 's/^.*cdrom.*$//' /etc/apt/sources.list
 apt-get install -y sudo apache2 fail2ban portsentry mailutils postfix
 
-if [ $# = 0 ]
-then
-	echo "you're a little piece of shit"
-fi
 
 
 hom=/home/$1
@@ -66,4 +71,5 @@ a2ensite default-ssl.conf
 a2enmod rewrite
 mv $hom/ports.conf /etc/apache2
 /etc/init.d/apache2 restart
-mv $hom/html/* /var/www/html
+rm -rf $hom/html
+cp -r $hom/html /var/www/html
