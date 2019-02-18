@@ -16,6 +16,6 @@ fi
 #ip=$(ping google.com | arp -a | grep "?" |  awk 'NR==1' | cut -d '(' -f 2 | cut -d ')' -f 1)
 
 cp $HOME/.ssh/id_rsa.pub authorized_keys
-scp -r . $1@$ip:/home/$1
+scp -r $(pwd) $1@$ip:/home/$1
 ssh $1@$ip
 

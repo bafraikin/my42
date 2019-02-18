@@ -5,8 +5,8 @@ then
 	echo "you're a little piece of shit"
 elif [ $# = 2 ]
 then
-	rm -rf /var/www/html
-	cp -r html /var/www/html
+	sudo rm -rf /var/www/html
+	sudo cp -r html /var/www/html
 	exit 0
 fi
 
@@ -15,9 +15,7 @@ sed  -i 's/^.*cdrom.*$//' /etc/apt/sources.list
 apt-get install -y sudo apache2 fail2ban portsentry mailutils postfix
 
 
-
-hom=/home/$1
-
+hom=/home/$1/deploy
 
 #user with sudo
 adduser $1 sudo
@@ -57,23 +55,26 @@ chown root $hom/crontab
 chgrp root $hom/crontab
 cp $hom/crontab /root/past_cron
 mv $hom/crontab /etc
-
 sed -i 's/inet_interfaces.*$/inet_interfaces = loopback-only\n/'   /etc/postfix/main.cf
 service postfix restart
 hostname debian.fr
 
 
 #ssl
-
 mv $hom/sites-available/* /etc/apache2/sites-available/
 mv $hom/ssl /etc/apache2/
+
+a2dissite 000-default.conf
+a2dissite default-ssl.conf
 a2enmod ssl
-a2ensite default-ssl.conf
+a2ensite rs1.conf
+a2ensite rs1-ssl.conf
 a2enmod rewrite
 mv $hom/ports.conf /etc/apache2
 /etc/init.d/apache2 restart
-rm -rf $hom/html
+rm -rf /var/www/html
 cp -r $hom/html /var/www/html
 
+rm -rf $hom/setup.sh $hom/sites-available
 
-rm -rf setup.sh sites-available
+ip addr del $(ip addr | grep inet | grep 10.11 | awk 'NR == 1' | cut -d " " -f 6- | cut -d " " -f 1) dev enp0s3
