@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:04:28 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/02/21 16:45:15 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/02/21 17:01:16 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 
 # define BUFF_SIZE 32
 

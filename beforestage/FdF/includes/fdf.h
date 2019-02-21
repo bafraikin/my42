@@ -1,3 +1,11 @@
+
+
+#include <stdlib.h>
+#include <math.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+
 typedef struct s_mlx
 {
 	void *ptr;
@@ -15,3 +23,5 @@ typedef struct s_img
 	int size_line;
 	int endian;
 } t_img;
+
+char **ft_parse_map(int fd);
