@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/02/21 18:33:02 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/02/22 17:25:21 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ int main(int argc, char *argv[])
 	if (!(fd = open(argv[1], O_RDONLY)))
 		exit(EXIT_FAILURE);
 	map = ft_parse_map(fd);
-
 
 	t_mlx mlx;
 	t_img img;

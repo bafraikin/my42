@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:03:23 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/02/22 13:15:56 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/02/22 17:30:33 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,39 @@ int ft_nb_elem(char **split)
 	return (i);
 }
 
-void	ft_copy_ptr(char **src, char **dest)
+void	ft_copy_ptr(char **src, char **dst)
 {
-	while (src)
+	if (!src || *src || !dst || *dst)
+		return ;
+	while (*src)
 	{
-		dst = src
-	
+		*dst = *src;
+		free(*src);
+		dst++;
+		src++;
 	}
+	free(src);
+	*dst = 0;
 }
 
-int **ft_parse_map(int fd)
+void	ft_copy_line_split(char **dst, char **line_split, int nb)
+{
+	int i;
+
+	i = -1;
+	dst[0] = (char*)malloc(sizeof(char) * nb + 1); // malloc
+	while (++i < nb)
+	{
+		dst[0][i] = ft_atoi(line_split[i]);
+		if (dst[0][i] == 0 && line_split[i][0] != 48)
+			exit(EXIT_FAILURE);
+		free(line_split[i]);
+	}
+	dst[0][nb] = -128;
+	free(line_split);  //peut etre que le dernier line split n'est pas free
+}
+
+char **ft_parse_map(int fd)
 {
 	int mall;
 	char *line;
@@ -43,26 +66,27 @@ int **ft_parse_map(int fd)
 	char **tmp;
 	char **map;
 	int nb;
-	int i;
+	int j;
+	j = -1;
 	mall = 0;
-
-	while (get_next_line(fd, &line) > 0)    				// MALLOC
+	nb = -1;
+	while (get_next_line(fd, &line) > 0 && ++j >= 0)			// MALLOC
 	{
-	mall += 10;
-
-
-
-	map = (char**)malloc(sizeof(char*) * mall);
-	line_split = ft_strsplit(line, 32); 			// MALLOC
-	nb = ft_nb_elem(line_split);
-	*map = (char*)malloc(sizeof(char) * nb);
-	i = -1;
-	while (++i < nb)
-	{
-		map[0][i] = ft_atoi(line_split[i]);
-		if (map[0][i] == 0 && line_split[i][0] != 48)
+		tmp = (char**)malloc(sizeof(char*) * (mall + 1));
+		map[mall] = 0;
+		ft_copy_ptr(map, tmp);
+		mall++;
+		map = (char**)malloc(sizeof(char*) * (mall + 1));
+		map[mall] = 0;
+		ft_copy_ptr(tmp, map);
+		line_split = ft_strsplit(line, 32); 	// MALLOC
+		if (nb == ft_nb_elem(line_split) || nb == -1)
+			nb = ft_nb_elem(line_split);
+		else
 			exit(EXIT_FAILURE);
+		ft_copy_line_split(&map[j], line_split, nb);
 	}
-	}
-	return (NULL);
+	if (get_next_line(fd, &line) < 0)			// MALLOC
+		exit(EXIT_FAILURE);
+	return (map);
 }
