@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/02/22 17:25:21 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/02/22 19:51:28 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,6 @@ int main(int argc, char *argv[])
 
 
 	mlx_put_image_to_window(mlx.ptr, mlx.win, img.ptr, 5, 5);
-	mlx_loop(mlx.ptr);
+//	mlx_loop(mlx.ptr);
 	return (0);
 }
