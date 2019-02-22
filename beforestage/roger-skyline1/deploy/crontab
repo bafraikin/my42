@@ -15,5 +15,5 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 5 3  	* *  * root 	/usr/bin/apt-get update && /usr/bin/apt-get upgrade
 5 3  	* *  * root 	/usr/bin/apt-get update && /usr/bin/apt-get upgrade
 @reboot        root 	/usr/bin/apt-get update >> /var/log/update_script.log && /usr/bin/apt-get -y upgrade >> /var/log/update_script.log
-0 */24 * * * sh /root/crontab_dif.sh
+0 */24 * * * root sh /root/crontab_dif.sh
 #
