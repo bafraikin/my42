@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:03:23 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/04 12:14:27 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/04 13:31:06 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_copy_line_split(short **dst, char *line, int *nb)
 		*nb = ft_nb_elem(line_split);
 	else
 		exit(EXIT_FAILURE);
-	if (!(dst[0] = (short*)malloc(sizeof(short) * *nb + 1)))
+	if (!(dst[0] = (short*)malloc(sizeof(short) * *nb)))
 		exit(EXIT_FAILURE);
 	while (++i < *nb)
 	{
@@ -65,33 +65,33 @@ void	ft_copy_line_split(short **dst, char *line, int *nb)
 		free(line_split[i]);
 	}
 	free(line_split[i]);
-	dst[0][*nb] = -128;
 	free(line_split);
 }
 
-char **ft_parse_map(int fd)
+t_pars *ft_parse_map(int fd)
 {
-	s_pars *pars;
+	t_pars *pars;
 	char *line;
 	int j;
 
-	map = NULL;
 	j = 0;
-	pars = (t_pars*)malloc(sizeof(t_pars));
+	if (!(pars = (t_pars*)malloc(sizeof(t_pars))))
+		exit(EXIT_FAILURE);
 	ft_bzero(pars, sizeof(t_pars));
 	pars->size_l = -1;
 	while (get_next_line(fd, &line) > 0)
 	{
-		pars->tmp = (char**)malloc(sizeof(char*) * (pars->>nb_l + 1)); // MALLOC
-		pars->tmp[pars->nb_l] = 0;
+		if (!(pars->tmp = (short**)malloc(sizeof(short*) * (pars->nb_l + 1))))
+			exit(EXIT_FAILURE);
+		pars->tmp[pars->nb_l++] = 0;
 		ft_copy_ptr(pars->map, pars->tmp);
-		pars->nb_l++;
-		pars->map = (char**)malloc(sizeof(char*) * (pars->nb_l + 1)); //MALLOC
+		if (!(pars->map = (short**)malloc(sizeof(short*) * (pars->nb_l + 1))))
+			exit(EXIT_FAILURE);
 		pars->map[pars->nb_l] = 0;
 		ft_copy_ptr(pars->tmp, pars->map);
 		ft_copy_line_split(&(pars->map[j++]), line, &pars->size_l);	
 	}
 	if (get_next_line(fd, &line) < 0)
 		exit(EXIT_FAILURE);
-	return (map);
+	return (pars);
 }
