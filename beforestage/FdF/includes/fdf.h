@@ -24,4 +24,13 @@ typedef struct s_img
 	int endian;
 } t_img;
 
+typedef struct s_pars;
+{
+	short **map;
+	short **tmp;
+	int size_l;
+	int nb_l;
+} t_pars;
+
+
 char **ft_parse_map(int fd);
