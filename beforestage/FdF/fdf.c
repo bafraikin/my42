@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/04 19:57:14 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/05 20:33:02 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,24 @@ void	ft_color_it(t_img *img, int x, int y, int color)
 	img->data[coord + 2] = color % 1000;
 	//ft_color_it(&img, 0, 0, 255255255);
 }
+/*
+void ft_makeline(t_img *img, int x, int y, int x1, int y1, int z1, int z2)
+{
+	int i;
+	t_map diff;
+	diff.x = (x - x1) / img.bpc;  //valeur_abs
+	diff.y = (y - y1) / img.bpc;
+	diff.z = (z - z1) / img.bpc;
 
+	i = -1;
+	while (++i < img->pbc)
+	{
+
+
+
+	}
+}
+*/
 int main(int argc, char *argv[])
 {
 	t_pars	*pars;
@@ -105,49 +122,51 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	pars = ft_parse_map(fd);
 
-
-	img.size = (pars->nb_l > pars->size_l) ? pars->nb_l * 30 : pars->size_l * 30;
+	img.pbc = (pars->nb_l > pars->size_l) ? 900 / pars->nb_l / 2 :  1250 / pars->size_l / 2 ;
+	img.size = (pars->nb_l > pars->size_l) ? 1500 : 1250;
 	mlx.ptr = mlx_init();
-	mlx.win = mlx_new_window(mlx.ptr, pars->size_l * 30, pars->nb_l * 30, "coucou");
+	mlx.win = mlx_new_window(mlx.ptr, 1500, 1250, "coucou");
 	img.ptr = mlx_new_image(mlx.ptr, img.size, img.size);
 	img.data = mlx_get_data_addr(img.ptr, &(img.bbp), &(img.size_line), &(img.endian));
 
 	fd = -1;
-	while (++fd <= pars->nb_l * 20 && (lol = 0) == 0)
+	while (++fd <= pars->nb_l * img.pbc)
 	{
 		tmp = fd;
 		fd = 0;
-		while (fd <= pars->size_l * 20 )
+		while (fd <= pars->size_l * img.pbc)
 		{
-			i = (((fd / 20) % 20 == 0) && fd > pars->size_l) ? pars->size_l - 1 : (fd / 20) % 20;
-			j = (((tmp / 20) % 20 == 0) && tmp > pars->nb_l) ? pars->nb_l - 1 : (tmp / 20) % 20;
-			printf("%d %d %d %d\n", i, j, tmp, pars->nb_l);
 
+			i = (((fd / img.pbc) % pars->size_l == 0) && fd > pars->size_l) ? pars->size_l - 1 : (fd / img.pbc) % pars->size_l;
+			j = (((tmp / img.pbc) % pars->nb_l == 0) && tmp > pars->nb_l) ? pars->nb_l - 1 : (tmp / img.pbc) % pars->nb_l;
 			if (i < pars->size_l - 1 && j < pars->nb_l)
-				lol = (pars->map[j][i] != 0 && pars->map[j][i + 1] != 0) ? 1 : lol;
-		/*	else
-				lol = (pars->map[j][i] != 0) ? 1 : lol;
-				*/
-			if (((fd++ % 20 == 0) || (tmp % 20 == 0)) && lol)
-				ft_color_it(&img, fd, tmp, 255255255);
-			else if (((fd - 1 ) % 20 == 0) || (tmp % 20 == 0))
+				lol = (pars->map[j][i] != 0 && pars->map[j][i + 1] != 0) ? 1 : 0;
+			else if (i < pars->size_l && j < pars->nb_l - 1)
+				lol = (pars->map[j][i] != 0 && pars->map[j + 1][i] != 0) ? 1 : lol;
+
+			if (((fd % img.pbc == 0) || (tmp % img.pbc == 0)) && lol)
+				ft_color_it(&img, fd, tmp, 0 + 10 * pars->map[j][i]);
+			else if (((fd) % img.pbc == 0) || (tmp % img.pbc == 0))
 				ft_color_it(&img, fd, tmp, 255200155);
+
+			/*
+			   if (((fd % img.pbc == 0) || (tmp % img.pbc == 0)) && lol)
+			   ft_color_it(&img, ft_x(fd, tmp), ft_y(fd, tmp), 0 + 10 * pars->map[j][i]);
+			   else if (((fd) % img.pbc == 0) || (tmp % img.pbc == 0))
+			   ft_color_it(&img, ft_x(fd, tmp), ft_y(fd, tmp), 255200155);
+			   */
+
+			fd++;
 		}
 		fd = tmp;
 	}
 
-
-	mlx_put_image_to_window(mlx.ptr, mlx.win, img.ptr, 5, 5);
+	mlx_put_image_to_window(mlx.ptr, mlx.win, img.ptr, pars->size_l * img.pbc, pars->nb_l * img.pbc);
 	mlx_loop(mlx.ptr);
 
 	fd = 0;
 	while (pars->map[fd])
 		free(pars->map[fd++]);
 	free(pars->map);
-
-	/*
-
-
-*/
 	return (0);
 }

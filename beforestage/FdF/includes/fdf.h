@@ -21,6 +21,7 @@ typedef struct s_img
 	char *data;
 	int bbp;
 	int size_line;
+	short pbc;
 	int endian;
 } t_img;
 
