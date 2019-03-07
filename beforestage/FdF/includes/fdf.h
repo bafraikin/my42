@@ -22,6 +22,7 @@ typedef struct s_img
 	int bbp;
 	int size_line;
 	short pbc;
+	int prec;
 	int endian;
 } t_img;
 
@@ -31,8 +32,15 @@ typedef struct s_pars
 	short **tmp;
 	int size_l;
 	int nb_l;
-
 } t_pars;
+
+typedef struct s_pnt
+{
+	int x;
+	int y;
+	int z;
+} t_pnt;
+
 
 
 t_pars *ft_parse_map(int fd);
