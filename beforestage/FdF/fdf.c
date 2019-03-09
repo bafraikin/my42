@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/08 18:41:27 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/09 21:52:22 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_color_it(t_img *img, int x, int y, int color)
 {
 	int coord;
 
-	if (x >= img->size || y >= img->size)
+	if (x >= img->size || y >= img->size || y < 0)
 		return ;
 	coord = 4 * x + img->size_line * y;
 	img->data[coord] = color / 1000000 % 1000;
@@ -134,17 +134,26 @@ void	free_parsing(t_pars *pars)
 	free(pars->map);
 }
 
-void generate_win(t_mlx *mlx)
+void	generate_win(t_mlx *mlx)
 {
 	if (mlx->img.ptr != NULL)
 	{
 		mlx_destroy_image(mlx->ptr, mlx->img.ptr);
-		mlx_clear_window(mlx->ptr, mlx->win);
+		//		mlx_clear_window(mlx->ptr, mlx->win);
 	}
 	mlx->img.ptr = mlx_new_image(mlx->ptr, mlx->img.size, mlx->img.size);
 	mlx->img.data = mlx_get_data_addr(mlx->img.ptr, &(mlx->img.bbp), &(mlx->img.size_line), &(mlx->img.endian));
 	ft_draw_me_a_sheep(mlx->pars, &(mlx->img));
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img.ptr, 0, 0);
+}
+
+void	byebye(t_mlx *mlx)
+{
+	mlx_destroy_image(mlx->ptr, mlx->img.ptr);
+	free_parsing(mlx->pars);
+	mlx_clear_window (mlx->ptr, mlx->win);
+	mlx_destroy_window(mlx->ptr, mlx->win);
+	exit(EXIT_SUCCESS);
 }
 
 int key_hook(int keycode, void *params)
@@ -153,13 +162,7 @@ int key_hook(int keycode, void *params)
 
 	mlx = (t_mlx*)params;
 	if (keycode == 53)
-	{
-		mlx_destroy_image(mlx->ptr, mlx->img.ptr);
-		free_parsing(mlx->pars);
-		mlx_clear_window (mlx->ptr, mlx->win);
-		mlx_destroy_window(mlx->ptr, mlx->win);
-		exit(EXIT_SUCCESS);
-	}
+		byebye(mlx);
 	else if (keycode == 49)
 		mlx->img.angle = (mlx->img.angle) ? 0 : 1;
 	else if(keycode == 126)
@@ -171,11 +174,63 @@ int key_hook(int keycode, void *params)
 	else if(keycode == 124)
 		mlx->img.d_x += mlx->pars->nb_l;
 	else if(keycode == 69)
-		mlx->img.f--; 
+		mlx->img.f--;
 	else if(keycode == 78)
-		mlx->img.f++; 
+		mlx->img.f++;
+	else if(keycode == 13)
+		mlx->img.d_y-=10;
+	else if(keycode == 1)
+		mlx->img.d_y+=10;
 	generate_win(mlx);
 	return (0);
+}
+
+int rgb_to_hex(int rgb[3])
+{
+	char *hex;
+	char h[6];
+	int b;
+	int result;
+	int i;
+
+	result = 0;
+	hex = "0123456789abcdef";
+	i = -1;
+	while (++i <= 2 && (h[i * 2] =  hex[rgb[i] / 16]) >= 0)
+		h[i * 2 + 1] = hex[(rgb[i] / 16)/ 16];
+	i = 6;
+	while (--i >= 0 && (b = pow(16, 5 - i)) >= 1)
+		result += (h[i] >= '0' && h[i] <= '9') ? (h[i] - 48) * b: (h[i] - 87) * b;
+	return (result);
+}
+
+int coucou_color(int nb)
+{
+	int ij[4];
+	int space;
+	short order[5];
+	int rgb[3];
+	int boolean;
+
+	order[0] = 1; 
+	order[1] = 0; 
+	order[2] = 2; 
+	order[3] = 1; 
+	order[4] = 0;
+	rgb[0] = 160;
+	rgb[1] = 0;
+	rgb[2] = 0;
+	ij[2] = 0;
+	ij[3] = 160;
+	space = 4;
+	ij[0] = -1;
+	while (++ij[0] < nb && (ij[1] = order[ij[0] / 40]) >= 0)
+	{
+		if (rgb[ij[1]] <= ij[2] || rgb[ij[1]] >= ij[3])
+			boolean = (rgb[ij[1]] == ij[2]) ? 1 : 0;
+		rgb[ij[1]] += (boolean) ? space : -space;
+	}
+	return(rgb_to_hex(rgb));
 }
 
 int main(int argc, char *argv[])
@@ -183,23 +238,43 @@ int main(int argc, char *argv[])
 	t_pars	*pars;
 	t_mlx	mlx;
 	int fd;
+	int color;
+	int i;
 
 	if (argc != 2)
 		exit(EXIT_FAILURE);
 	if (!(fd = open(argv[1], O_RDONLY)))
 		exit(EXIT_FAILURE);
 	ft_bzero(&mlx, sizeof(t_mlx));
+	ft_bzero(&mlx.img, sizeof(t_img));
 	pars = ft_parse_map(fd);
 	mlx.pars = pars;
 	mlx.img.prec = 10000;
 	mlx.img.angle = 1;
-	mlx.img.pbc = (pars->nb_l > pars->size_l) ? 900 / pars->nb_l / 2 :  1250 / pars->size_l / 2 ;
+	mlx.img.pbc = (pars->nb_l > pars->size_l) ? 900 / pars->nb_l / 2 : 1250 / pars->size_l / 2 ;
 	mlx.img.d_x = mlx.img.pbc * pars->nb_l;
 	mlx.img.d_y = pars->nb_l * mlx.img.pbc;
 	mlx.img.size = (pars->nb_l > pars->size_l) ? 1500 : 1250;
 	mlx.ptr = mlx_init();
-	mlx.win = mlx_new_window(mlx.ptr, 1500, 1250, "FDF");
+	mlx.win = mlx_new_window(mlx.ptr, mlx.img.size + 200, mlx.img.size, "FDF");
 	generate_win(&mlx);
+	fd = -1;
+
+	while (++fd < mlx.img.size && (i = -1) < 0)
+	{
+		if (fd > 150 && fd < 350)
+			color = coucou_color(fd - 150);
+		while (++i < 200)
+			if (i >= 85 && i <= 115 && fd >= 150 && fd <= 350)
+			{
+				if (i != 85 && i != 115 && fd != 150 && fd != 350)
+					mlx_pixel_put(mlx.ptr, mlx.win,i + mlx.img.size, fd, color);
+			}
+			else
+				mlx_pixel_put(mlx.ptr, mlx.win,i + mlx.img.size, fd, i * fd *  100);
+	}
+	mlx_string_put ( mlx.ptr, mlx.win, mlx.img.size + 86, 41 ,  1000000000, "FDF");
+	mlx_string_put ( mlx.ptr, mlx.win, mlx.img.size + 85, 40 ,  10000, "FDF");
 	mlx_key_hook(mlx.win, &key_hook, &mlx);
 	mlx_loop(mlx.ptr);
 	return (0);
