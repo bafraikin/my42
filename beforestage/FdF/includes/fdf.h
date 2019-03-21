@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 14:17:46 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/21 12:24:42 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/21 16:06:18 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ typedef struct	s_img
 	int color;
 }				t_img;
 
+typedef struct s_color
+{
+	int index;
+	int color;
+} 				t_color;
+
 typedef struct	s_mlx
 {
 	void *ptr;
@@ -53,7 +59,6 @@ typedef struct	s_mlx
 	t_img img;
 	t_pars *pars;
 }				t_mlx;
-
 
 typedef struct	s_pnt
 {

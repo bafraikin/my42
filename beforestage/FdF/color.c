@@ -6,41 +6,58 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 11:30:21 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/21 12:29:01 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/21 23:17:46 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	int_to_hex(int color, char hex[6])
-{
-	int i;
-	int result;
-
-	i = -1;
-	while (++i <= 5)
-	{
-		hex[i] = (color) % 16;
-		color /= 16;
-	}
-}
-
 void	ft_color_it(t_img *img, int x, int y, t_pnt *pnt)
 {
 	int coord;
-	char hex[6];
+	int color;
+	float diff;
 
+	diff = (pnt->z / img->prec - 0) * 1;
+	color = img->color;
 	x = x / img->prec + img->d_x;
 	y = y / img->prec + (pnt->z / img->prec) / (img->f) * -1 + img->d_y;
 	if (x >= img->size || y >= img->size || y < 0 || x < 0)
 		return ;
 	coord = 4 * x + img->size_line * y;
-	int_to_hex(img->color, hex);
-	img->data[coord + 2] = hex[5] * pow(16, 1) + hex[4];
-	img->data[coord + 1] = hex[3] * pow(16, 1) + hex[2];
-	img->data[coord + 0] = hex[1] * pow(16, 1) + hex[0];
-}
+	img->data[coord + 0] = 0xff & img->color;
+	img->data[coord + 1] = ((0xff00 & img->color) >> 8);
+	img->data[coord + 2] = ((0xff0000 & img->color) >> 16);
 
+	if (diff != 0)
+	{
+		if (((img->data[coord] + diff) / 255) >= 1)
+		{
+			img->data[coord] = -1; 
+		}
+		else
+			img->data[coord] = img->data[coord] + diff;
+		if (((img->data[coord + 1] + diff) / 255) >= 1)
+		{
+			img->data[coord + 1] = -1; 
+		}
+		else
+			img->data[coord + 1] = img->data[coord + 1] + diff;
+	}
+}
+/*
+   void	color_chart(t_img *img, int index)
+   {
+   index = (index > 180) ? 180 : index;
+   index = (index < 20) ? 20 : index;
+   img->chart[1].color = give_me_color(index);
+   img->chart[1].index = index;
+   img->chart[0].color = give_me_color(index - 20);
+   img->chart[0].index = index - 20;
+   img->chart[2].color = give_me_color(index + 20);
+   img->chart[2].index = index + 20;
+   }
+   */
 int rgb_to_hex(int rgb[3])
 {
 	char *hex;

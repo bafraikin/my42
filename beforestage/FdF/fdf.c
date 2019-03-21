@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/21 12:29:02 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/21 20:44:26 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,16 @@ int	ft_divide(int y, int x)
 	return (y / x);
 }
 
+int	ft_add(int y, int x)
+{
+	return (y + x);
+}
+
+int	ft_less(int y, int x)
+{
+	return (y - x);
+}
+
 int pythagore(int x, int y)
 {
 	return (round(sqrt(pow(x, 2) + pow(y, 2))));
@@ -53,6 +63,13 @@ void ft_cal_pnt(t_pnt *to_calc, int (*f)(int x, int y), int nb)
 	to_calc->x = (*f)(to_calc->x, nb);
 	to_calc->y = (*f)(to_calc->y, nb);
 	to_calc->z = (*f)(to_calc->z, nb);
+}
+
+void ft_pnt_vs_pnt(t_pnt *pnt1, int (*f)(int x, int y), t_pnt *pnt2)
+{
+	pnt1->x = (*f)(pnt1->x, pnt2->x);
+	pnt1->y = (*f)(pnt1->y, pnt2->y);
+	pnt1->z = (*f)(pnt1->z, pnt2->z);
 }
 
 void ft_makeline(t_img *img, t_pars *pars, t_pnt *pnt1, t_pnt *pnt2)
@@ -73,9 +90,7 @@ void ft_makeline(t_img *img, t_pars *pars, t_pnt *pnt1, t_pnt *pnt2)
 	ft_cal_pnt(pnt1, &ft_multiply, img->prec);
 	while (++i < ratio * img->pbc)
 	{
-		pnt1->x += diff.x;
-		pnt1->y += diff.y;
-		pnt1->z += diff.z;
+		ft_pnt_vs_pnt(pnt1, &ft_add, &diff);
 		ft_y(&xy[1], ft_x(&xy[0], pnt1->x, pnt1->y), pnt1->y);
 		if (img->angle)
 			ft_color_it(img, pnt1->x, pnt1->y, pnt1);
@@ -170,6 +185,11 @@ int key_hook(int keycode, void *params)
 	return (0);
 }
 
+int	coucou(int x, int y,int z, void * param)
+{
+	printf("%d %d %d\n", x, y, z);
+}
+
 int main(int argc, char *argv[])
 {
 	t_pars	*pars;
@@ -198,7 +218,6 @@ int main(int argc, char *argv[])
 	generate_win(&mlx);
 	fd = -1;
 
-
 	while (++fd < mlx.img.size && (i = -1) < 0)
 	{
 		if (fd > 150 && fd < 350)
@@ -212,9 +231,11 @@ int main(int argc, char *argv[])
 			else
 				mlx_pixel_put(mlx.ptr, mlx.win,i + mlx.img.size, fd, i * fd *  100);
 	}
+
 	mlx_string_put ( mlx.ptr, mlx.win, mlx.img.size + 86, 41 ,  1000000000, "FDF");
 	mlx_string_put ( mlx.ptr, mlx.win, mlx.img.size + 85, 40 ,  10000, "FDF");
 	mlx_key_hook(mlx.win, &key_hook, &mlx);
+	mlx_mouse_hook(mlx.win, &coucou, &mlx);
 	mlx_loop(mlx.ptr);
 	return (0);
 }
