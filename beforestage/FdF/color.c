@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 11:30:21 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/21 12:24:23 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/21 12:29:01 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_color_it(t_img *img, int x, int y, t_pnt *pnt)
 	char hex[6];
 
 	x = x / img->prec + img->d_x;
+	y = y / img->prec + (pnt->z / img->prec) / (img->f) * -1 + img->d_y;
 	if (x >= img->size || y >= img->size || y < 0 || x < 0)
 		return ;
 	coord = 4 * x + img->size_line * y;

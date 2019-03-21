@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/21 12:25:16 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/21 12:29:02 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void ft_makeline(t_img *img, t_pars *pars, t_pnt *pnt1, t_pnt *pnt2)
 		pnt1->z += diff.z;
 		ft_y(&xy[1], ft_x(&xy[0], pnt1->x, pnt1->y), pnt1->y);
 		if (img->angle)
-			ft_color_it(img, pnt1->x, pnt1->y / img->prec + img->d_y + (pnt1->z / img->prec) / (img->f) * -1, pnt1);
+			ft_color_it(img, pnt1->x, pnt1->y, pnt1);
 		else
-			ft_color_it(img, xy[0], xy[1] / img->prec + (pnt1->z / img->prec) / (img->f) * -1 + img->d_y,  pnt1);
+			ft_color_it(img, xy[0], xy[1],  pnt1);
 	}
 }
 
