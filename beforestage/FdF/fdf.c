@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/09 21:52:22 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/21 11:10:48 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,6 @@ int	ft_x(int *rendu, int x, int y)
 void	ft_y(int *rendu, int x, int y)
 {
 	*rendu = (x + y) / 2;
-}
-
-void	ft_color_it(t_img *img, int x, int y, int color)
-{
-	int coord;
-
-	if (x >= img->size || y >= img->size || y < 0)
-		return ;
-	coord = 4 * x + img->size_line * y;
-	img->data[coord] = color / 1000000 % 1000;
-	img->data[coord + 1] = color / 1000 % 1000;
-	img->data[coord + 2] = color % 1000;
 }
 
 t_pnt	*ft_fill_pnt(t_pnt *to_fill, int y, int x, int z)
@@ -185,6 +173,33 @@ int key_hook(int keycode, void *params)
 	return (0);
 }
 
+void	ft_color_it(t_img *img, int x, int y, int color)
+{
+	int coord;
+
+	if (x >= img->size || y >= img->size || y < 0 || x < 0)
+		return ;
+	coord = 4 * x + img->size_line * y;
+	img->data[coord] = color / 1000000 % 1000;
+	img->data[coord + 1] = color / 1000 % 1000;
+	img->data[coord + 2] = color % 1000;
+}
+
+int	int_to_hex(int color, char hex[6], int index)
+{
+	int i;
+	int result;
+
+	i = -1;
+	while (++i < 5)
+	{
+		hex[i] = (color / 16) % 16;
+		color /= 16;
+	}
+	result = hex[5 - index * 2] * pow(16, 1) + hex[4 - index * 2];
+	return (result);
+}
+
 int rgb_to_hex(int rgb[3])
 {
 	char *hex;
@@ -204,7 +219,7 @@ int rgb_to_hex(int rgb[3])
 	return (result);
 }
 
-int coucou_color(int nb)
+int give_me_color(int nb)
 {
 	int ij[4];
 	int space;
@@ -260,10 +275,11 @@ int main(int argc, char *argv[])
 	generate_win(&mlx);
 	fd = -1;
 
+
 	while (++fd < mlx.img.size && (i = -1) < 0)
 	{
 		if (fd > 150 && fd < 350)
-			color = coucou_color(fd - 150);
+			color = give_me_color(fd - 150);
 		while (++i < 200)
 			if (i >= 85 && i <= 115 && fd >= 150 && fd <= 350)
 			{
