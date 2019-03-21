@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 14:17:46 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/21 10:35:06 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/21 12:24:42 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct	s_img
 	int f;
 	int d_y;
 	int angle;
+	int color;
 }				t_img;
 
 typedef struct	s_mlx
@@ -64,5 +65,9 @@ typedef struct	s_pnt
 
 
 t_pars *ft_parse_map(int fd);
+void	int_to_hex(int color, char hex[6]);
+void	ft_color_it(t_img *img, int x, int y, t_pnt *pnt);
+int		rgb_to_hex(int rgb[3]);
+int		give_me_color(int nb);
 
 #endif /* ifndef FDF_H */

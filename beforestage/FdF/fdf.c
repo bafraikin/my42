@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/21 11:10:48 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/21 12:25:16 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void ft_makeline(t_img *img, t_pars *pars, t_pnt *pnt1, t_pnt *pnt2)
 		pnt1->z += diff.z;
 		ft_y(&xy[1], ft_x(&xy[0], pnt1->x, pnt1->y), pnt1->y);
 		if (img->angle)
-			ft_color_it(img, pnt1->x / img->prec + img->d_x, pnt1->y / img->prec + img->d_y + (pnt1->z / img->prec) / (img->f) * -1  ,  255 + pnt1->z * img->f);
+			ft_color_it(img, pnt1->x, pnt1->y / img->prec + img->d_y + (pnt1->z / img->prec) / (img->f) * -1, pnt1);
 		else
-			ft_color_it(img, xy[0] / img->prec + img->d_x , xy[1] / img->prec + (pnt1->z / img->prec) / (img->f) * -1 + img->d_y  ,  255 + pnt1->z * img->f);
+			ft_color_it(img, xy[0], xy[1] / img->prec + (pnt1->z / img->prec) / (img->f) * -1 + img->d_y,  pnt1);
 	}
 }
 
@@ -125,10 +125,7 @@ void	free_parsing(t_pars *pars)
 void	generate_win(t_mlx *mlx)
 {
 	if (mlx->img.ptr != NULL)
-	{
 		mlx_destroy_image(mlx->ptr, mlx->img.ptr);
-		//		mlx_clear_window(mlx->ptr, mlx->win);
-	}
 	mlx->img.ptr = mlx_new_image(mlx->ptr, mlx->img.size, mlx->img.size);
 	mlx->img.data = mlx_get_data_addr(mlx->img.ptr, &(mlx->img.bbp), &(mlx->img.size_line), &(mlx->img.endian));
 	ft_draw_me_a_sheep(mlx->pars, &(mlx->img));
@@ -173,81 +170,6 @@ int key_hook(int keycode, void *params)
 	return (0);
 }
 
-void	ft_color_it(t_img *img, int x, int y, int color)
-{
-	int coord;
-
-	if (x >= img->size || y >= img->size || y < 0 || x < 0)
-		return ;
-	coord = 4 * x + img->size_line * y;
-	img->data[coord] = color / 1000000 % 1000;
-	img->data[coord + 1] = color / 1000 % 1000;
-	img->data[coord + 2] = color % 1000;
-}
-
-int	int_to_hex(int color, char hex[6], int index)
-{
-	int i;
-	int result;
-
-	i = -1;
-	while (++i < 5)
-	{
-		hex[i] = (color / 16) % 16;
-		color /= 16;
-	}
-	result = hex[5 - index * 2] * pow(16, 1) + hex[4 - index * 2];
-	return (result);
-}
-
-int rgb_to_hex(int rgb[3])
-{
-	char *hex;
-	char h[6];
-	int b;
-	int result;
-	int i;
-
-	result = 0;
-	hex = "0123456789abcdef";
-	i = -1;
-	while (++i <= 2 && (h[i * 2] =  hex[rgb[i] / 16]) >= 0)
-		h[i * 2 + 1] = hex[(rgb[i] / 16)/ 16];
-	i = 6;
-	while (--i >= 0 && (b = pow(16, 5 - i)) >= 1)
-		result += (h[i] >= '0' && h[i] <= '9') ? (h[i] - 48) * b: (h[i] - 87) * b;
-	return (result);
-}
-
-int give_me_color(int nb)
-{
-	int ij[4];
-	int space;
-	short order[5];
-	int rgb[3];
-	int boolean;
-
-	order[0] = 1; 
-	order[1] = 0; 
-	order[2] = 2; 
-	order[3] = 1; 
-	order[4] = 0;
-	rgb[0] = 160;
-	rgb[1] = 0;
-	rgb[2] = 0;
-	ij[2] = 0;
-	ij[3] = 160;
-	space = 4;
-	ij[0] = -1;
-	while (++ij[0] < nb && (ij[1] = order[ij[0] / 40]) >= 0)
-	{
-		if (rgb[ij[1]] <= ij[2] || rgb[ij[1]] >= ij[3])
-			boolean = (rgb[ij[1]] == ij[2]) ? 1 : 0;
-		rgb[ij[1]] += (boolean) ? space : -space;
-	}
-	return(rgb_to_hex(rgb));
-}
-
 int main(int argc, char *argv[])
 {
 	t_pars	*pars;
@@ -266,6 +188,7 @@ int main(int argc, char *argv[])
 	mlx.pars = pars;
 	mlx.img.prec = 10000;
 	mlx.img.angle = 1;
+	mlx.img.color = 0xee6572;
 	mlx.img.pbc = (pars->nb_l > pars->size_l) ? 900 / pars->nb_l / 2 : 1250 / pars->size_l / 2 ;
 	mlx.img.d_x = mlx.img.pbc * pars->nb_l;
 	mlx.img.d_y = pars->nb_l * mlx.img.pbc;
