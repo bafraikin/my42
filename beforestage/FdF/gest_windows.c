@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 15:32:44 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/22 18:12:18 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/22 19:02:40 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_draw_me_a_sheep(t_pars *pars, t_img *img)
 	t_pnt	pnt[2];
 
 	i = -1;
-	while (++i < pars->nb_l && (j = -1) < 0 && i < img->size * img->pbc + img->d_y)
+	while (++i < pars->nb_l && (j = -1) < 0 && i < img->size * img->pbc)
 		while (++j < pars->size_l - 1 && j < img->size * img->pbc + img->d_x)
 		{
 			ft_fill_pnt(&pnt[0], i, j, pars->map[i][j]);

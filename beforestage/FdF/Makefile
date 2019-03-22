@@ -6,7 +6,7 @@
 #    By: salquier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/08 17:00:28 by salquier          #+#    #+#              #
-#    Updated: 2019/03/22 18:44:28 by bafraiki         ###   ########.fr        #
+#    Updated: 2019/03/22 19:10:13 by bafraiki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ SRC = 	color.c \
 		math.c \
 		parser.c
 
-CFLAGS = -Wall -Wextra -Werror -I mlx/ -I includes -L mlx -lmlx -L libft -lft -I ./libft/includes
+CFLAGS = -Wall -Wextra -Werror -I mlx/ -I includes -I ./libft/includes
+
+LIB = -L ./libft -lft -L mlx -lmlx
 
 OBJECTS = $(SRC:.c=.o)
 
@@ -47,7 +49,7 @@ LIBFCLEAN:
 	make clean -C mlx/
 
 $(NAME): ./libft/libft.a ./mlx/mlx.a $(OBJECTS)
-	gcc -o $@ $(OBJECTS) $(CFLAGS) -framework OpenGL -framework AppKit 
+	gcc -o $@ $(OBJECTS) $(CFLAGS) $(LIB) -framework OpenGL -framework AppKit 
 
 clean: $(OBJECTS) LIBFCLEAN
 	rm $(OBJECTS)

@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/22 18:52:36 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/22 18:59:47 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int		key_hook(int keycode, void *params)
 		mlx->img.d_y += (keycode == 1) ? 10 : -10;
 	else if (keycode == 7 || keycode == 6)
 		mlx->img.degrad += (keycode == 7) ? 0.2 : -0.2;
-
-	printf("%f\n", mlx->img.degrad);
 	generate_win(mlx);
 	return (0);
 }
