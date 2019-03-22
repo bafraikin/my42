@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:03:23 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/22 15:50:42 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/22 20:58:07 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ int		ft_nb_elem(char **split)
 		split++;
 	}
 	return (i);
+}
+
+void	ft_error(char *str)
+{
+	write(2, str, ft_strlen(str));
+	exit(EXIT_FAILURE);
 }
 
 void	ft_copy_ptr(short **src, short **dst)
@@ -49,19 +55,19 @@ void	ft_copy_line_split(short **dst, char *line, int *nb)
 
 	i = -1;
 	if (!(line_split = ft_strsplit(line, 32)))
-		exit(EXIT_FAILURE);
+		ft_error("map error\n");
 	free(line);
 	if (*nb == ft_nb_elem(line_split) || *nb == -1)
 		*nb = ft_nb_elem(line_split);
 	else
-		exit(EXIT_FAILURE);
+		ft_error("map error\n");
 	if (!(dst[0] = (short*)malloc(sizeof(short) * *nb)))
 		exit(EXIT_FAILURE);
 	while (++i < *nb)
 	{
 		dst[0][i] = ft_atoi(line_split[i]);
 		if (dst[0][i] == 0 && line_split[i][0] != 48)
-			exit(EXIT_FAILURE);
+			ft_error("map error\n");
 		free(line_split[i]);
 	}
 	free(line_split[i]);
