@@ -6,7 +6,7 @@
 #    By: salquier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/08 17:00:28 by salquier          #+#    #+#              #
-#    Updated: 2019/03/22 19:10:13 by bafraiki         ###   ########.fr        #
+#    Updated: 2019/03/22 20:17:20 by bafraiki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRC = 	color.c \
 
 CFLAGS = -Wall -Wextra -Werror -I mlx/ -I includes -I ./libft/includes
 
+CC = gcc $(CFLAGS)
+
 LIB = -L ./libft -lft -L mlx -lmlx
 
 OBJECTS = $(SRC:.c=.o)
@@ -30,14 +32,14 @@ OBJECTS = $(SRC:.c=.o)
 .PHONY : all clean fclean re
 
 %.o: %.c
-	gcc -o $@ -c $? $(CFLAGS)
+	$(CC) -o $@ -c $?
 
 all: $(NAME) 
 
 ./libft/libft.a:
 	make -C libft/
 
-./mlx/mlx.a:
+./mlx/libmlx.a:
 	make -C mlx/
 
 LIBCLEAN:
@@ -48,8 +50,8 @@ LIBFCLEAN:
 	make fclean -C libft/
 	make clean -C mlx/
 
-$(NAME): ./libft/libft.a ./mlx/mlx.a $(OBJECTS)
-	gcc -o $@ $(OBJECTS) $(CFLAGS) $(LIB) -framework OpenGL -framework AppKit 
+$(NAME): ./libft/libft.a $(OBJECTS) ./mlx/libmlx.a
+	$(CC) -o $@ $(OBJECTS) $(LIB) -framework OpenGL -framework AppKit 
 
 clean: $(OBJECTS) LIBFCLEAN
 	rm $(OBJECTS)
