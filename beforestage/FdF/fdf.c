@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/21 20:44:26 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/22 11:08:44 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,9 +185,16 @@ int key_hook(int keycode, void *params)
 	return (0);
 }
 
-int	coucou(int x, int y,int z, void * param)
+int	change_color(int button, int x,int y, void *param)
 {
-	printf("%d %d %d\n", x, y, z);
+	t_mlx *mlx;
+
+	mlx = (t_mlx*)param;
+	if (button == 1 && x >= 85 + mlx->img.size && x <= 115 + mlx->img.size)
+		if ( y >= 150 && y <= 350)
+			mlx->img.color = give_me_color(y - 150);
+	generate_win(mlx);
+	return (1);
 }
 
 int main(int argc, char *argv[])
@@ -235,7 +242,7 @@ int main(int argc, char *argv[])
 	mlx_string_put ( mlx.ptr, mlx.win, mlx.img.size + 86, 41 ,  1000000000, "FDF");
 	mlx_string_put ( mlx.ptr, mlx.win, mlx.img.size + 85, 40 ,  10000, "FDF");
 	mlx_key_hook(mlx.win, &key_hook, &mlx);
-	mlx_mouse_hook(mlx.win, &coucou, &mlx);
+	mlx_mouse_hook(mlx.win, &change_color, &mlx);
 	mlx_loop(mlx.ptr);
 	return (0);
 }

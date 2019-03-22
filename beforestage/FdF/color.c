@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 11:30:21 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/21 23:17:46 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/22 11:12:19 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_color_it(t_img *img, int x, int y, t_pnt *pnt)
 	int color;
 	float diff;
 
-	diff = (pnt->z / img->prec - 0) * 1;
+	diff = (pnt->z / img->prec - 0) * 1.2;
 	color = img->color;
 	x = x / img->prec + img->d_x;
 	y = y / img->prec + (pnt->z / img->prec) / (img->f) * -1 + img->d_y;
@@ -33,10 +33,14 @@ void	ft_color_it(t_img *img, int x, int y, t_pnt *pnt)
 	{
 		if (((img->data[coord] + diff) / 255) >= 1)
 		{
-			img->data[coord] = -1; 
+			img->data[coord] = -1;
+			diff -= (255 - img->data[coord]);
 		}
 		else
+		{
 			img->data[coord] = img->data[coord] + diff;
+			diff = 0;
+		}
 		if (((img->data[coord + 1] + diff) / 255) >= 1)
 		{
 			img->data[coord + 1] = -1; 
@@ -45,19 +49,7 @@ void	ft_color_it(t_img *img, int x, int y, t_pnt *pnt)
 			img->data[coord + 1] = img->data[coord + 1] + diff;
 	}
 }
-/*
-   void	color_chart(t_img *img, int index)
-   {
-   index = (index > 180) ? 180 : index;
-   index = (index < 20) ? 20 : index;
-   img->chart[1].color = give_me_color(index);
-   img->chart[1].index = index;
-   img->chart[0].color = give_me_color(index - 20);
-   img->chart[0].index = index - 20;
-   img->chart[2].color = give_me_color(index + 20);
-   img->chart[2].index = index + 20;
-   }
-   */
+
 int rgb_to_hex(int rgb[3])
 {
 	char *hex;
