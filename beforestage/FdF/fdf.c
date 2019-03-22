@@ -6,11 +6,10 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/22 15:46:14 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/22 18:52:36 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "fdf.h"
 #include "libft.h"
 
@@ -37,6 +36,8 @@ int		key_hook(int keycode, void *params)
 		mlx->img.d_y += (keycode == 1) ? 10 : -10;
 	else if (keycode == 7 || keycode == 6)
 		mlx->img.degrad += (keycode == 7) ? 0.2 : -0.2;
+
+	printf("%f\n", mlx->img.degrad);
 	generate_win(mlx);
 	return (0);
 }
@@ -83,9 +84,8 @@ void	ft_init_mlx(t_mlx *mlx, t_pars *pars)
 {
 	int size;
 
-	size = mlx->img.size;
 	mlx->img.prec = 10000;
-	mlx->img.degrad = 1.0;
+	mlx->img.degrad = 0.3;
 	mlx->img.angle = 1;
 	mlx->img.color = 0xee6572;
 	mlx->img.pbc = (pars->nb_l > pars->size_l) ? 900 / pars->nb_l / 2
@@ -93,6 +93,7 @@ void	ft_init_mlx(t_mlx *mlx, t_pars *pars)
 	mlx->img.d_x = mlx->img.pbc * pars->nb_l;
 	mlx->img.d_y = pars->nb_l * mlx->img.pbc;
 	mlx->img.size = (pars->nb_l > pars->size_l) ? 1500 : 1250;
+	size = mlx->img.size;
 	mlx->ptr = mlx_init();
 	mlx->win = mlx_new_window(mlx->ptr, size + 200, size, "FDF");
 }

@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 14:17:46 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/22 15:30:31 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/22 17:32:08 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <math.h>
 # include <unistd.h>
 # include <fcntl.h>
-
+# include "mlx.h"
 
 typedef struct	s_pars
 {
@@ -83,5 +83,9 @@ void	ft_cal_pnt(t_pnt *to_calc, int (*f)(int x, int y), int nb);
 void	ft_pnt_vs_pnt(t_pnt *pnt1, int (*f)(int x, int y), t_pnt *pnt2);
 int		ft_x(int *rendu, int x, int y);
 void	ft_y(int *rendu, int x, int y);
+void	byebye(t_mlx *mlx);
+void	generate_win(t_mlx *mlx);
+void	ft_draw_me_a_sheep(t_pars *pars, t_img *img);
+void	free_parsing(t_pars *pars);
 
 #endif /* ifndef FDF_H */

@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 15:32:44 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/22 16:05:51 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/22 18:12:18 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ void	ft_makeline(t_img *img, t_pnt *pnt1, t_pnt *pnt2)
 	}
 }
 
+void	ft_draw_lamb(t_pnt *pnt1, t_pnt *pnt2, t_img *img)
+{
+	ft_cal_pnt(pnt1, &ft_multiply, img->pbc);
+	ft_cal_pnt(pnt2, &ft_multiply, img->pbc);
+	ft_makeline(img, pnt1, pnt2);
+}
+
 void	ft_draw_me_a_sheep(t_pars *pars, t_img *img)
 {
 	int		i;
@@ -57,22 +64,22 @@ void	ft_draw_me_a_sheep(t_pars *pars, t_img *img)
 	t_pnt	pnt[2];
 
 	i = -1;
-	while (++i < pars->nb_l && (j = -1) < 0)
-		while (++j < pars->size_l - 1)
+	while (++i < pars->nb_l && (j = -1) < 0 && i < img->size * img->pbc + img->d_y)
+		while (++j < pars->size_l - 1 && j < img->size * img->pbc + img->d_x)
 		{
-			ft_cal_pnt(ft_fill_pnt(&pnt[0], i, j, pars->map[i][j]), &ft_multiply, img->pbc);
-			ft_cal_pnt(ft_fill_pnt(&pnt[1], i, j + 1, pars->map[i][j + 1]), &ft_multiply, img->pbc);
-			ft_makeline(img, &pnt[0], &pnt[1]);
+			ft_fill_pnt(&pnt[0], i, j, pars->map[i][j]);
+			ft_fill_pnt(&pnt[1], i, j + 1, pars->map[i][j + 1]);
+			ft_draw_lamb(&pnt[0], &pnt[1], img);
 			if (i < pars->nb_l - 1)
 			{
-				ft_cal_pnt(ft_fill_pnt(&pnt[0], i, j, pars->map[i][j]), &ft_multiply, img->pbc);
-				ft_cal_pnt(ft_fill_pnt(&pnt[1], i + 1, j, pars->map[i + 1][j]), &ft_multiply, img->pbc);
-				ft_makeline(img, &pnt[0], &pnt[1]);
+				ft_fill_pnt(&pnt[0], i, j, pars->map[i][j]);
+				ft_fill_pnt(&pnt[1], i + 1, j, pars->map[i + 1][j]);
+				ft_draw_lamb(&pnt[0], &pnt[1], img);
 				if (j == pars->size_l - 2)
 				{
-					ft_cal_pnt(ft_fill_pnt(&pnt[0], i, j + 1, pars->map[i][j + 1]), &ft_multiply, img->pbc);
-					ft_cal_pnt(ft_fill_pnt(&pnt[1], i + 1, j + 1, pars->map[i + 1][j + 1]), &ft_multiply, img->pbc);
-					ft_makeline(img, &pnt[0], &pnt[1]);
+					ft_fill_pnt(&pnt[0], i, j + 1, pars->map[i][j + 1]);
+					ft_fill_pnt(&pnt[1], i + 1, j + 1, pars->map[i + 1][j + 1]);
+					ft_draw_lamb(&pnt[0], &pnt[1], img);
 				}
 			}
 		}
@@ -85,14 +92,4 @@ void	byebye(t_mlx *mlx)
 	mlx_clear_window(mlx->ptr, mlx->win);
 	mlx_destroy_window(mlx->ptr, mlx->win);
 	exit(EXIT_SUCCESS);
-}
-
-void	free_parsing(t_pars *pars)
-{
-	int i;
-
-	i = 0;
-	while (pars->map[i])
-		free(pars->map[i++]);
-	free(pars->map);
 }
