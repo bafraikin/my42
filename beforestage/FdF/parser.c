@@ -6,14 +6,14 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:03:23 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/08 16:26:46 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/22 15:50:42 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "fdf.h"
 
-int ft_nb_elem(char **split)
+int		ft_nb_elem(char **split)
 {
 	int i;
 
@@ -44,10 +44,10 @@ void	ft_copy_ptr(short **src, short **dst)
 
 void	ft_copy_line_split(short **dst, char *line, int *nb)
 {
-	int i;
-	char **line_split;
-	i = -1;
+	int		i;
+	char	**line_split;
 
+	i = -1;
 	if (!(line_split = ft_strsplit(line, 32)))
 		exit(EXIT_FAILURE);
 	free(line);
@@ -68,11 +68,11 @@ void	ft_copy_line_split(short **dst, char *line, int *nb)
 	free(line_split);
 }
 
-t_pars *ft_parse_map(int fd)
+t_pars	*ft_parse_map(int fd)
 {
-	t_pars *pars;
-	char *line;
-	int j;
+	t_pars	*pars;
+	char	*line;
+	int		j;
 
 	j = 0;
 	if (!(pars = (t_pars*)malloc(sizeof(t_pars))))
@@ -89,7 +89,7 @@ t_pars *ft_parse_map(int fd)
 			exit(EXIT_FAILURE);
 		pars->map[pars->nb_l] = 0;
 		ft_copy_ptr(pars->tmp, pars->map);
-		ft_copy_line_split(&(pars->map[j++]), line, &pars->size_l);	
+		ft_copy_line_split(&(pars->map[j++]), line, &pars->size_l);
 	}
 	if (get_next_line(fd, &line) < 0)
 		exit(EXIT_FAILURE);
