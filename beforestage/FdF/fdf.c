@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/22 18:59:47 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/23 15:36:34 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,13 @@ int		main(int argc, char *argv[])
 	int		fd;
 
 	if (argc != 2)
-		exit(EXIT_FAILURE);
+		ft_error("usage: ./fdf valid_file_map\n");
 	if (!(fd = open(argv[1], O_RDONLY)))
-		exit(EXIT_FAILURE);
+		ft_error("usage: ./fdf valid_file_map\n");
 	ft_bzero(&mlx, sizeof(t_mlx));
 	ft_bzero(&mlx.img, sizeof(t_img));
 	pars = ft_parse_map(fd);
+	(pars->nb_l == 0) ? ft_error("map error\n") : 0;
 	mlx.pars = pars;
 	ft_init_mlx(&mlx, pars);
 	generate_win(&mlx);

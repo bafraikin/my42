@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 14:17:46 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/22 17:32:08 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/23 15:32:19 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ void	byebye(t_mlx *mlx);
 void	generate_win(t_mlx *mlx);
 void	ft_draw_me_a_sheep(t_pars *pars, t_img *img);
 void	free_parsing(t_pars *pars);
+void	ft_error(char *str);
 
 #endif /* ifndef FDF_H */
