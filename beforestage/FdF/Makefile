@@ -6,7 +6,7 @@
 #    By: salquier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/08 17:00:28 by salquier          #+#    #+#              #
-#    Updated: 2019/03/22 20:58:02 by bafraiki         ###   ########.fr        #
+#    Updated: 2019/03/23 13:03:37 by bafraiki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ LIBFCLEAN:
 $(NAME): ./libft/libft.a $(OBJECTS) ./mlx/libmlx.a
 	$(CC) -o $@ $(OBJECTS) $(LIB) -framework OpenGL -framework AppKit 
 
-clean: $(OBJECTS) LIBFCLEAN
+clean: $(OBJECTS) LIBCLEAN
 	rm $(OBJECTS)
 
 fclean: all clean LIBFCLEAN
