@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 14:17:46 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/27 18:52:18 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/27 20:30:29 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_pars
 	short	**tmp;
 	int		size_l;
 	int		nb_l;
+	int		max;
 }				t_pars;
 
 typedef struct	s_img
@@ -42,6 +43,7 @@ typedef struct	s_img
 	int		d_y;
 	int		angle;
 	int		color;
+	int		max;
 	float	degrad;
 }				t_img;
 

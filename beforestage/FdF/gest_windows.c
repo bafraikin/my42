@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 15:32:44 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/22 19:02:40 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/27 21:13:03 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_makeline(t_img *img, t_pnt *pnt1, t_pnt *pnt2)
 	diff.x = (pnt2->x - pnt1->x);
 	diff.y = (pnt2->y - pnt1->y);
 	ratio = diff.z != 0 ? pythagore(diff.x, diff.y) : img->pbc;
+	ratio /= (img->max < 3) ? 8 : 1;
 	img->f = img->f == 0 ? ratio / 2 : img->f;
 	ft_cal_pnt(&diff, &ft_multiply, img->prec);
 	ft_cal_pnt(&diff, &ft_divide, ratio * img->pbc);

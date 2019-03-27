@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/27 20:12:57 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/27 21:15:59 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		key_hook(int keycode, void *params)
 		mlx->img.d_x -= mlx->pars->nb_l;
 	else if (keycode == 124)
 		mlx->img.d_x += mlx->pars->nb_l;
-	else if (keycode == 69 || keycode == 78)
+	else if ((keycode == 69 || keycode == 78))
 		mlx->img.f += (keycode == 78) ? 1 : -1;
 	else if (keycode == 13 || keycode == 1)
 		mlx->img.d_y += (keycode == 1) ? 10 : -10;
@@ -109,6 +109,7 @@ int		main(int argc, char *argv[])
 	ft_bzero(&mlx, sizeof(t_mlx));
 	ft_bzero(&mlx.img, sizeof(t_img));
 	pars = ft_parse_map(fd);
+	mlx.img.max = pars->max;
 	(pars->nb_l == 0) ? ft_error("map error\n") : 0;
 	mlx.pars = pars;
 	ft_init_mlx(&mlx, pars);

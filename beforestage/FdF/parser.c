@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:03:23 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/22 20:58:07 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/27 20:23:00 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_copy_ptr(short **src, short **dst)
 	dst[i] = 0;
 }
 
-void	ft_copy_line_split(short **dst, char *line, int *nb)
+void	ft_copy_line_split(short **dst, char *line, int *nb, int *max)
 {
 	int		i;
 	char	**line_split;
@@ -69,6 +69,7 @@ void	ft_copy_line_split(short **dst, char *line, int *nb)
 		if (dst[0][i] == 0 && line_split[i][0] != 48)
 			ft_error("map error\n");
 		free(line_split[i]);
+		*max = (abs(dst[0][i]) > 0) ? abs(dst[0][i]) : *max;
 	}
 	free(line_split[i]);
 	free(line_split);
@@ -95,7 +96,7 @@ t_pars	*ft_parse_map(int fd)
 			exit(EXIT_FAILURE);
 		pars->map[pars->nb_l] = 0;
 		ft_copy_ptr(pars->tmp, pars->map);
-		ft_copy_line_split(&(pars->map[j++]), line, &pars->size_l);
+		ft_copy_line_split(&(pars->map[j++]), line, &pars->size_l, &pars->max);
 	}
 	if (get_next_line(fd, &line) < 0)
 		exit(EXIT_FAILURE);
