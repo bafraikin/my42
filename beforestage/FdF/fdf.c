@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:59:42 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/23 15:36:34 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/27 16:50:28 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int		main(int argc, char *argv[])
 
 	if (argc != 2)
 		ft_error("usage: ./fdf valid_file_map\n");
-	if (!(fd = open(argv[1], O_RDONLY)))
+	if ((fd = open(argv[1], O_RDONLY) < 0))
 		ft_error("usage: ./fdf valid_file_map\n");
 	ft_bzero(&mlx, sizeof(t_mlx));
 	ft_bzero(&mlx.img, sizeof(t_img));
