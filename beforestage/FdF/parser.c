@@ -6,7 +6,7 @@
 /*   By: bafraiki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:03:23 by bafraiki          #+#    #+#             */
-/*   Updated: 2019/03/27 20:23:00 by bafraiki         ###   ########.fr       */
+/*   Updated: 2019/03/27 21:27:24 by bafraiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_copy_line_split(short **dst, char *line, int *nb, int *max)
 		if (dst[0][i] == 0 && line_split[i][0] != 48)
 			ft_error("map error\n");
 		free(line_split[i]);
-		*max = (abs(dst[0][i]) > 0) ? abs(dst[0][i]) : *max;
+		*max = (abs(dst[0][i]) > *max) ? abs(dst[0][i]) : *max;
 	}
 	free(line_split[i]);
 	free(line_split);
