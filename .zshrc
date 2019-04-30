@@ -100,6 +100,7 @@ export WORK=$HOME/Code/projectBapt/beforestage/FdF
 alias gwc='gcc -Wall -Werror -Wextra'
 alias ct='cd $WORK'
 alias vf='vim -O $(fzf)'
+alias chrome='open -a "Google Chrome"'
 
 export VAGRANT_HOME=/Volumes/Storage/goinfre/bafraiki/vagrant
 
