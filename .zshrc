@@ -123,7 +123,7 @@ function upg()
 	cp $HOME/.zshrc $pathRen
 	cp $HOME/.vimrc $pathRen
 	cp $HOME/.gitconfig $pathRen
-	cp $HOME/.tmux.conf $pathRen
+	cp $HOME/php_piscine $pathRen
 
 	cd $pathRen
 	git add .
