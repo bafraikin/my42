@@ -1,0 +1,14 @@
+[user]
+	name = bafraiki
+	email = bafraiki@student.42.fr
+	signinkey = 78C2B34E83375EFA
+[alias]
+	s='status'
+	lg = log --graph --pretty=format:'%C(bold)–%Creset %C(red bold)%h%d%Creset | %C(green)%an%Creset | %C(magenta)%cr%Creset | %C(cyan)%s%Creset'
+	lgp = log -p
+	lgn = log --name-only
+	br = branch
+	ll = branch --list
+[core]
+	editor = vim
+	autocrlf = input
