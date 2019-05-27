@@ -1,0 +1,6 @@
+#!/bin/bash
+# pour filtrer un service ps il faut faire : docker service ps -f "name=redis.1" redis ( l'option -f equivalent a --filter filtre l'output en fonction des conditions, par exemple ici il va afficher les services redis qui ont pour nom redis.1 ) --> si on veut que l'id on rajout -q ou --quiet
+# on a donc l'id d'un seul service qui nous interesse
+# il suffit d'afficher les logs avec docker service logs -f ID
+
+docker service logs -f $(docker service ps -f "name=engineering-bay.1" engineering-bay -q)

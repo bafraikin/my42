@@ -1,0 +1,6 @@
+#!/bin/bash
+# You need to be ssh on the worker machine you want to add so you can get the informations you need for the command
+# So if you run the empty command { docker swarm join-token worker } you'll get info on how to connect the machine as a worker to a manager
+# You'll get docker swarm join and then a sort of ID called manager token (which is the result of the "docker swarm join-token worker -q" which is only a part of the previous initial command) and the the ip of the manager and a number.
+
+docker-machine ssh Aiur "docker swarm join --token $(docker swarm join-token worker -q) $(docker-machine ip Char):2377"

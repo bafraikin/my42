@@ -1,0 +1,13 @@
+#!/bin/bash
+#install python and binded mount on ~
+docker run -dt --name Abathur -v /Users/vlhomme/Abathur:/root -p 3000:3000 python:2-slim
+
+#install flask on the python container
+docker exec Abathur pip install flask
+#you can check the version of flask using -> docker exec Abathur pip freeze
+
+#script for flask hello world en h1
+cp ./.app.py ~/Abathur/app.py
+
+#execute le script qui est dans ~/Abatur (c'est a dire accessible au /root du container grace au binded mount)
+docker exec -e FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port 3000

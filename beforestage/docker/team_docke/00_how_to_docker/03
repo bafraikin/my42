@@ -1,0 +1,18 @@
+#/bin/bash
+exist=$(brew info toilet | grep install | head -n 1)
+ok="Not installed"
+if [ "$exist" != "$ok" ]
+then
+	eval $(docker-machine env Char)
+	echo "FOR SOME REASON (the corrected can explain)\nthe command 'eval \$(docker-machine env Char)'\ndoesn't work in .sh, you need to copy it\nOR\nyou can run this script buy doing . ./03" | toilet -f term -F border --gay
+else
+	brew install toilet
+	echo "FOR SOME REASON (the corrected can explain)\nthe command 'eval \$(docker-machine env Char)'\ndoesn't work in .sh, you need to copy it\nOR\nyou can run this script buy doing . ./03" | toilet -f term -F border --gay
+fi
+
+
+
+
+
+### anyway, here is the thing to cat in the terminal %_%
+eval $(docker-machine env Char)

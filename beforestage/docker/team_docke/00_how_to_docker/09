@@ -1,0 +1,7 @@
+apt-get update -y
+apt-get upgrade -y
+apt-get install gcc -y
+apt-get install git -y
+
+# comment lancer debian ?
+# docker container run --rm -it --name DEBIAN debian bash

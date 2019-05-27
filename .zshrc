@@ -96,7 +96,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export WORK=$HOME/Code/projectBapt/beforestage/FdF
+export WORK=$HOME/Code/projectBapt/beforestage/docker
 alias gwc='gcc -Wall -Werror -Wextra'
 alias ct='cd $WORK'
 alias vf='vim -O $(fzf)'
@@ -122,6 +122,7 @@ function upg()
 
 	cp $HOME/.zshrc $pathRen
 	cp $HOME/.vimrc $pathRen
+	cp $HOME/.gitconfig $pathRen
 	cp $HOME/.tmux.conf $pathRen
 
 	cd $pathRen
