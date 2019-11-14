@@ -1,8 +1,9 @@
 set showcmd
-set autoread 
+set autoread
 set incsearch
 set autoindent
 set smartindent
+set shiftwidth=2
 set smarttab
 set encoding=utf-8
 set nu
@@ -21,8 +22,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'dhruvasagar/vim-zoom'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 " The following are examples of different formats supported.
