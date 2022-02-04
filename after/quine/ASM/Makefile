@@ -1,3 +1,6 @@
-
 all:
-	nasm -f elf64 hello.asm && gcc -static hello.o
+	nasm -f elf64 Colleen.s && gcc -static Colleen.o -o Colleen
+clean: all
+	rm Colleen.o
+fclean: all clean
+	rm Colleen
