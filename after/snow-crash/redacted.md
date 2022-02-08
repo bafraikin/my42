@@ -72,6 +72,17 @@ find / -group flag05 2>/dev/null
 
 cat /usr/sbin/openarenaserver 
 
+echo 'getflag > /tmp/coucou' > /opt/openarenaserver/coucou
+
+
+watch cat /tmp/coucou -> viuaaale9huek52boumoomioc
+
+
+# level 6
+
+
+
+
 
 
 
