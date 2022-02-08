@@ -1,3 +1,5 @@
+
+# level 0
 level00:level00
 
 `find / -group "flag00" 2>/dev/null`
@@ -19,3 +21,5 @@ cdiiddwpgswtgt
 ```
 x24ti5gi3x0ol2eh4esiuxias
 ```
+# level 1
+su level01:x24ti5gi3x0ol2eh4esiuxias
