@@ -66,8 +66,12 @@ Check flag.Here is your token : ne2searoevaevoem4ov4ar8ap
 
 # level 5
 
-find / -group flag05 2>/dev/mull
+you have new mail in /var/mail/level05
+
+find / -group flag05 2>/dev/null
 
 cat /usr/sbin/openarenaserver 
+
+
 
 
