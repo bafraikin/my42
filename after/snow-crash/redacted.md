@@ -23,3 +23,13 @@ x24ti5gi3x0ol2eh4esiuxias
 ```
 # level 1
 su level01:x24ti5gi3x0ol2eh4esiuxias
+
+`cat /etc/passwd`
+
+flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
+
+su flag01:42hDRfypTqqnw -> fail
+
+john the ripper  [DES 128/128 SSE2-16]) -> ```42hDRfypTqqnw :  abcdefg```
+
+#
