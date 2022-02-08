@@ -1,4 +1,5 @@
 level00:level00
+
 `find / -group "flag00" 2>/dev/null`
 ```
 /usr/sbin/john
@@ -8,3 +9,4 @@ level00:level00
 ```
 cdiiddwpgswtgt
 ```
+su flag00:cdiiddwpgswtgt
