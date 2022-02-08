@@ -46,3 +46,8 @@ level02.pcap open it with wireshark follow tcp stream -> read pwd flag
 
 Password: ft_wandr...NDRel.L0L -> ft_waNDReL0L
 
+getflag-> kooda2puivaav1idi4f57q8iq
+
+# level 03
+su level03:kooda2puivaav1idi4f57q8iq
+
