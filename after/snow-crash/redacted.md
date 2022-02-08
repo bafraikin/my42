@@ -32,4 +32,11 @@ su flag01:42hDRfypTqqnw -> fail
 
 john the ripper  [DES 128/128 SSE2-16]) -> ```42hDRfypTqqnw :  abcdefg```
 
-#
+su flag01:abcdef
+
+getflag
+```
+f2av5il02puano7naaf6adaaf
+```
+
+# level 02
