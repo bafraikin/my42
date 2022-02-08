@@ -50,4 +50,8 @@ getflag-> kooda2puivaav1idi4f57q8iq
 
 # level 03
 su level03:kooda2puivaav1idi4f57q8iq
+./level03 -> exploit me
+ls -l ./level03 a le groupe flag03
+en desassemblant le binaire, la string est ecrite comme ceci "/usr/bin/env echo Exploit me"
 
+en utilisant un autre echo on peut appeler getflag et avoir le flag `qi0maab88jeaj46qoumi7maus`
