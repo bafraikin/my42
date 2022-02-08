@@ -76,7 +76,7 @@ echo 'getflag > /tmp/coucou' > /opt/openarenaserver/coucou
 
 
 watch cat /tmp/coucou -> viuaaale9huek52boumoomioc
-
+viuaaale9huek52boumoomioc
 
 # level 6
 
