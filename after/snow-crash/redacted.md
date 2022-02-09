@@ -117,7 +117,11 @@ on obtient le token `quif5eloekouj29ke0vouxean`
 getflag `25749xKZ8L7DkSCwJkT9dyv6f`
 
 
+# level 9
 
+en utilisant le programme level9 on voit qu'on a faire avec un programme qui ajoute une rotation
+
+while read line; do for (( i=0 ; i<${#line} ; i++ )) ; do echo ord ${line:$i:1} ; done ; done < token
 
 
 
