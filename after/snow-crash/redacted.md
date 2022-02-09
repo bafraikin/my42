@@ -172,6 +172,9 @@ puis lancer 2-3 fois
 level10 /tmp/dull IP_PC
 ```
 on obtient woupa2yuojeeaaed06riuj63c
+```
+getflag -> feulo4b72j7edeahuete3no7c
+```
 
 
 
