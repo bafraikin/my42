@@ -176,6 +176,20 @@ on obtient woupa2yuojeeaaed06riuj63c
 getflag -> feulo4b72j7edeahuete3no7c
 ```
 
+# level11
+
+un programme en lua qui cherche un password, qui contient un hash sha1
+on crack grace a hashes.com
+
+f05d1d066fb246efe0c6f7d095f909a7a0cf34a0 donne
+
+f05d1d066fb246efe0c6f7d095f909a7a0cf34a0:NotSoEasy
+
+sauf que le hash est reverse donc 
+
+echo "f05d1d066fb246efe0c6f7d095f909a7a0cf34a0" | rev 
+on doit crack "0a43fc0a7a909f590d7f6c0efe642bf660d1d50f"
+
 
 
 
