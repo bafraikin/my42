@@ -104,6 +104,21 @@ fiumuikeil55xe9cu4dood66h
 
 su level08:fiumuikeil55xe9cu4dood66h
 
+get token by `ln -s $(pwd)/token /tmp/coucou`
+puis ./level08 /tmp/coucou
+le nom token est harcode et si le fichier a un autre nom on peut le lire. 
+on le voit en regardant en desassenblant
+le programme compare le nom du fichier donne en argument et la string "token"
+
+on obtient le token `quif5eloekouj29ke0vouxean`
+
+`flag08:quif5eloekouj29ke0vouxean`
+
+getflag `25749xKZ8L7DkSCwJkT9dyv6f`
+
+
+
+
 
 
 
