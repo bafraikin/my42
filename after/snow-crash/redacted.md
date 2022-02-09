@@ -119,11 +119,45 @@ getflag `25749xKZ8L7DkSCwJkT9dyv6f`
 
 # level 9
 
-en utilisant le programme level9 on voit qu'on a faire avec un programme qui ajoute une rotation
-
-while read line; do for (( i=0 ; i<${#line} ; i++ )) ; do echo ord ${line:$i:1} ; done ; done < token
+en utilisant le programme level9 on voit qu'on a faire avec un programme qui ajoute une rotation qui s'incremente abc devient abe et aaa devient abc
 
 
+while read line; do for (( i=0 ; i<${#line} ; i++ )) ; do echo ${line:$i:1} - $i | bc  ; done ; done < token
+
+xxd -g 1 token > 66 34 6b 6d 6d 36 70 7c 3d 82 7f 70 82 6e 83 82 44 42 83 44 75 7b 7f 8c 89
+
+
+
+coucou="66 34 6b 6d 6d 36 70 7c 3d 82 7f 70 82 6e 83 82 44 42 83 44 75 7b 7f 8c 89" ; j=0 ; for i in $coucou ; do  e=$(echo "obase=10; ibase=16; ${i^^}" | bc) ; echo " $e - $j" | bc ; j=$(expr $j + 1)   ; done
+
+donne -> 102 51 105 106 105 49 106 117 53 121 117 101 118 97 117 115 52 49 113 49 97 102 105 117 113
+
+
+chr() {
+  [ "$1" -lt 256 ] || return 1
+  printf "\\$(printf '%03o' "$1")"
+}
+
+coucou="102 51 105 106 105 49 106 117 53 121 117 101 118 97 117 115 52 49 113 49 97 102 105 117 113" ; for i in $coucou ; do chr $i ; done; echo ""
+
+
+> f3iji1ju5yuevaus41q1afiuq
+
+su flag09:f3iji1ju5yuevaus41q1afiuq
+
+getflag s5cAJpM8ev6XHw998pRWG728z
+
+# level 10
+
+
+le level contient un programme qui envoit un fichier a une addresse sur le port 6969
+le programme dit qu'on a pas acces au fichier token
+
+un fichier qui contient "aaaaaaa" est envoye 
+```
+.*( )*.
+aaaaaaaaa
+```
 
 
 
