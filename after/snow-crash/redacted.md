@@ -225,6 +225,14 @@ on obtient
 # level 13
 
 
+on breakpoint le main
+on jump juste apres l'exit avec gdb et on a bon
+avec `jump *0x080485cb"` ou une autre adresse
+
+ on obtient le flag
+
+`2A31L79asukciNyi8uppkEuSx`
+
 
 
 
