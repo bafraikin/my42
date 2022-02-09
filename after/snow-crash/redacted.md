@@ -246,11 +246,13 @@ search for the last flag in getflag avec gdb
 
 donc on jump a main+1183
 
+et puts donne
+7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ
 
-7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnH
+on se connecte sur flag14 avec
+et getflag nous donne le meme 7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ
 
-
-
+donc on a bon
 
 
 
