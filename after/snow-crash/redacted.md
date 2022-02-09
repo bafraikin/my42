@@ -237,6 +237,18 @@ avec `jump *0x080485cb"` ou une autre adresse
 # level 14
 
 
+search for the last flag in getflag avec gdb
+```
+   0x08048bb6 <+624>:	cmp    eax,0xbc6
+   0x08048bbb <+629>:	je     0x8048de5 <main+1183>
+```
+`0xbc6 correspond a 3014 le uid de flag14`
+
+donc on jump a main+1183
+
+
+7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnH
+
 
 
 
