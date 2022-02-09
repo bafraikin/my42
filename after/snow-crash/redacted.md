@@ -229,7 +229,7 @@ on breakpoint le main
 on jump juste apres l'exit avec gdb et on a bon
 avec `jump *0x080485cb"` ou une autre adresse
 
- on obtient le flag
+ on obtient le mot de passe du level 14
 
 `2A31L79asukciNyi8uppkEuSx`
 
